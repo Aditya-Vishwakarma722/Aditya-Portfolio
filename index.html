@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -130,10 +130,10 @@
   }
   .hero-name {
     font-family: 'Raleway', sans-serif;
-    font-size: clamp(2.8rem, 6.5vw, 4.4rem);
+    font-size: clamp(3.5rem, 9vw, 8rem);
     font-weight: 800;
-    letter-spacing: -2.5px;
-    line-height: 0.98;
+    letter-spacing: -4px;
+    line-height: 0.95;
     color: #ffffff;
     margin-bottom: 1.1rem;
   }
@@ -146,7 +146,7 @@
     display: block;
     font-style: normal;
     font-weight: 800;
-    letter-spacing: -2.5px;
+    letter-spacing: -4px;
     background: linear-gradient(90deg, var(--ac) 0%, #a5f3fc 50%, var(--ac3) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -176,9 +176,37 @@
     background: var(--ac); border-radius: 2px;
     margin-bottom: 1.1rem; opacity: 0.6;
   }
-  .hero-content p {
-    color: var(--text-secondary); font-size: 0.95rem;
-    line-height: 1.8; max-width: 480px; font-weight: 300;
+  .hero-about-text {
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    line-height: 1.85;
+    max-width: 580px;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+  .hero-intro-lead {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.15rem;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    max-width: 580px;
+  }
+  .intro-thread-pip {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ac3);
+    box-shadow: 0 0 10px var(--ac3);
+    flex-shrink: 0;
+  }
+  .hero-intro-text {
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    font-weight: 400;
   }
 
   /* SECTIONS */
@@ -642,7 +670,7 @@
     letter-spacing: 0.02em;
   }
 
-  /* Experience & Status in Right Column */
+  /* Status & Languages */
   .status-grid.compact {
     display: flex;
     flex-direction: column;
@@ -652,24 +680,102 @@
   .status-grid.compact .status-row {
     padding: 0.35rem 0;
   }
-  .exp-mini-item {
-    margin-top: 0.4rem;
-    margin-bottom: 0.8rem;
-  }
-  .exp-role {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--ac);
-    margin-bottom: 0.3rem;
-  }
-  .cert-list.compact {
+
+  /* Repositories in Branch */
+  .repo-branch-list {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    margin-top: 0.6rem;
+    margin-top: 0.65rem;
   }
-  .cert-list.compact .cert-item {
-    padding: 0.55rem 0.75rem;
+  .repo-branch-item {
+    display: block;
+    text-decoration: none;
+    padding: 0.7rem 0.85rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.2s ease;
+  }
+  .repo-branch-item:hover {
+    background: rgba(136, 170, 255, 0.08);
+    border-color: rgba(136, 170, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  .repo-branch-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.25rem;
+  }
+  .repo-branch-name {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #ffffff;
+    word-break: break-word;
+  }
+  .repo-branch-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(0, 255, 209, 0.08);
+    border: 1px solid rgba(0, 255, 209, 0.2);
+    color: var(--ac3);
+    white-space: nowrap;
+  }
+  .repo-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.45rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+  }
+  .repo-link-arrow {
+    color: var(--ac);
+    font-weight: 600;
+  }
+  .repo-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.8rem;
+    padding: 0.5rem 0.85rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .repo-more-btn:hover {
+    background: rgba(136, 170, 255, 0.12);
+    border-color: var(--ac);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+  .repo-more-btn .arrow {
+    color: var(--ac);
+    transition: transform 0.2s ease;
+  }
+  .repo-more-btn:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Blender 3D in Branch */
+  .blender-branch-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.2rem;
   }
 
   /* FOOTER */
@@ -918,9 +1024,8 @@
       <div class="header-sub">Aditya Vishwakarma &mdash; Portfolio</div>
     </div>
     <nav class="nav">
-      <a href="#work">My Work</a>
       <a href="#about">About</a>
-      <a href="#resume">Resume</a>
+      <a href="#resume">Portfolio &amp; Work</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -928,7 +1033,7 @@
 </header>
 
 <main>
-  <section class="hero">
+  <section class="hero" id="about">
     <div class="hero-img">
       <!--
         ╔══════════════════════════════════════════════════════╗
@@ -953,65 +1058,15 @@
         <span class="last">Vishwakarma</span>
       </h2>
       <div class="hero-divider"></div>
-      <p>Welcome to my digital workspace. Explore my coding projects, video edits, and custom 3D creations all in one place.</p>
-    </div>
-  </section>
-
-  <section id="about" class="about-section folders-section" style="padding-top:1rem;">
-    <h3 class="section-title" style="display:block;margin:0 auto 2rem auto;text-align:center;width:fit-content;">About Me</h3>
-    <div class="about-content glass-effect">
-      <p>I'm Aditya Vishwakarma, a developer and creative enthusiast who enjoys building things for the digital world. I like solving problems through code, designing clean interfaces, and exploring creative tools like video editing and 3D design. I'm always learning, experimenting, and working to turn ideas into meaningful projects.</p>
-    </div>
-  </section>
-
-  <section id="work" class="folders-section">
-    <h3 class="section-title">My Directories</h3>
-    <div class="grid">
-
-      <a href="javascript:void(0)" class="card glass-effect" id="folder-skills">
-        <div class="card-icon skills-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 3v18h18"/><path d="M7 16V12"/><path d="M11 16V8"/><path d="M15 16V10"/>
-          </svg>
-        </div>
-        <div class="card-content"><h4>Skills</h4><p>Technical proficiency, core languages, software tools, and practice platforms.</p></div>
-        <div class="card-footer"><span>/skills</span><span class="arrow">→</span></div>
-      </a>
-
-      <a href="https://github.com/Aditya-Vishwakarma722?tab=repositories" target="_blank" class="card glass-effect">
-        <div class="card-icon repositories-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/>
-            <path d="m10 11-2 2 2 2"/><path d="m14 11 2 2-2 2"/>
-          </svg>
-        </div>
-        <div class="card-content"><h4>Repositories</h4><p>Active development, web applications, open source repos, and completed coding projects.</p></div>
-        <div class="card-footer"><span>/repositories</span><span class="arrow">→</span></div>
-      </a>
-
-      <a href="#resume" class="card glass-effect" id="folder-resume">
-        <div class="card-icon resume-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <div class="card-content"><h4>Resume</h4><p>Academic profile, career goals, formal education, and professional experience highlights.</p></div>
-        <div class="card-footer"><span>/resume</span><span class="arrow">↓</span></div>
-      </a>
-
-      <a href="Blender 3D/blenderAssets.html" class="card glass-effect">
-        <div class="card-icon d3-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-            <line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
-        </div>
-        <div class="card-content"><h4>Blender 3D</h4><p>3D models, assets, environments, and aesthetic renders fully crafted in Blender.</p></div>
-        <div class="card-footer"><span>/3d_assets</span><span class="arrow">→</span></div>
-      </a>
-
+      <p class="hero-about-text">
+        I'm Aditya Vishwakarma, a developer and creative enthusiast who enjoys building things for the digital world. I like solving problems through code, designing clean interfaces, and exploring creative tools like video editing and 3D design. I'm always learning, experimenting, and working to turn ideas into meaningful projects.
+      </p>
+      <div class="hero-intro-lead">
+        <span class="intro-thread-pip"></span>
+        <p class="hero-intro-text">
+          Welcome to my digital workspace. Explore my coding projects, video edits, and custom 3D creations all in one place.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -1119,12 +1174,15 @@
 
           <div class="project-mini-item">
             <div class="proj-head">
-              <span class="proj-name">Personal Portfolio &amp; DSA Codebase</span>
-              <span class="proj-stack">HTML/CSS/TS · Three.js · Java Collections · Concurrency</span>
+              <span class="proj-name">AniTracker</span>
+              <span class="proj-stack">Java · Spring Boot · MongoDB · REST API</span>
             </div>
             <p class="card-desc">
-              Responsive digital portfolio deployed on Vercel, alongside structured Java repository covering OOP, multithreading, and algorithmic problem solving.
+              Full-stack media tracking backend for Anime, Movies, and TV series with structured data models, custom lists, and RESTful CRUD endpoints.
             </p>
+            <div class="repo-meta-row" style="margin-top:0.4rem;">
+              <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+            </div>
           </div>
         </div>
 
@@ -1192,7 +1250,75 @@
           </button>
         </div>
 
-        <!-- CARD 2: Academic Status & Communication -->
+        <!-- CARD 2: Repositories Branch -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">04 // REPOSITORIES</span>
+            <span class="card-badge">GitHub Live</span>
+          </div>
+          <h4 class="card-title">Latest Repositories</h4>
+          <p class="card-desc">
+            Active repositories showcasing latest code pushes, architecture, and live projects:
+          </p>
+
+          <div class="repo-branch-list" id="github-latest-repos">
+            <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-branch-item">
+              <div class="repo-branch-head">
+                <span class="repo-branch-name">SkillBridge-student-industry-collaboration</span>
+                <span class="repo-branch-lang">Java</span>
+              </div>
+              <p class="card-desc">Collaborative bridge connecting students and industry with Spring Boot and MongoDB.</p>
+              <div class="repo-meta-row">
+                <span>Latest Activity</span>
+                <span class="repo-link-arrow">View Repo ↗</span>
+              </div>
+            </a>
+            <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-branch-item">
+              <div class="repo-branch-head">
+                <span class="repo-branch-name">AniTracker</span>
+                <span class="repo-branch-lang">Java</span>
+              </div>
+              <p class="card-desc">Full-featured media tracker backend for Anime, Movies, and TV collections.</p>
+              <div class="repo-meta-row">
+                <span>Latest Activity</span>
+                <span class="repo-link-arrow">View Repo ↗</span>
+              </div>
+            </a>
+          </div>
+
+          <a href="https://github.com/Aditya-Vishwakarma722?tab=repositories" target="_blank" class="repo-more-btn">
+            <span>Go to Repositories</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <!-- CARD 3: Blender 3D Branch -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">05 // BLENDER 3D</span>
+            <span class="card-badge">3D Design &amp; CGI</span>
+          </div>
+          <h4 class="card-title">Blender 3D Creations</h4>
+          <p class="card-desc">
+            Custom 3D models, procedural shaders, lighting environments, and aesthetic renders crafted in Blender.
+          </p>
+          <div class="blender-branch-features">
+            <span class="pill-chip highlight">3D Modeling</span>
+            <span class="pill-chip highlight">Cycles / Eevee</span>
+            <span class="pill-chip">Procedural Textures</span>
+            <span class="pill-chip">Lighting &amp; Renders</span>
+          </div>
+          <a href="Blender 3D/blenderAssets.html" class="repo-more-btn" style="margin-top: 0.9rem;">
+            <span>Explore 3D Assets &amp; Renders</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <!-- CARD 4: Academic Status & Communication -->
         <div class="masonry-card glass-effect">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
@@ -1238,43 +1364,6 @@
                 <span class="lang-lvl">Beginner · 18%</span>
               </div>
               <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 18%;"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3: Experience & Certifications -->
-        <div class="masonry-card glass-effect">
-          <div class="card-branch-arm"></div>
-          <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">EXPERIENCE &amp; CERTS</span>
-            <span class="card-badge">Milestones</span>
-          </div>
-          <h4 class="card-title">Experience &amp; Certifications</h4>
-
-          <div class="exp-mini-item">
-            <div class="exp-role">Web Development Intern &mdash; Future Interns</div>
-            <p class="card-desc">Contributed to client-oriented responsive web design, feature implementation, and live pitch presentations.</p>
-          </div>
-
-          <div class="cert-list compact">
-            <div class="cert-item">
-              <div class="cert-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-              <div>
-                <div class="cert-title">Future Interns Certificate &amp; LOR</div>
-                <div class="cert-sub">Awarded official Letter of Recommendation for exemplary performance.</div>
-              </div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </div>
-              <div>
-                <div class="cert-title">LeetCode Problem Solving</div>
-                <div class="cert-sub">Consistent algorithmic problem solving across arrays, strings, and recursion.</div>
-              </div>
             </div>
           </div>
         </div>
@@ -1582,12 +1671,40 @@ document.addEventListener('DOMContentLoaded', () => {
   if (skillsFolder) skillsFolder.addEventListener('click', e => { e.preventDefault(); openModal(); });
   const openSkillsFromResume = document.getElementById('open-skills-from-resume');
   if (openSkillsFromResume) openSkillsFromResume.addEventListener('click', e => { e.preventDefault(); openModal(); });
+  const openSkillsFromBox = document.getElementById('open-skills-from-box');
+  if (openSkillsFromBox) openSkillsFromBox.addEventListener('click', e => { e.preventDefault(); openModal(); });
+
   if (closeBtn) closeBtn.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
   skillsModal.addEventListener('click', e => { if (e.target === skillsModal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && skillsModal.classList.contains('active')) closeModal(); });
 
+  // Dynamically fetch latest 2 pushed GitHub repositories
+  (async function fetchLatestRepos() {
+    const container = document.getElementById('github-latest-repos');
+    if (!container) return;
+    try {
+      const res = await fetch('https://api.github.com/users/Aditya-Vishwakarma722/repos?sort=pushed&per_page=2');
+      if (!res.ok) return;
+      const repos = await res.json();
+      if (!Array.isArray(repos) || repos.length === 0) return;
+      container.innerHTML = repos.slice(0, 2).map(r => `
+        <a href="${r.html_url}" target="_blank" class="repo-branch-item">
+          <div class="repo-branch-head">
+            <span class="repo-branch-name">${r.name}</span>
+            <span class="repo-branch-lang">${r.language || 'Code'}</span>
+          </div>
+          <p class="card-desc">${r.description ? (r.description.length > 95 ? r.description.slice(0, 92) + '...' : r.description) : 'Active development repository.'}</p>
+          <div class="repo-meta-row">
+            <span>Pushed: ${new Date(r.pushed_at).toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'})}</span>
+            <span class="repo-link-arrow">View Repo ↗</span>
+          </div>
+        </a>
+      `).join('');
+    } catch (err) {}
+  })();
+
   // Subtle interactive 3D card tilt for branch cards
-  const branchCards = document.querySelectorAll('.branch-card');
+  const branchCards = document.querySelectorAll('.masonry-card, .branch-card');
   branchCards.forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
