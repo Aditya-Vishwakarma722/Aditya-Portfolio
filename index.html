@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Aditya Vishwakarma</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Raleway:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
   :root {
@@ -128,11 +128,48 @@
     letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--text-secondary); margin-bottom: 0.6rem;
   }
-  .hero-content h2 {
-    font-size: clamp(2.6rem, 6vw, 4.2rem);
-    font-weight: 800; line-height: 1.05;
-    margin-bottom: 1.1rem; letter-spacing: -0.02em;
-    color: var(--text-primary);
+  .hero-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(2.8rem, 6.5vw, 4.4rem);
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 0.98;
+    color: #ffffff;
+    margin-bottom: 1.1rem;
+  }
+  .hero-name .first {
+    display: block;
+    opacity: 0;
+    animation: slideBlur 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+  .hero-name .last {
+    display: block;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    background: linear-gradient(90deg, var(--ac) 0%, #a5f3fc 50%, var(--ac3) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: slideBlur 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+  }
+  @keyframes slideBlur {
+    0% {
+      opacity: 0;
+      transform: translateX(-60px);
+      filter: blur(14px);
+    }
+    60% {
+      opacity: 1;
+      filter: blur(2px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
   }
   .hero-divider {
     width: 40px; height: 2px;
@@ -222,6 +259,465 @@
   .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.2rem; font-size: 0.78rem; color: var(--text-secondary); font-family: monospace; letter-spacing: 0.03em; }
   .arrow { font-size: 1rem; color: var(--ac); transition: transform 0.2s; }
   .card:hover .arrow { transform: translateX(4px); }
+
+  /* ── RESUME SECTION & CENTRAL THREAD ── */
+  .resume-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .resume-header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .resume-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ac3);
+    margin-bottom: 0.4rem;
+  }
+  .resume-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .resume-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .resume-btn-primary {
+    background: linear-gradient(135deg, rgba(136,170,255,0.18) 0%, rgba(0,255,209,0.18) 100%);
+    border: 1px solid rgba(0,255,209,0.35);
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(0,255,209,0.15);
+  }
+  .resume-btn-primary:hover {
+    background: linear-gradient(135deg, rgba(136,170,255,0.3) 0%, rgba(0,255,209,0.3) 100%);
+    border-color: var(--ac3);
+    box-shadow: 0 0 22px rgba(0,255,209,0.3);
+    transform: translateY(-2px);
+  }
+  .resume-btn-ghost {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+  }
+  .resume-btn-ghost:hover {
+    background: rgba(136,170,255,0.1);
+    border-color: var(--ac);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  /* Thread Timeline */
+  .thread-timeline {
+    position: relative;
+    max-width: 1040px;
+    margin: 2rem auto 0;
+    padding: 3rem 0;
+  }
+  .thread-spine {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      180deg,
+      rgba(136,170,255,0.1) 0%,
+      var(--ac) 15%,
+      var(--ac3) 50%,
+      var(--ac) 80%,
+      rgba(255,92,122,0.2) 100%
+    );
+    box-shadow: 0 0 12px rgba(136,170,255,0.35), 0 0 24px rgba(0,255,209,0.2);
+    z-index: 1;
+  }
+  .thread-start-node,
+  .thread-end-node {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ac3);
+    box-shadow: 0 0 12px var(--ac3);
+    z-index: 2;
+  }
+  .thread-start-node { top: 0; }
+  .thread-end-node { bottom: 0; }
+
+  /* Branch Items */
+  .branch-item {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: 3rem;
+    align-items: flex-start;
+  }
+  .branch-item:last-child {
+    margin-bottom: 0;
+  }
+  .branch-item.left {
+    justify-content: flex-start;
+  }
+  .branch-item.right {
+    justify-content: flex-end;
+  }
+
+  /* Branch Cards */
+  .branch-card {
+    width: calc(50% - 44px);
+    position: relative;
+    padding: 1.8rem 2rem;
+    border-radius: var(--radius);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease,
+                background 0.3s ease;
+    z-index: 2;
+  }
+  .branch-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(136, 170, 255, 0.35);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(136, 170, 255, 0.14);
+  }
+
+  /* Branch Nodes */
+  .branch-node {
+    position: absolute;
+    left: 50%;
+    top: 2.2rem;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0a0a12;
+    border: 2px solid var(--ac);
+    box-shadow: 0 0 12px rgba(136, 170, 255, 0.5);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .node-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ac);
+    transition: all 0.3s ease;
+  }
+  .branch-item:hover .branch-node {
+    border-color: var(--ac3);
+    box-shadow: 0 0 18px var(--ac3);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  .branch-item:hover .node-pulse {
+    background: var(--ac3);
+    box-shadow: 0 0 8px var(--ac3);
+  }
+
+  /* Branch Horizontal Arms */
+  .branch-arm {
+    position: absolute;
+    top: 2.2rem;
+    height: 2px;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  .branch-item.left .branch-arm {
+    left: calc(50% - 44px);
+    width: 44px;
+    background: linear-gradient(90deg, rgba(136, 170, 255, 0.15), var(--ac));
+  }
+  .branch-item.right .branch-arm {
+    left: 50%;
+    width: 44px;
+    background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.15));
+  }
+  .branch-item:hover .branch-arm {
+    background: var(--ac3);
+    box-shadow: 0 0 10px var(--ac3);
+  }
+
+  /* Branch Typography & Elements */
+  .branch-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+  .branch-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: var(--ac);
+    font-weight: 600;
+  }
+  .branch-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+  .branch-status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ac3);
+    background: rgba(0,255,209,0.08);
+    border: 1px solid rgba(0,255,209,0.22);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .status-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ac3);
+    box-shadow: 0 0 8px var(--ac3);
+    animation: statusPulse 2s infinite;
+  }
+  @keyframes statusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  .branch-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .branch-institution {
+    font-size: 0.82rem;
+    color: var(--ac);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+  .branch-text {
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  .branch-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .branch-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+  .pill-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+  }
+  .pill-chip.highlight {
+    color: var(--ac);
+    border-color: rgba(136,170,255,0.3);
+    background: rgba(136,170,255,0.08);
+  }
+  .pill-chip:hover {
+    border-color: var(--ac3);
+    color: var(--ac3);
+    transform: translateY(-1px);
+  }
+
+  /* Status Grid in Branch 2 */
+  .status-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.8rem;
+  }
+  .status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.82rem;
+  }
+  .status-row:last-child {
+    border-bottom: none;
+  }
+  .status-label {
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+  }
+  .status-val {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.82rem;
+  }
+  .status-val.accent {
+    color: var(--ac3);
+  }
+
+  /* Education Tags */
+  .edu-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0.7rem 0;
+  }
+  .edu-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-secondary);
+  }
+  .edu-pill.highlight {
+    color: var(--ac3);
+    background: rgba(0,255,209,0.08);
+    border-color: rgba(0,255,209,0.25);
+  }
+
+  /* Language Progress Meters */
+  .lang-meters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    margin-top: 0.9rem;
+  }
+  .lang-meter-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+  .lang-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .lang-lvl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+  }
+  .lang-meter-bar {
+    height: 4px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.06);
+    overflow: hidden;
+  }
+  .lang-meter-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--ac), var(--ac3));
+  }
+
+  /* Projects in Branch 5 & 6 */
+  .project-branch-sub {
+    margin-top: 0.6rem;
+  }
+  .project-branch-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.45rem;
+  }
+  .proj-name {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .proj-stack {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ac);
+    letter-spacing: 0.02em;
+  }
+
+  /* Certifications List in Branch 8 */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.8rem;
+  }
+  .cert-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.7rem 0.85rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .cert-item:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(0,255,209,0.25);
+  }
+  .cert-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(0,255,209,0.1);
+    border: 1px solid rgba(0,255,209,0.2);
+    color: var(--ac3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .cert-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+  .cert-title {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.15rem;
+  }
+  .cert-sub {
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
 
   /* FOOTER */
   footer { text-align: center; padding: 2.5rem; color: var(--text-secondary); font-size: 0.82rem; border-top: 1px solid var(--glass-border); margin-top: 2rem; }
@@ -373,6 +869,52 @@
   .skill-tag.tool    { background: rgba(245,158,11,0.08);  border: 1px solid rgba(245,158,11,0.2);  color: #fbbf24; }
   .skill-tag.tool:hover { background: rgba(245,158,11,0.15); }
 
+  /* RESUME RESPONSIVE (THREAD & BRANCHES) */
+  @media (max-width: 860px) {
+    .thread-timeline {
+      padding: 2rem 0;
+      margin-top: 1.5rem;
+    }
+    .thread-spine {
+      left: 22px;
+    }
+    .thread-start-node,
+    .thread-end-node {
+      left: 22px;
+    }
+    .branch-item {
+      justify-content: flex-start !important;
+      margin-bottom: 2rem;
+    }
+    .branch-card {
+      width: calc(100% - 54px);
+      margin-left: 54px;
+      padding: 1.4rem 1.3rem;
+    }
+    .branch-node {
+      left: 22px;
+      top: 1.8rem;
+    }
+    .branch-item.left .branch-arm,
+    .branch-item.right .branch-arm {
+      left: 22px !important;
+      width: 32px !important;
+      background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2));
+    }
+    .resume-header-wrap {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .resume-actions {
+      width: 100%;
+    }
+    .resume-btn {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
   /* MOBILE */
   @media (max-width: 600px) {
     .header { padding: 1rem 1.2rem 0.8rem; }
@@ -385,6 +927,7 @@
     .hero-img { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(136,170,255,0.15); padding-bottom: 2rem; }
     .hero-img img, .hero-img .placeholder-avatar { width: 110px; height: 110px; font-size: 2.4rem; }
     .hero-content { padding-left: 0; align-items: center; }
+    .hero-name { font-size: clamp(2.2rem, 8vw, 3rem); letter-spacing: -1.5px; }
     .hero-divider { margin: 0 auto 1.1rem; }
     .hero-content p { max-width: 100%; font-size: 0.9rem; }
     .folders-section { padding: 2rem 1.2rem; }
@@ -405,7 +948,8 @@
   @media (max-width: 400px) {
     .logo { font-size: 1.05rem; }
     .nav a { font-size: 0.7rem; letter-spacing: 0.04em; }
-    .hero-content h2 { font-size: 1.6rem; }
+    .hero-content h2, .hero-name { font-size: 1.8rem; letter-spacing: -1px; }
+    .resume-btn { font-size: 0.72rem; padding: 0.5rem 0.8rem; }
   }
 </style>
 </head>
@@ -422,6 +966,7 @@
     <nav class="nav">
       <a href="#work">My Work</a>
       <a href="#about">About</a>
+      <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -449,7 +994,10 @@
     </div>
     <div class="hero-content">
       <div class="hero-eyebrow">Developer &amp; Creative</div>
-      <h2>Aditya Vishwakarma</h2>
+      <h2 class="hero-name">
+        <span class="first">Aditya</span>
+        <span class="last">Vishwakarma</span>
+      </h2>
       <div class="hero-divider"></div>
       <p>Welcome to my digital workspace. Explore my coding projects, video edits, and custom 3D creations all in one place.</p>
     </div>
@@ -487,7 +1035,7 @@
         <div class="card-footer"><span>/repositories</span><span class="arrow">→</span></div>
       </a>
 
-      <a href="resume.html" class="card glass-effect">
+      <a href="#resume" class="card glass-effect" id="folder-resume">
         <div class="card-icon resume-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
@@ -495,7 +1043,7 @@
           </svg>
         </div>
         <div class="card-content"><h4>Resume</h4><p>Academic profile, career goals, formal education, and professional experience highlights.</p></div>
-        <div class="card-footer"><span>/resume</span><span class="arrow">→</span></div>
+        <div class="card-footer"><span>/resume</span><span class="arrow">↓</span></div>
       </a>
 
       <a href="Blender 3D/blenderAssets.html" class="card glass-effect">
@@ -510,6 +1058,286 @@
         <div class="card-footer"><span>/3d_assets</span><span class="arrow">→</span></div>
       </a>
 
+    </div>
+  </section>
+
+  <!-- ── RESUME & CENTRAL THREAD EXTENSION ── -->
+  <section id="resume" class="folders-section resume-section">
+    <div class="resume-header-wrap">
+      <div>
+        <div class="resume-eyebrow">ACET Surampalem · CSE · 2024–2028</div>
+        <h3 class="section-title">Resume &amp; Career Path</h3>
+      </div>
+      <div class="resume-actions">
+        <a href="Aditya_Vishwakarma_Resume.pdf" download="Aditya_Vishwakarma_Resume.pdf" class="resume-btn resume-btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download PDF</span>
+        </a>
+        <button class="resume-btn resume-btn-ghost" id="open-skills-from-resume">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/><path d="M7 16V12"/><path d="M11 16V8"/><path d="M15 16V10"/>
+          </svg>
+          <span>Full Skills</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CENTRAL THREAD TIMELINE WITH BRANCHES -->
+    <div class="thread-timeline">
+      <div class="thread-spine"></div>
+      <div class="thread-start-node"></div>
+
+      <!-- BRANCH 1: Career Objective (Left) -->
+      <div class="branch-item left">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">01 // OBJECTIVE</span>
+            <span class="branch-badge">Career Goal</span>
+          </div>
+          <h4 class="branch-title">Career Objective</h4>
+          <p class="branch-text">
+            Computer Science undergraduate focused on <strong>Java backend development</strong> and software engineering. Hands-on experience building RESTful applications with <strong>Spring Boot, Spring Security, MongoDB</strong> and Maven, with practical knowledge of authentication, RBAC, CRUD APIs, transactions and layered architecture. Strong foundation in <strong>DSA, OOP, Java Collections</strong>, exception handling and concurrency.
+          </p>
+          <div class="branch-pills">
+            <span class="pill-chip highlight">Java Backend Dev</span>
+            <span class="pill-chip highlight">Software Developer</span>
+            <span class="pill-chip highlight">Game Developer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCH 2: Status & Academic Profile (Right) -->
+      <div class="branch-item right">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">02 // PROFILE &amp; STATUS</span>
+            <span class="branch-status-tag"><span class="status-live-dot"></span>Open to Work</span>
+          </div>
+          <h4 class="branch-title">Academic &amp; Professional Status</h4>
+          <div class="status-grid">
+            <div class="status-row">
+              <span class="status-label">Availability</span>
+              <span class="status-val accent">Open to Work</span>
+            </div>
+            <div class="status-row">
+              <span class="status-label">Current Academic Level</span>
+              <span class="status-val">3rd Year B.Tech CSE</span>
+            </div>
+            <div class="status-row">
+              <span class="status-label">Academic Batch</span>
+              <span class="status-val">2024 – 2028 (Expected)</span>
+            </div>
+            <div class="status-row">
+              <span class="status-label">Location</span>
+              <span class="status-val">Surampalem, Andhra Pradesh</span>
+            </div>
+            <div class="status-row">
+              <span class="status-label">Primary Specialization</span>
+              <span class="status-val">Backend &amp; Systems Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCH 3: Formal Education (Left) -->
+      <div class="branch-item left">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">03 // EDUCATION</span>
+            <span class="branch-badge">B.Tech CSE</span>
+          </div>
+          <h4 class="branch-title">Bachelor of Technology in Computer Science &amp; Engineering</h4>
+          <div class="branch-institution">Aditya College of Engineering &amp; Technology (ACET), Surampalem</div>
+          <div class="edu-tags-row">
+            <span class="edu-pill">2024 – 2028 (Expected)</span>
+            <span class="edu-pill">3rd Year</span>
+            <span class="edu-pill highlight">CGPA: 7.9</span>
+            <span class="edu-pill">B.Tech CSE</span>
+          </div>
+          <p class="branch-text">
+            Core focus across Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, and layered backend software design.
+          </p>
+        </div>
+      </div>
+
+      <!-- BRANCH 4: Languages Known (Right) -->
+      <div class="branch-item right">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">04 // LANGUAGES</span>
+            <span class="branch-badge">Communication</span>
+          </div>
+          <h4 class="branch-title">Languages Known</h4>
+          <div class="lang-meters">
+            <div class="lang-meter-item">
+              <div class="lang-meter-head">
+                <span class="lang-name">English</span>
+                <span class="lang-lvl">Fluent · Professional (92%)</span>
+              </div>
+              <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 92%;"></div></div>
+            </div>
+            <div class="lang-meter-item">
+              <div class="lang-meter-head">
+                <span class="lang-name">Hindi</span>
+                <span class="lang-lvl">Native · Fluent (98%)</span>
+              </div>
+              <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 98%;"></div></div>
+            </div>
+            <div class="lang-meter-item">
+              <div class="lang-meter-head">
+                <span class="lang-name">Japanese</span>
+                <span class="lang-lvl">Beginner (18%)</span>
+              </div>
+              <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 18%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCH 5: Featured Projects - Backend (Left) -->
+      <div class="branch-item left">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">05 // BACKEND SYSTEMS</span>
+            <span class="branch-badge">Spring Boot &amp; MongoDB</span>
+          </div>
+          <h4 class="branch-title">Featured Projects: Backend Architecture</h4>
+
+          <div class="project-branch-sub">
+            <div class="project-branch-head">
+              <span class="proj-name">SkillBridge</span>
+              <span class="proj-stack">Java 21 · Spring Boot · MongoDB · Spring Security</span>
+            </div>
+            <p class="branch-text">
+              Collaborative platform bridging students and industry projects built using Java 21 and Spring Boot. Implemented Role-Based Access Control (RBAC) for Students and Industry partners, BCrypt authentication modules with Spring Security, and scalable MongoDB schemas for project listings, applications, and profiles.
+            </p>
+          </div>
+
+          <div class="project-branch-sub" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06);">
+            <div class="project-branch-head">
+              <span class="proj-name">Journal Prototype API</span>
+              <span class="proj-stack">Java 21 · Spring Boot 4.0.7 · Spring Security · MongoDB Transactions</span>
+            </div>
+            <p class="branch-text">
+              RESTful journal management service with Java 21, Spring Boot 4.0.7, Spring Security, MongoDB, and Maven. Features user registration, BCrypt password hashing, HTTP Basic Auth, Role-Based Access Control (USER/ADMIN), authenticated CRUD APIs with ownership isolation, and multi-document transactions (@Transactional).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCH 6: Projects - Web & DSA Practice (Right) -->
+      <div class="branch-item right">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">06 // WEB &amp; CORE PRACTICE</span>
+            <span class="branch-badge">Fullstack &amp; Algorithms</span>
+          </div>
+          <h4 class="branch-title">Web Portfolio &amp; Algorithmic Mastery</h4>
+
+          <div class="project-branch-sub">
+            <div class="project-branch-head">
+              <span class="proj-name">Personal Portfolio &amp; Digital Hub</span>
+              <span class="proj-stack">HTML5 · CSS3 · TypeScript · Three.js · Vercel</span>
+            </div>
+            <p class="branch-text">
+              Developed and deployed a responsive portfolio showcasing software projects, technical skills, interactive resume, custom 3D creations, and creative video edits; deployed with Vercel.
+            </p>
+          </div>
+
+          <div class="project-branch-sub" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06);">
+            <div class="project-branch-head">
+              <span class="proj-name">Java DSA &amp; Core Programming Practice</span>
+              <span class="proj-stack">Java · Collections Framework · Multithreading · DSA</span>
+            </div>
+            <p class="branch-text">
+              Maintains structured Java practice covering OOP, Collections, Multithreading, Exception Handling, and DSA topics including arrays, strings, linked lists, stacks, queues, recursion, and searching/sorting algorithms.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCH 7: Experience (Left) -->
+      <div class="branch-item left">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">07 // EXPERIENCE</span>
+            <span class="branch-badge">Industry Internship</span>
+          </div>
+          <h4 class="branch-title">Web Development Intern</h4>
+          <div class="branch-institution">Future Interns</div>
+          <p class="branch-text">
+            Developed responsive web projects and contributed to client-oriented website design and implementation tasks. Participated in project presentations and live pitching, strengthening frontend development and technical communication skills.
+          </p>
+          <div class="branch-pills">
+            <span class="pill-chip">Frontend Engineering</span>
+            <span class="pill-chip">Responsive Web</span>
+            <span class="pill-chip">Client Solutions</span>
+            <span class="pill-chip">Pitching &amp; Presentation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCH 8: Certifications & Recognition (Right) -->
+      <div class="branch-item right">
+        <div class="branch-node"><span class="node-pulse"></span></div>
+        <div class="branch-arm"></div>
+        <div class="branch-card glass-effect">
+          <div class="branch-meta">
+            <span class="branch-num">08 // CREDENTIALS</span>
+            <span class="branch-badge">Achievements</span>
+          </div>
+          <h4 class="branch-title">Certifications &amp; Achievements</h4>
+          <div class="cert-list">
+            <div class="cert-item">
+              <div class="cert-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div>
+                <div class="cert-title">Future Interns Certificate &amp; LOR</div>
+                <div class="cert-sub">Awarded internship certificate along with official Letter of Recommendation for exemplary performance.</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <div>
+                <div class="cert-title">LeetCode Algorithmic Problem Solving</div>
+                <div class="cert-sub">Consistent algorithmic problem solving across arrays, strings, dynamic logic, and data structure patterns.</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <div>
+                <div class="cert-title">Japanese Language Study</div>
+                <div class="cert-sub">Active foundational study of Japanese language writing systems and conversational vocabulary.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="thread-end-node"></div>
     </div>
   </section>
 
@@ -808,9 +1636,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (skillsFolder) skillsFolder.addEventListener('click', e => { e.preventDefault(); openModal(); });
+  const openSkillsFromResume = document.getElementById('open-skills-from-resume');
+  if (openSkillsFromResume) openSkillsFromResume.addEventListener('click', e => { e.preventDefault(); openModal(); });
   if (closeBtn) closeBtn.addEventListener('click', e => { e.stopPropagation(); closeModal(); });
   skillsModal.addEventListener('click', e => { if (e.target === skillsModal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && skillsModal.classList.contains('active')) closeModal(); });
+
+  // Subtle interactive 3D card tilt for branch cards
+  const branchCards = document.querySelectorAll('.branch-card');
+  branchCards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+      const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+      card.style.transform = `translateY(-6px) perspective(800px) rotateX(${y * -3}deg) rotateY(${x * 3}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 });
 </script>
 </body>
