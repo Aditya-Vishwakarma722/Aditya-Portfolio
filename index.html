@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -260,40 +260,42 @@
   .arrow { font-size: 1rem; color: var(--ac); transition: transform 0.2s; }
   .card:hover .arrow { transform: translateX(4px); }
 
-  /* ── RESUME SECTION & CENTRAL THREAD ── */
+  /* ── RESUME SECTION: MASONRY & CENTRAL THREAD ── */
   .resume-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
   }
   .resume-header-wrap {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
   }
   .resume-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ac3);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
   }
   .resume-actions {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
   }
   .resume-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0.55rem 1.15rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1.05rem;
     border-radius: 8px;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 600;
     font-family: 'JetBrains Mono', monospace;
     text-decoration: none;
@@ -305,12 +307,12 @@
     background: linear-gradient(135deg, rgba(136,170,255,0.18) 0%, rgba(0,255,209,0.18) 100%);
     border: 1px solid rgba(0,255,209,0.35);
     color: #ffffff;
-    box-shadow: 0 0 16px rgba(0,255,209,0.15);
+    box-shadow: 0 0 14px rgba(0,255,209,0.15);
   }
   .resume-btn-primary:hover {
     background: linear-gradient(135deg, rgba(136,170,255,0.3) 0%, rgba(0,255,209,0.3) 100%);
     border-color: var(--ac3);
-    box-shadow: 0 0 22px rgba(0,255,209,0.3);
+    box-shadow: 0 0 20px rgba(0,255,209,0.25);
     transform: translateY(-2px);
   }
   .resume-btn-ghost {
@@ -325,12 +327,14 @@
     transform: translateY(-2px);
   }
 
-  /* Thread Timeline */
-  .thread-timeline {
+  /* Central Thread & Masonry Container */
+  .thread-masonry-wrapper {
     position: relative;
-    max-width: 1040px;
-    margin: 2rem auto 0;
-    padding: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    margin-top: 1.2rem;
+    align-items: start;
   }
   .thread-spine {
     position: absolute;
@@ -344,11 +348,12 @@
       rgba(136,170,255,0.1) 0%,
       var(--ac) 15%,
       var(--ac3) 50%,
-      var(--ac) 80%,
+      var(--ac) 85%,
       rgba(255,92,122,0.2) 100%
     );
-    box-shadow: 0 0 12px rgba(136,170,255,0.35), 0 0 24px rgba(0,255,209,0.2);
+    box-shadow: 0 0 10px rgba(136,170,255,0.35), 0 0 20px rgba(0,255,209,0.2);
     z-index: 1;
+    pointer-events: none;
   }
   .thread-start-node,
   .thread-end-node {
@@ -359,141 +364,145 @@
     height: 10px;
     border-radius: 50%;
     background: var(--ac3);
-    box-shadow: 0 0 12px var(--ac3);
+    box-shadow: 0 0 10px var(--ac3);
     z-index: 2;
   }
-  .thread-start-node { top: 0; }
-  .thread-end-node { bottom: 0; }
+  .thread-start-node { top: -4px; }
+  .thread-end-node { bottom: -4px; }
 
-  /* Branch Items */
-  .branch-item {
-    position: relative;
+  /* Masonry Columns */
+  .masonry-col {
     display: flex;
-    width: 100%;
-    margin-bottom: 3rem;
-    align-items: flex-start;
-  }
-  .branch-item:last-child {
-    margin-bottom: 0;
-  }
-  .branch-item.left {
-    justify-content: flex-start;
-  }
-  .branch-item.right {
-    justify-content: flex-end;
-  }
-
-  /* Branch Cards */
-  .branch-card {
-    width: calc(50% - 44px);
+    flex-direction: column;
+    gap: 1.25rem;
     position: relative;
-    padding: 1.8rem 2rem;
-    border-radius: var(--radius);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.3s ease, 
-                border-color 0.3s ease,
-                background 0.3s ease;
     z-index: 2;
   }
-  .branch-card:hover {
-    transform: translateY(-5px);
+
+  /* Masonry Card */
+  .masonry-card {
+    position: relative;
+    padding: 1.4rem 1.6rem;
+    border-radius: var(--radius);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.25s ease, 
+                border-color 0.25s ease,
+                background 0.25s ease;
+  }
+  .masonry-card:hover {
+    transform: translateY(-4px);
     border-color: rgba(136, 170, 255, 0.35);
     background: rgba(255, 255, 255, 0.09);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(136, 170, 255, 0.14);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(136, 170, 255, 0.12);
   }
 
-  /* Branch Nodes */
-  .branch-node {
+  /* Branch Connecting Arms to Central Thread */
+  .card-branch-arm {
     position: absolute;
-    left: 50%;
-    top: 2.2rem;
-    transform: translate(-50%, -50%);
-    width: 18px;
-    height: 18px;
+    top: 1.8rem;
+    height: 2px;
+    z-index: 2;
+    transition: all 0.25s ease;
+  }
+  .card-branch-node {
+    position: absolute;
+    top: 1.8rem;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #0a0a12;
     border: 2px solid var(--ac);
-    box-shadow: 0 0 12px rgba(136, 170, 255, 0.5);
+    box-shadow: 0 0 8px rgba(136, 170, 255, 0.5);
     z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.25s ease;
   }
-  .node-pulse {
-    width: 6px;
-    height: 6px;
+  .card-branch-node::after {
+    content: '';
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background: var(--ac);
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
-  .branch-item:hover .branch-node {
-    border-color: var(--ac3);
-    box-shadow: 0 0 18px var(--ac3);
-    transform: translate(-50%, -50%) scale(1.2);
+
+  /* Left Column Branches */
+  .left-col .card-branch-arm {
+    right: -1.75rem;
+    width: 1.75rem;
+    background: linear-gradient(90deg, rgba(136, 170, 255, 0.15), var(--ac));
   }
-  .branch-item:hover .node-pulse {
+  .left-col .card-branch-node {
+    right: -1.75rem;
+    transform: translate(50%, -50%);
+  }
+
+  /* Right Column Branches */
+  .right-col .card-branch-arm {
+    left: -1.75rem;
+    width: 1.75rem;
+    background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.15));
+  }
+  .right-col .card-branch-node {
+    left: -1.75rem;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Hover States on Branch Connectors */
+  .masonry-card:hover .card-branch-arm {
     background: var(--ac3);
     box-shadow: 0 0 8px var(--ac3);
   }
-
-  /* Branch Horizontal Arms */
-  .branch-arm {
-    position: absolute;
-    top: 2.2rem;
-    height: 2px;
-    z-index: 2;
-    transition: all 0.3s ease;
+  .left-col .masonry-card:hover .card-branch-node {
+    border-color: var(--ac3);
+    box-shadow: 0 0 14px var(--ac3);
+    transform: translate(50%, -50%) scale(1.2);
   }
-  .branch-item.left .branch-arm {
-    left: calc(50% - 44px);
-    width: 44px;
-    background: linear-gradient(90deg, rgba(136, 170, 255, 0.15), var(--ac));
+  .right-col .masonry-card:hover .card-branch-node {
+    border-color: var(--ac3);
+    box-shadow: 0 0 14px var(--ac3);
+    transform: translate(-50%, -50%) scale(1.2);
   }
-  .branch-item.right .branch-arm {
-    left: 50%;
-    width: 44px;
-    background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.15));
-  }
-  .branch-item:hover .branch-arm {
+  .masonry-card:hover .card-branch-node::after {
     background: var(--ac3);
-    box-shadow: 0 0 10px var(--ac3);
+    box-shadow: 0 0 6px var(--ac3);
   }
 
-  /* Branch Typography & Elements */
-  .branch-meta {
+  /* Card Headings & Metadata */
+  .card-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
   }
-  .branch-num {
+  .card-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.14em;
     color: var(--ac);
     font-weight: 600;
   }
-  .branch-badge {
+  .card-badge {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.55rem;
+    font-size: 0.63rem;
+    padding: 0.18rem 0.5rem;
     border-radius: 4px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.08);
     color: var(--text-secondary);
-    letter-spacing: 0.05em;
   }
   .branch-status-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.4rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--ac3);
     background: rgba(0,255,209,0.08);
     border: 1px solid rgba(0,255,209,0.22);
-    padding: 0.2rem 0.6rem;
+    padding: 0.18rem 0.55rem;
     border-radius: 4px;
   }
   .status-live-dot {
@@ -508,39 +517,39 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.85); }
   }
-  .branch-title {
-    font-size: 1.15rem;
+  .card-title {
+    font-size: 1.1rem;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 0.4rem;
     letter-spacing: -0.01em;
   }
-  .branch-institution {
-    font-size: 0.82rem;
+  .card-institution {
+    font-size: 0.78rem;
     color: var(--ac);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     font-weight: 500;
   }
-  .branch-text {
-    font-size: 0.86rem;
-    line-height: 1.7;
+  .card-desc {
+    font-size: 0.83rem;
+    line-height: 1.65;
     color: var(--text-secondary);
     font-weight: 300;
   }
-  .branch-text strong {
+  .card-desc strong {
     color: var(--text-primary);
     font-weight: 600;
   }
-  .branch-pills {
+  .card-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 1rem;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
   }
   .pill-chip {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.28rem 0.65rem;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
     border-radius: 6px;
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--glass-border);
@@ -558,165 +567,109 @@
     transform: translateY(-1px);
   }
 
-  /* Status Grid in Branch 2 */
-  .status-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    margin-top: 0.8rem;
+  /* Skills Box Element */
+  .skills-mini-group {
+    margin-top: 0.65rem;
   }
-  .status-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.45rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.82rem;
-  }
-  .status-row:last-child {
-    border-bottom: none;
-  }
-  .status-label {
-    color: var(--text-secondary);
+  .skills-mini-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-  }
-  .status-val {
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 0.82rem;
-  }
-  .status-val.accent {
-    color: var(--ac3);
-  }
-
-  /* Education Tags */
-  .edu-tags-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin: 0.7rem 0;
-  }
-  .edu-pill {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--text-secondary);
-  }
-  .edu-pill.highlight {
-    color: var(--ac3);
-    background: rgba(0,255,209,0.08);
-    border-color: rgba(0,255,209,0.25);
-  }
-
-  /* Language Progress Meters */
-  .lang-meters {
-    display: flex;
-    flex-direction: column;
-    gap: 0.95rem;
-    margin-top: 0.9rem;
-  }
-  .lang-meter-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
     margin-bottom: 0.35rem;
   }
-  .lang-name {
-    font-weight: 600;
-    color: var(--text-primary);
+  .skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
   }
-  .lang-lvl {
+  .skills-explore-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    background: rgba(136,170,255,0.06);
+    border: 1px solid rgba(136,170,255,0.2);
+    border-radius: 8px;
+    color: var(--ac);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
-  .lang-meter-bar {
-    height: 4px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.06);
-    overflow: hidden;
+  .skills-explore-btn:hover {
+    background: rgba(136,170,255,0.14);
+    border-color: var(--ac);
+    color: #ffffff;
   }
-  .lang-meter-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: linear-gradient(90deg, var(--ac), var(--ac3));
+  .skills-explore-btn .arrow {
+    transition: transform 0.2s ease;
+  }
+  .skills-explore-btn:hover .arrow {
+    transform: translateX(4px);
   }
 
-  /* Projects in Branch 5 & 6 */
-  .project-branch-sub {
-    margin-top: 0.6rem;
+  /* Projects in Left Column */
+  .project-mini-item {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
-  .project-branch-head {
+  .project-mini-item:first-of-type {
+    margin-top: 0.4rem;
+    padding-top: 0;
+    border-top: none;
+  }
+  .proj-head {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    margin-bottom: 0.45rem;
+    gap: 0.15rem;
+    margin-bottom: 0.35rem;
   }
   .proj-name {
-    font-size: 0.96rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: #ffffff;
   }
   .proj-stack {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--ac);
     letter-spacing: 0.02em;
   }
 
-  /* Certifications List in Branch 8 */
-  .cert-list {
+  /* Experience & Status in Right Column */
+  .status-grid.compact {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    margin-top: 0.8rem;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
   }
-  .cert-item {
+  .status-grid.compact .status-row {
+    padding: 0.35rem 0;
+  }
+  .exp-mini-item {
+    margin-top: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+  .exp-role {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ac);
+    margin-bottom: 0.3rem;
+  }
+  .cert-list.compact {
     display: flex;
-    gap: 0.8rem;
-    align-items: flex-start;
-    padding: 0.7rem 0.85rem;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: background 0.2s, border-color 0.2s;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
   }
-  .cert-item:hover {
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(0,255,209,0.25);
-  }
-  .cert-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(0,255,209,0.1);
-    border: 1px solid rgba(0,255,209,0.2);
-    color: var(--ac3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .cert-icon svg {
-    width: 15px;
-    height: 15px;
-  }
-  .cert-title {
-    font-size: 0.84rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 0.15rem;
-  }
-  .cert-sub {
-    font-size: 0.74rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
+  .cert-list.compact .cert-item {
+    padding: 0.55rem 0.75rem;
   }
 
   /* FOOTER */
@@ -869,42 +822,43 @@
   .skill-tag.tool    { background: rgba(245,158,11,0.08);  border: 1px solid rgba(245,158,11,0.2);  color: #fbbf24; }
   .skill-tag.tool:hover { background: rgba(245,158,11,0.15); }
 
-  /* RESUME RESPONSIVE (THREAD & BRANCHES) */
+  /* RESUME RESPONSIVE (THREAD & MASONRY) */
   @media (max-width: 860px) {
-    .thread-timeline {
-      padding: 2rem 0;
-      margin-top: 1.5rem;
+    .thread-masonry-wrapper {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding-left: 2rem;
     }
     .thread-spine {
-      left: 22px;
+      left: 12px;
+      transform: none;
     }
     .thread-start-node,
     .thread-end-node {
-      left: 22px;
+      left: 12px;
+      transform: none;
     }
-    .branch-item {
-      justify-content: flex-start !important;
-      margin-bottom: 2rem;
+    .left-col .card-branch-arm,
+    .right-col .card-branch-arm {
+      left: -1.4rem !important;
+      right: auto !important;
+      width: 1.4rem !important;
+      background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2)) !important;
     }
-    .branch-card {
-      width: calc(100% - 54px);
-      margin-left: 54px;
-      padding: 1.4rem 1.3rem;
+    .left-col .card-branch-node,
+    .right-col .card-branch-node {
+      left: -1.4rem !important;
+      right: auto !important;
+      transform: translate(-50%, -50%) !important;
     }
-    .branch-node {
-      left: 22px;
-      top: 1.8rem;
-    }
-    .branch-item.left .branch-arm,
-    .branch-item.right .branch-arm {
-      left: 22px !important;
-      width: 32px !important;
-      background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2));
+    .left-col .masonry-card:hover .card-branch-node,
+    .right-col .masonry-card:hover .card-branch-node {
+      transform: translate(-50%, -50%) scale(1.2) !important;
     }
     .resume-header-wrap {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1.2rem;
+      gap: 1.1rem;
     }
     .resume-actions {
       width: 100%;
@@ -1086,233 +1040,231 @@
       </div>
     </div>
 
-    <!-- CENTRAL THREAD TIMELINE WITH BRANCHES -->
-    <div class="thread-timeline">
+    <!-- CENTRAL THREAD WITH MASONRY LAYOUT -->
+    <div class="thread-masonry-wrapper">
       <div class="thread-spine"></div>
       <div class="thread-start-node"></div>
 
-      <!-- BRANCH 1: Career Objective (Left) -->
-      <div class="branch-item left">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">01 // OBJECTIVE</span>
-            <span class="branch-badge">Career Goal</span>
+      <!-- LEFT COLUMN -->
+      <div class="masonry-col left-col">
+
+        <!-- CARD 1: Career Objective -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">01 // OBJECTIVE</span>
+            <span class="card-badge">Career Focus</span>
           </div>
-          <h4 class="branch-title">Career Objective</h4>
-          <p class="branch-text">
-            Computer Science undergraduate focused on <strong>Java backend development</strong> and software engineering. Hands-on experience building RESTful applications with <strong>Spring Boot, Spring Security, MongoDB</strong> and Maven, with practical knowledge of authentication, RBAC, CRUD APIs, transactions and layered architecture. Strong foundation in <strong>DSA, OOP, Java Collections</strong>, exception handling and concurrency.
+          <h4 class="card-title">Career Objective</h4>
+          <p class="card-desc">
+            Computer Science undergraduate focused on <strong>Java backend development</strong> and scalable software engineering. Hands-on experience building RESTful applications with <strong>Spring Boot, Spring Security, MongoDB</strong> and Maven, with practical knowledge of authentication, RBAC, CRUD APIs, transactions and layered architecture. Strong foundation in <strong>DSA, OOP, Java Collections</strong>, and concurrency.
           </p>
-          <div class="branch-pills">
+          <div class="card-pills">
             <span class="pill-chip highlight">Java Backend Dev</span>
             <span class="pill-chip highlight">Software Developer</span>
             <span class="pill-chip highlight">Game Developer</span>
           </div>
         </div>
+
+        <!-- CARD 2: Education -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">02 // EDUCATION</span>
+            <span class="card-badge">B.Tech CSE</span>
+          </div>
+          <h4 class="card-title">Bachelor of Technology in CSE</h4>
+          <div class="card-institution">Aditya College of Engineering &amp; Technology (ACET), Surampalem</div>
+          <div class="edu-tags-row">
+            <span class="edu-pill">2024 – 2028 (Expected)</span>
+            <span class="edu-pill">3rd Year</span>
+            <span class="edu-pill highlight">CGPA: 7.9</span>
+          </div>
+          <p class="card-desc">
+            Core focus across Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, and layered backend software design.
+          </p>
+        </div>
+
+        <!-- CARD 3: Key Projects -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">03 // FEATURED PROJECTS</span>
+            <span class="card-badge">Backend &amp; Systems</span>
+          </div>
+          <h4 class="card-title">Featured Projects</h4>
+
+          <div class="project-mini-item">
+            <div class="proj-head">
+              <span class="proj-name">SkillBridge</span>
+              <span class="proj-stack">Java 21 · Spring Boot · MongoDB · Spring Security</span>
+            </div>
+            <p class="card-desc">
+              Collaborative industry-student bridge platform featuring Role-Based Access Control (RBAC), BCrypt authentication, and scalable MongoDB schemas.
+            </p>
+          </div>
+
+          <div class="project-mini-item">
+            <div class="proj-head">
+              <span class="proj-name">Journal Prototype API</span>
+              <span class="proj-stack">Java 21 · Spring Boot 4.0.7 · MongoDB Transactions · Maven</span>
+            </div>
+            <p class="card-desc">
+              RESTful service with HTTP Basic Auth, ownership isolation, multi-document transactions (@Transactional), and authenticated CRUD APIs.
+            </p>
+          </div>
+
+          <div class="project-mini-item">
+            <div class="proj-head">
+              <span class="proj-name">Personal Portfolio &amp; DSA Codebase</span>
+              <span class="proj-stack">HTML/CSS/TS · Three.js · Java Collections · Concurrency</span>
+            </div>
+            <p class="card-desc">
+              Responsive digital portfolio deployed on Vercel, alongside structured Java repository covering OOP, multithreading, and algorithmic problem solving.
+            </p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- BRANCH 2: Status & Academic Profile (Right) -->
-      <div class="branch-item right">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">02 // PROFILE &amp; STATUS</span>
+      <!-- RIGHT COLUMN -->
+      <div class="masonry-col right-col">
+
+        <!-- CARD 1: Technical Skills Box (Requested element box!) -->
+        <div class="masonry-card glass-effect" id="skills-element-box">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">SKILLS // MATRIX</span>
+            <span class="card-badge">Core Competencies</span>
+          </div>
+          <h4 class="card-title">Technical Skills</h4>
+
+          <div class="skills-mini-group">
+            <div class="skills-mini-label">Languages</div>
+            <div class="skills-chips">
+              <span class="skill-tag lang">Java</span>
+              <span class="skill-tag lang">C</span>
+              <span class="skill-tag lang">C++</span>
+              <span class="skill-tag lang">Python</span>
+            </div>
+          </div>
+
+          <div class="skills-mini-group">
+            <div class="skills-mini-label">Backend &amp; Frameworks</div>
+            <div class="skills-chips">
+              <span class="skill-tag fw">Spring Boot</span>
+              <span class="skill-tag fw">Spring MVC</span>
+              <span class="skill-tag fw">Spring Security</span>
+              <span class="skill-tag fw">REST APIs</span>
+              <span class="skill-tag fw">JPA/Hibernate</span>
+            </div>
+          </div>
+
+          <div class="skills-mini-group">
+            <div class="skills-mini-label">Databases &amp; Tools</div>
+            <div class="skills-chips">
+              <span class="skill-tag db">MongoDB</span>
+              <span class="skill-tag db">MySQL</span>
+              <span class="skill-tag tool">Git / GitHub</span>
+              <span class="skill-tag tool">Maven</span>
+              <span class="skill-tag tool">Postman</span>
+            </div>
+          </div>
+
+          <div class="skills-mini-group">
+            <div class="skills-mini-label">Core CS &amp; Creative</div>
+            <div class="skills-chips">
+              <span class="skill-tag cs">DSA</span>
+              <span class="skill-tag cs">OOP</span>
+              <span class="skill-tag cs">Concurrency</span>
+              <span class="skill-tag creative">HTML/CSS/TS</span>
+              <span class="skill-tag creative">Blender 3D</span>
+            </div>
+          </div>
+
+          <button class="skills-explore-btn" id="open-skills-from-box">
+            <span>Explore All 30+ Skills in Interactive Modal</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+
+        <!-- CARD 2: Academic Status & Communication -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">STATUS &amp; LANGUAGES</span>
             <span class="branch-status-tag"><span class="status-live-dot"></span>Open to Work</span>
           </div>
-          <h4 class="branch-title">Academic &amp; Professional Status</h4>
-          <div class="status-grid">
+          <h4 class="card-title">Profile &amp; Communication</h4>
+
+          <div class="status-grid compact">
             <div class="status-row">
               <span class="status-label">Availability</span>
-              <span class="status-val accent">Open to Work</span>
-            </div>
-            <div class="status-row">
-              <span class="status-label">Current Academic Level</span>
-              <span class="status-val">3rd Year B.Tech CSE</span>
-            </div>
-            <div class="status-row">
-              <span class="status-label">Academic Batch</span>
-              <span class="status-val">2024 – 2028 (Expected)</span>
+              <span class="status-val accent">Available for Roles / Internships</span>
             </div>
             <div class="status-row">
               <span class="status-label">Location</span>
               <span class="status-val">Surampalem, Andhra Pradesh</span>
             </div>
             <div class="status-row">
-              <span class="status-label">Primary Specialization</span>
-              <span class="status-val">Backend &amp; Systems Engineering</span>
+              <span class="status-label">Batch</span>
+              <span class="status-val">2024 – 2028 (3rd Year)</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- BRANCH 3: Formal Education (Left) -->
-      <div class="branch-item left">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">03 // EDUCATION</span>
-            <span class="branch-badge">B.Tech CSE</span>
-          </div>
-          <h4 class="branch-title">Bachelor of Technology in Computer Science &amp; Engineering</h4>
-          <div class="branch-institution">Aditya College of Engineering &amp; Technology (ACET), Surampalem</div>
-          <div class="edu-tags-row">
-            <span class="edu-pill">2024 – 2028 (Expected)</span>
-            <span class="edu-pill">3rd Year</span>
-            <span class="edu-pill highlight">CGPA: 7.9</span>
-            <span class="edu-pill">B.Tech CSE</span>
-          </div>
-          <p class="branch-text">
-            Core focus across Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, and layered backend software design.
-          </p>
-        </div>
-      </div>
-
-      <!-- BRANCH 4: Languages Known (Right) -->
-      <div class="branch-item right">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">04 // LANGUAGES</span>
-            <span class="branch-badge">Communication</span>
-          </div>
-          <h4 class="branch-title">Languages Known</h4>
-          <div class="lang-meters">
+          <div class="lang-meters" style="margin-top: 0.9rem;">
             <div class="lang-meter-item">
               <div class="lang-meter-head">
                 <span class="lang-name">English</span>
-                <span class="lang-lvl">Fluent · Professional (92%)</span>
+                <span class="lang-lvl">Fluent · 92%</span>
               </div>
               <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 92%;"></div></div>
             </div>
             <div class="lang-meter-item">
               <div class="lang-meter-head">
                 <span class="lang-name">Hindi</span>
-                <span class="lang-lvl">Native · Fluent (98%)</span>
+                <span class="lang-lvl">Native · 98%</span>
               </div>
               <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 98%;"></div></div>
             </div>
             <div class="lang-meter-item">
               <div class="lang-meter-head">
                 <span class="lang-name">Japanese</span>
-                <span class="lang-lvl">Beginner (18%)</span>
+                <span class="lang-lvl">Beginner · 18%</span>
               </div>
               <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 18%;"></div></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- BRANCH 5: Featured Projects - Backend (Left) -->
-      <div class="branch-item left">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">05 // BACKEND SYSTEMS</span>
-            <span class="branch-badge">Spring Boot &amp; MongoDB</span>
+        <!-- CARD 3: Experience & Certifications -->
+        <div class="masonry-card glass-effect">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-meta">
+            <span class="card-tag">EXPERIENCE &amp; CERTS</span>
+            <span class="card-badge">Milestones</span>
           </div>
-          <h4 class="branch-title">Featured Projects: Backend Architecture</h4>
+          <h4 class="card-title">Experience &amp; Certifications</h4>
 
-          <div class="project-branch-sub">
-            <div class="project-branch-head">
-              <span class="proj-name">SkillBridge</span>
-              <span class="proj-stack">Java 21 · Spring Boot · MongoDB · Spring Security</span>
-            </div>
-            <p class="branch-text">
-              Collaborative platform bridging students and industry projects built using Java 21 and Spring Boot. Implemented Role-Based Access Control (RBAC) for Students and Industry partners, BCrypt authentication modules with Spring Security, and scalable MongoDB schemas for project listings, applications, and profiles.
-            </p>
+          <div class="exp-mini-item">
+            <div class="exp-role">Web Development Intern &mdash; Future Interns</div>
+            <p class="card-desc">Contributed to client-oriented responsive web design, feature implementation, and live pitch presentations.</p>
           </div>
 
-          <div class="project-branch-sub" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-            <div class="project-branch-head">
-              <span class="proj-name">Journal Prototype API</span>
-              <span class="proj-stack">Java 21 · Spring Boot 4.0.7 · Spring Security · MongoDB Transactions</span>
-            </div>
-            <p class="branch-text">
-              RESTful journal management service with Java 21, Spring Boot 4.0.7, Spring Security, MongoDB, and Maven. Features user registration, BCrypt password hashing, HTTP Basic Auth, Role-Based Access Control (USER/ADMIN), authenticated CRUD APIs with ownership isolation, and multi-document transactions (@Transactional).
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- BRANCH 6: Projects - Web & DSA Practice (Right) -->
-      <div class="branch-item right">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">06 // WEB &amp; CORE PRACTICE</span>
-            <span class="branch-badge">Fullstack &amp; Algorithms</span>
-          </div>
-          <h4 class="branch-title">Web Portfolio &amp; Algorithmic Mastery</h4>
-
-          <div class="project-branch-sub">
-            <div class="project-branch-head">
-              <span class="proj-name">Personal Portfolio &amp; Digital Hub</span>
-              <span class="proj-stack">HTML5 · CSS3 · TypeScript · Three.js · Vercel</span>
-            </div>
-            <p class="branch-text">
-              Developed and deployed a responsive portfolio showcasing software projects, technical skills, interactive resume, custom 3D creations, and creative video edits; deployed with Vercel.
-            </p>
-          </div>
-
-          <div class="project-branch-sub" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-            <div class="project-branch-head">
-              <span class="proj-name">Java DSA &amp; Core Programming Practice</span>
-              <span class="proj-stack">Java · Collections Framework · Multithreading · DSA</span>
-            </div>
-            <p class="branch-text">
-              Maintains structured Java practice covering OOP, Collections, Multithreading, Exception Handling, and DSA topics including arrays, strings, linked lists, stacks, queues, recursion, and searching/sorting algorithms.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- BRANCH 7: Experience (Left) -->
-      <div class="branch-item left">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">07 // EXPERIENCE</span>
-            <span class="branch-badge">Industry Internship</span>
-          </div>
-          <h4 class="branch-title">Web Development Intern</h4>
-          <div class="branch-institution">Future Interns</div>
-          <p class="branch-text">
-            Developed responsive web projects and contributed to client-oriented website design and implementation tasks. Participated in project presentations and live pitching, strengthening frontend development and technical communication skills.
-          </p>
-          <div class="branch-pills">
-            <span class="pill-chip">Frontend Engineering</span>
-            <span class="pill-chip">Responsive Web</span>
-            <span class="pill-chip">Client Solutions</span>
-            <span class="pill-chip">Pitching &amp; Presentation</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- BRANCH 8: Certifications & Recognition (Right) -->
-      <div class="branch-item right">
-        <div class="branch-node"><span class="node-pulse"></span></div>
-        <div class="branch-arm"></div>
-        <div class="branch-card glass-effect">
-          <div class="branch-meta">
-            <span class="branch-num">08 // CREDENTIALS</span>
-            <span class="branch-badge">Achievements</span>
-          </div>
-          <h4 class="branch-title">Certifications &amp; Achievements</h4>
-          <div class="cert-list">
+          <div class="cert-list compact">
             <div class="cert-item">
               <div class="cert-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               </div>
               <div>
                 <div class="cert-title">Future Interns Certificate &amp; LOR</div>
-                <div class="cert-sub">Awarded internship certificate along with official Letter of Recommendation for exemplary performance.</div>
+                <div class="cert-sub">Awarded official Letter of Recommendation for exemplary performance.</div>
               </div>
             </div>
             <div class="cert-item">
@@ -1320,21 +1272,13 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </div>
               <div>
-                <div class="cert-title">LeetCode Algorithmic Problem Solving</div>
-                <div class="cert-sub">Consistent algorithmic problem solving across arrays, strings, dynamic logic, and data structure patterns.</div>
-              </div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </div>
-              <div>
-                <div class="cert-title">Japanese Language Study</div>
-                <div class="cert-sub">Active foundational study of Japanese language writing systems and conversational vocabulary.</div>
+                <div class="cert-title">LeetCode Problem Solving</div>
+                <div class="cert-sub">Consistent algorithmic problem solving across arrays, strings, and recursion.</div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <div class="thread-end-node"></div>
