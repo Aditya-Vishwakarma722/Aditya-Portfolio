@@ -14,9 +14,9 @@
     --ac3: #00ffd1;
     --text-primary: #f0f3ff;
     --text-secondary: #b0bcdb;
-    --glass-bg: rgba(11, 13, 24, 0.9);
+    --glass-bg: rgba(10, 12, 24, 0.74);
     --glass-border: rgba(136, 170, 255, 0.18);
-    --card-hover: rgba(18, 22, 42, 0.98);
+    --card-hover: rgba(18, 22, 44, 0.85);
     --radius: 16px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,11 +39,11 @@
   /* HEADER (AUTHENTIC & CLASSY) */
   .header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(8, 8, 15, 0.94);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(8, 8, 15, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     padding: 0.95rem 2.5rem;
   }
   .header-inner {
@@ -218,7 +218,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   }
   .hero-tag-pill {
     display: inline-flex;
@@ -227,13 +227,13 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
     color: var(--ac3);
-    background: rgba(0, 20, 25, 0.9);
+    background: rgba(0, 20, 25, 0.78);
     border: 1px solid rgba(0, 255, 209, 0.35);
     padding: 0.2rem 0.65rem;
     border-radius: 999px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   }
   .hero-name {
     font-family: 'Raleway', sans-serif;
@@ -245,12 +245,12 @@
     margin-bottom: 1.25rem;
     text-align: left;
     display: inline-block;
-    filter: drop-shadow(0 6px 26px rgba(0, 0, 0, 0.95)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.9));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9));
   }
   .hero-name .first {
     display: block;
     opacity: 0;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
     animation: slideBlur 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
   }
   .hero-name .last {
@@ -290,7 +290,7 @@
     border-radius: 2px;
     margin: 0 auto 1.4rem;
     opacity: 0.95;
-    box-shadow: 0 0 16px rgba(136, 170, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px rgba(136, 170, 255, 0.35), 0 1px 3px rgba(0, 0, 0, 0.8);
   }
   .hero-about-text {
     color: #ffffff;
@@ -301,23 +301,23 @@
     font-weight: 400;
     text-align: center;
     margin: 0 auto;
-    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
   }
   .resume-branch-intro {
     display: flex;
     align-items: center;
     gap: 0.95rem;
     padding: 0.95rem 1.6rem;
-    background: rgba(10, 12, 24, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 12, 24, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 14px;
     max-width: 700px;
     margin: 0 auto 2.2rem;
     text-align: center;
     justify-content: center;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(136, 170, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 16px rgba(136, 170, 255, 0.08);
   }
   .intro-thread-pip {
     width: 8px;
@@ -332,7 +332,7 @@
     font-size: 0.92rem;
     line-height: 1.65;
     font-weight: 500;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   }
 
   /* SECTIONS */
@@ -355,9 +355,9 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
   .about-content {
     text-align: center; max-width: 860px;
@@ -366,7 +366,7 @@
   .about-content p {
     font-size: 1.05rem; line-height: 2;
     color: #ffffff; font-weight: 400; letter-spacing: 0.3px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   }
 
   /* GRID */
@@ -378,8 +378,8 @@
   .grid .card { flex: 0 0 210px; min-width: 210px; max-width: 230px; padding: 2rem 1.6rem 1.6rem; }
   .grid .card-icon { width: 56px; height: 56px; border-radius: 14px; margin-bottom: 1.3rem; }
   .grid .card-icon svg { width: 28px; height: 28px; }
-  .grid .card-content h4 { font-size: 1.1rem; margin-bottom: 0.5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); }
-  .grid .card-content p  { font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); }
+  .grid .card-content h4 { font-size: 1.1rem; margin-bottom: 0.5rem; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85); }
+  .grid .card-content p  { font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); }
   .grid .card-footer { padding-top: 1.4rem; font-size: 0.82rem; }
   .grid .arrow { font-size: 1.1rem; }
 
@@ -388,15 +388,17 @@
   .file-list .card {
     flex-direction: row; align-items: center;
     padding: 0.75rem 1.2rem; border-radius: 10px; gap: 1rem;
-    background: rgba(11, 13, 24, 0.94);
+    background: rgba(10, 12, 24, 0.76);
     border: 1px solid rgba(136, 170, 255, 0.2);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   }
   .file-list .card-icon { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 0; flex-shrink: 0; }
   .file-list .card-icon svg { width: 16px; height: 16px; }
   .file-list .card-content { display: flex; align-items: center; gap: 1.2rem; flex: 1; min-width: 0; }
-  .file-list .card-content h4 { font-size: 0.88rem; font-weight: 600; white-space: nowrap; margin-bottom: 0; min-width: 90px; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-  .file-list .card-content p  { font-size: 0.82rem; color: #b4c0dc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+  .file-list .card-content h4 { font-size: 0.88rem; font-weight: 600; white-space: nowrap; margin-bottom: 0; min-width: 90px; color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+  .file-list .card-content p  { font-size: 0.82rem; color: #b4c0dc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
   .file-list .card-footer { padding-top: 0; margin-top: 0; gap: 0.6rem; flex-shrink: 0; font-size: 0.75rem; color: #a4b3d8; }
   .file-list .card-footer .arrow { font-size: 0.85rem; }
 
@@ -405,19 +407,19 @@
     display: flex; flex-direction: column;
     text-decoration: none; color: inherit;
     border-radius: var(--radius); padding: 1.5rem;
-    background: rgba(11, 13, 24, 0.92);
+    background: rgba(10, 12, 24, 0.76);
     border: 1px solid rgba(136, 170, 255, 0.2);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
     transition: transform 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
     cursor: pointer;
   }
   .card:hover {
     transform: translateY(-4px);
-    background: rgba(18, 22, 42, 0.98);
+    background: rgba(18, 22, 44, 0.86);
     border-color: rgba(136,170,255,0.45);
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.8), 0 0 20px rgba(136,170,255,0.15);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(136,170,255,0.15);
   }
   .card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; }
   .card-icon svg { width: 22px; height: 22px; }
@@ -427,8 +429,8 @@
   .video-icon       { background: rgba(255,92,122,0.15);  color: var(--ac2); }
   .d3-icon          { background: rgba(0,255,209,0.12);    color: var(--ac3); }
   .code-icon        { background: rgba(255,92,122,0.15);  color: var(--ac2); }
-  .card-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.85); }
-  .card-content p  { font-size: 0.84rem; color: #b4c0dc; line-height: 1.55; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+  .card-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.85); }
+  .card-content p  { font-size: 0.84rem; color: #b4c0dc; line-height: 1.55; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
   .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.2rem; font-size: 0.78rem; color: #a4b3d8; font-family: monospace; letter-spacing: 0.03em; }
   .arrow { font-size: 1rem; color: var(--ac); transition: transform 0.2s; }
   .card:hover .arrow { transform: translateX(4px); }
@@ -554,35 +556,57 @@
     z-index: 2;
   }
 
-  /* Masonry Card */
+  /* Masonry Card Wrapper (Stays static on grid to anchor spine nodes) */
   .masonry-card {
+    position: relative;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: var(--radius);
+  }
+
+  /* Interactive Card Body that Tilts */
+  .card-interactive {
     position: relative;
     padding: 1.4rem 1.6rem;
     border-radius: var(--radius);
-    background: rgba(11, 13, 24, 0.92);
+    background: rgba(10, 12, 24, 0.76);
     border: 1px solid rgba(136, 170, 255, 0.2);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
                 box-shadow 0.25s ease, 
-                border-color 0.25s ease,
+                border-color 0.25s ease, 
                 background 0.25s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+    z-index: 3;
   }
-  .masonry-card:hover {
-    transform: translateY(-4px);
+  .card-interactive.tilting {
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .masonry-card:hover .card-interactive {
     border-color: rgba(136, 170, 255, 0.45);
-    background: rgba(17, 20, 38, 0.98);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), 0 0 25px rgba(136, 170, 255, 0.18);
+    background: rgba(16, 20, 42, 0.85);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 25px rgba(136, 170, 255, 0.18);
   }
 
   /* Branch Connecting Arms to Central Thread */
   .card-branch-arm {
     position: absolute;
-    top: 1.8rem;
+    top: calc(1.8rem - 1px);
     height: 2px;
     z-index: 2;
-    transition: all 0.25s ease;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+  }
+  .card-branch-arm.stretching {
+    transition: background 0.25s ease, box-shadow 0.25s ease;
   }
   .card-branch-node {
     position: absolute;
@@ -593,11 +617,12 @@
     background: #0a0a12;
     border: 2px solid var(--ac);
     box-shadow: 0 0 8px rgba(136, 170, 255, 0.5);
-    z-index: 3;
+    z-index: 4;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.25s ease;
+    pointer-events: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-branch-node::after {
     content: '';
@@ -612,7 +637,8 @@
   .left-col .card-branch-arm {
     right: -1.75rem;
     width: 1.75rem;
-    background: linear-gradient(90deg, rgba(136, 170, 255, 0.15), var(--ac));
+    background: linear-gradient(90deg, rgba(136, 170, 255, 0.2), var(--ac));
+    transform-origin: 100% 50%;
   }
   .left-col .card-branch-node {
     right: -1.75rem;
@@ -623,7 +649,8 @@
   .right-col .card-branch-arm {
     left: -1.75rem;
     width: 1.75rem;
-    background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.15));
+    background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2));
+    transform-origin: 0% 50%;
   }
   .right-col .card-branch-node {
     left: -1.75rem;
@@ -633,17 +660,17 @@
   /* Hover States on Branch Connectors */
   .masonry-card:hover .card-branch-arm {
     background: var(--ac3);
-    box-shadow: 0 0 8px var(--ac3);
+    box-shadow: 0 0 10px var(--ac3);
   }
   .left-col .masonry-card:hover .card-branch-node {
     border-color: var(--ac3);
-    box-shadow: 0 0 14px var(--ac3);
-    transform: translate(50%, -50%) scale(1.2);
+    box-shadow: 0 0 16px var(--ac3);
+    transform: translate(50%, -50%) scale(1.25);
   }
   .right-col .masonry-card:hover .card-branch-node {
     border-color: var(--ac3);
-    box-shadow: 0 0 14px var(--ac3);
-    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 16px var(--ac3);
+    transform: translate(-50%, -50%) scale(1.25);
   }
   .masonry-card:hover .card-branch-node::after {
     background: var(--ac3);
@@ -707,21 +734,21 @@
     color: #ffffff;
     margin-bottom: 0.4rem;
     letter-spacing: -0.01em;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   }
   .card-institution {
     font-size: 0.8rem;
     color: #9bbdff;
     margin-bottom: 0.65rem;
     font-weight: 600;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
   }
   .card-desc {
     font-size: 0.85rem;
     line-height: 1.65;
     color: #b0bcdb;
     font-weight: 400;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
   }
   .card-desc strong {
     color: #ffffff;
@@ -738,17 +765,17 @@
     font-size: 0.68rem;
     padding: 0.25rem 0.65rem;
     border-radius: 6px;
-    background: rgba(18, 20, 36, 0.92);
+    background: rgba(18, 20, 36, 0.76);
     border: 1px solid rgba(255, 255, 255, 0.14);
     color: #c4d0ec;
     font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     transition: all 0.2s ease;
   }
   .pill-chip.highlight {
     color: #ffffff;
     border-color: rgba(136, 170, 255, 0.45);
-    background: rgba(28, 38, 72, 0.95);
+    background: rgba(28, 38, 72, 0.85);
   }
   .pill-chip:hover {
     border-color: var(--ac3);
@@ -781,7 +808,9 @@
     width: 100%;
     margin-top: 0.9rem;
     padding: 0.55rem 0.9rem;
-    background: rgba(16, 18, 34, 0.92);
+    background: rgba(16, 18, 34, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 8px;
     color: var(--ac);
@@ -789,14 +818,14 @@
     font-size: 0.72rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     transition: all 0.2s ease;
   }
   .skills-explore-btn:hover {
-    background: rgba(24, 28, 52, 0.98);
+    background: rgba(24, 28, 52, 0.9);
     border-color: var(--ac);
     color: #ffffff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 16px rgba(136, 170, 255, 0.2);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), 0 0 16px rgba(136, 170, 255, 0.2);
   }
   .skills-explore-btn .arrow {
     transition: transform 0.2s ease;
@@ -854,16 +883,16 @@
     font-size: 0.68rem;
     padding: 0.25rem 0.65rem;
     border-radius: 6px;
-    background: rgba(18, 20, 36, 0.92);
+    background: rgba(18, 20, 36, 0.76);
     border: 1px solid rgba(255, 255, 255, 0.14);
     color: #c4d0ec;
     font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   }
   .edu-pill.highlight {
     color: #ffffff;
     border-color: rgba(136, 170, 255, 0.45);
-    background: rgba(28, 38, 72, 0.95);
+    background: rgba(28, 38, 72, 0.85);
   }
 
   /* Education Languages Known */
@@ -960,16 +989,18 @@
     text-decoration: none;
     padding: 0.75rem 0.95rem;
     border-radius: 10px;
-    background: rgba(18, 21, 38, 0.94);
+    background: rgba(18, 21, 38, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(136, 170, 255, 0.18);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     transition: all 0.2s ease;
   }
   .repo-branch-item:hover {
-    background: rgba(25, 30, 56, 0.98);
+    background: rgba(25, 30, 56, 0.88);
     border-color: rgba(136, 170, 255, 0.45);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(136, 170, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 0 16px rgba(136, 170, 255, 0.15);
   }
   .repo-branch-head {
     display: flex;
@@ -1020,7 +1051,9 @@
     width: 100%;
     margin-top: 0.85rem;
     padding: 0.55rem 0.9rem;
-    background: rgba(16, 18, 34, 0.92);
+    background: rgba(16, 18, 34, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 8px;
     color: #f0f3ff;
@@ -1028,15 +1061,15 @@
     font-size: 0.72rem;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     transition: all 0.2s ease;
   }
   .repo-more-btn:hover {
-    background: rgba(24, 28, 52, 0.98);
+    background: rgba(24, 28, 52, 0.9);
     border-color: var(--ac);
     color: #ffffff;
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 16px rgba(136, 170, 255, 0.2);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), 0 0 16px rgba(136, 170, 255, 0.2);
   }
   .repo-more-btn .arrow {
     color: var(--ac);
@@ -1077,7 +1110,9 @@
     position: relative; max-width: 820px; width: 94%;
     max-height: min(84vh, 760px);
     display: flex; flex-direction: column;
-    background: rgba(11, 13, 23, 0.96);
+    background: rgba(11, 13, 23, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(136, 170, 255, 0.18);
     border-radius: 18px;
     padding: 0;
@@ -1160,17 +1195,17 @@
 
   /* Minimal Category Card */
   .skills-cat {
-    background: rgba(16, 19, 36, 0.92);
+    background: rgba(16, 19, 36, 0.78);
     border: 1px solid rgba(136, 170, 255, 0.16);
     border-radius: 12px; padding: 0.95rem 1.1rem;
     display: flex; flex-direction: column;
     gap: 0.75rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .skills-cat:hover {
     border-color: rgba(136, 170, 255, 0.35);
-    background: rgba(22, 26, 50, 0.98);
+    background: rgba(22, 26, 50, 0.9);
   }
   .skills-cat h4 {
     font-size: 0.74rem; font-weight: 700;
@@ -1444,119 +1479,125 @@
       <div class="masonry-col left-col">
 
         <!-- CARD 1: Career Objective -->
-        <div class="masonry-card glass-effect">
+        <div class="masonry-card">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">01 // OBJECTIVE</span>
-            <span class="card-badge">Career Focus</span>
-          </div>
-          <h4 class="card-title">Career Objective</h4>
-          <p class="card-desc">
-            Computer Science undergraduate focused on <strong>Java backend development</strong> and scalable software engineering. Hands-on experience building RESTful applications with <strong>Spring Boot, Spring Security, MongoDB</strong> and Maven, with practical knowledge of authentication, RBAC, CRUD APIs, transactions and layered architecture. Strong foundation in <strong>DSA, OOP, Java Collections</strong>, and concurrency.
-          </p>
-          <div class="card-pills">
-            <span class="pill-chip highlight">Java Backend Dev</span>
-            <span class="pill-chip highlight">Software Developer</span>
-            <span class="pill-chip highlight">Game Developer</span>
+          <div class="card-interactive glass-effect">
+            <div class="card-meta">
+              <span class="card-tag">01 // OBJECTIVE</span>
+              <span class="card-badge">Career Focus</span>
+            </div>
+            <h4 class="card-title">Career Objective</h4>
+            <p class="card-desc">
+              Computer Science undergraduate focused on <strong>Java backend development</strong> and scalable software engineering. Hands-on experience building RESTful applications with <strong>Spring Boot, Spring Security, MongoDB</strong> and Maven, with practical knowledge of authentication, RBAC, CRUD APIs, transactions and layered architecture. Strong foundation in <strong>DSA, OOP, Java Collections</strong>, and concurrency.
+            </p>
+            <div class="card-pills">
+              <span class="pill-chip highlight">Java Backend Dev</span>
+              <span class="pill-chip highlight">Software Developer</span>
+              <span class="pill-chip highlight">Game Developer</span>
+            </div>
           </div>
         </div>
 
         <!-- CARD 2: Education -->
-        <div class="masonry-card glass-effect">
+        <div class="masonry-card">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">02 // EDUCATION</span>
-            <div class="card-meta-badges">
-              <span class="card-badge">B.Tech CSE</span>
-              <span class="branch-status-tag"><span class="status-live-dot"></span>Open to Work</span>
+          <div class="card-interactive glass-effect">
+            <div class="card-meta">
+              <span class="card-tag">02 // EDUCATION</span>
+              <div class="card-meta-badges">
+                <span class="card-badge">B.Tech CSE</span>
+                <span class="branch-status-tag"><span class="status-live-dot"></span>Open to Work</span>
+              </div>
             </div>
-          </div>
-          <h4 class="card-title">Bachelor of Technology in CSE</h4>
-          <div class="card-institution">Aditya College of Engineering &amp; Technology (ACET)</div>
-          <div class="edu-tags-row">
-            <span class="edu-pill highlight">Batch 2024 – 2028 (3rd Year)</span>
-            <span class="edu-pill">CGPA: 7.9</span>
-          </div>
-          <p class="card-desc">
-            Core focus across Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, and layered backend software design.
-          </p>
+            <h4 class="card-title">Bachelor of Technology in CSE</h4>
+            <div class="card-institution">Aditya College of Engineering &amp; Technology (ACET)</div>
+            <div class="edu-tags-row">
+              <span class="edu-pill highlight">Batch 2024 – 2028 (3rd Year)</span>
+              <span class="edu-pill">CGPA: 7.9</span>
+            </div>
+            <p class="card-desc">
+              Core focus across Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, and layered backend software design.
+            </p>
 
-          <div class="edu-languages-section">
-            <div class="edu-lang-label">Languages Known</div>
-            <div class="lang-meters">
-              <div class="lang-meter-item">
-                <div class="lang-meter-head">
-                  <span class="lang-title">English : 92<span class="pct pct-en">%</span></span>
-                  <span class="lang-lvl">Fluent</span>
+            <div class="edu-languages-section">
+              <div class="edu-lang-label">Languages Known</div>
+              <div class="lang-meters">
+                <div class="lang-meter-item">
+                  <div class="lang-meter-head">
+                    <span class="lang-title">English : 92<span class="pct pct-en">%</span></span>
+                    <span class="lang-lvl">Fluent</span>
+                  </div>
+                  <div class="lang-meter-bar"><div class="lang-meter-fill fill-en" style="width: 92%;"></div></div>
                 </div>
-                <div class="lang-meter-bar"><div class="lang-meter-fill fill-en" style="width: 92%;"></div></div>
-              </div>
-              <div class="lang-meter-item">
-                <div class="lang-meter-head">
-                  <span class="lang-title">Hindi : 98<span class="pct pct-hi">%</span></span>
-                  <span class="lang-lvl">Native</span>
+                <div class="lang-meter-item">
+                  <div class="lang-meter-head">
+                    <span class="lang-title">Hindi : 98<span class="pct pct-hi">%</span></span>
+                    <span class="lang-lvl">Native</span>
+                  </div>
+                  <div class="lang-meter-bar"><div class="lang-meter-fill fill-hi" style="width: 98%;"></div></div>
                 </div>
-                <div class="lang-meter-bar"><div class="lang-meter-fill fill-hi" style="width: 98%;"></div></div>
-              </div>
-              <div class="lang-meter-item">
-                <div class="lang-meter-head">
-                  <span class="lang-title">Japanese : 20<span class="pct pct-ja">%</span></span>
-                  <span class="lang-lvl">Beginner</span>
+                <div class="lang-meter-item">
+                  <div class="lang-meter-head">
+                    <span class="lang-title">Japanese : 20<span class="pct pct-ja">%</span></span>
+                    <span class="lang-lvl">Beginner</span>
+                  </div>
+                  <div class="lang-meter-bar"><div class="lang-meter-fill fill-ja" style="width: 20%;"></div></div>
                 </div>
-                <div class="lang-meter-bar"><div class="lang-meter-fill fill-ja" style="width: 20%;"></div></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- CARD 3: Key Projects -->
-        <div class="masonry-card glass-effect">
+        <div class="masonry-card">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">03 // FEATURED PROJECTS</span>
-            <span class="card-badge">Backend &amp; Systems</span>
-          </div>
-          <h4 class="card-title">Featured Projects</h4>
+          <div class="card-interactive glass-effect">
+            <div class="card-meta">
+              <span class="card-tag">03 // FEATURED PROJECTS</span>
+              <span class="card-badge">Backend &amp; Systems</span>
+            </div>
+            <h4 class="card-title">Featured Projects</h4>
 
-          <div class="project-mini-item">
-            <div class="proj-head">
-              <span class="proj-name">SkillBridge</span>
-              <span class="proj-stack">Java 21 · Spring Boot · MongoDB · Spring Security</span>
+            <div class="project-mini-item">
+              <div class="proj-head">
+                <span class="proj-name">SkillBridge</span>
+                <span class="proj-stack">Java 21 · Spring Boot · MongoDB · Spring Security</span>
+              </div>
+              <p class="card-desc">
+                Collaborative industry-student bridge platform featuring Role-Based Access Control (RBAC), BCrypt authentication, and scalable MongoDB schemas.
+              </p>
+              <div class="repo-meta-row" style="margin-top:0.4rem;">
+                <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+              </div>
             </div>
-            <p class="card-desc">
-              Collaborative industry-student bridge platform featuring Role-Based Access Control (RBAC), BCrypt authentication, and scalable MongoDB schemas.
-            </p>
-            <div class="repo-meta-row" style="margin-top:0.4rem;">
-              <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
-            </div>
-          </div>
 
-          <div class="project-mini-item">
-            <div class="proj-head">
-              <span class="proj-name">Journal Prototype API</span>
-              <span class="proj-stack">Java 21 · Spring Boot 4.0.7 · MongoDB Transactions · Maven</span>
+            <div class="project-mini-item">
+              <div class="proj-head">
+                <span class="proj-name">Journal Prototype API</span>
+                <span class="proj-stack">Java 21 · Spring Boot 4.0.7 · MongoDB Transactions · Maven</span>
+              </div>
+              <p class="card-desc">
+                RESTful service with HTTP Basic Auth, ownership isolation, multi-document transactions (@Transactional), and authenticated CRUD APIs.
+              </p>
+              <div class="repo-meta-row" style="margin-top:0.4rem;">
+                <a href="https://github.com/Aditya-Vishwakarma722/Journal-Prototype" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+              </div>
             </div>
-            <p class="card-desc">
-              RESTful service with HTTP Basic Auth, ownership isolation, multi-document transactions (@Transactional), and authenticated CRUD APIs.
-            </p>
-            <div class="repo-meta-row" style="margin-top:0.4rem;">
-              <a href="https://github.com/Aditya-Vishwakarma722/Journal-Prototype" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
-            </div>
-          </div>
 
-          <div class="project-mini-item">
-            <div class="proj-head">
-              <span class="proj-name">AniTracker</span>
-              <span class="proj-stack">Java · Spring Boot · MongoDB · REST API</span>
-            </div>
-            <p class="card-desc">
-              Full-stack media tracking backend for Anime, Movies, and TV series with structured data models, custom lists, and RESTful CRUD endpoints.
-            </p>
-            <div class="repo-meta-row" style="margin-top:0.4rem;">
-              <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+            <div class="project-mini-item">
+              <div class="proj-head">
+                <span class="proj-name">AniTracker</span>
+                <span class="proj-stack">Java · Spring Boot · MongoDB · REST API</span>
+              </div>
+              <p class="card-desc">
+                Full-stack media tracking backend for Anime, Movies, and TV series with structured data models, custom lists, and RESTful CRUD endpoints.
+              </p>
+              <div class="repo-meta-row" style="margin-top:0.4rem;">
+                <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+              </div>
             </div>
           </div>
         </div>
@@ -1567,132 +1608,138 @@
       <div class="masonry-col right-col">
 
         <!-- CARD 1: Technical Skills Box (Requested element box!) -->
-        <div class="masonry-card glass-effect" id="skills-element-box">
+        <div class="masonry-card" id="skills-element-box">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">SKILLS // MATRIX</span>
-            <span class="card-badge">Core Competencies</span>
-          </div>
-          <h4 class="card-title">Technical Skills</h4>
-
-          <div class="skills-mini-group">
-            <div class="skills-mini-label">Languages</div>
-            <div class="skills-chips">
-              <span class="skill-tag lang">Java</span>
-              <span class="skill-tag lang">C</span>
-              <span class="skill-tag lang">C++</span>
-              <span class="skill-tag lang">Python</span>
-              <span class="skill-tag lang">HTML</span>
-              <span class="skill-tag lang">CSS</span>
+          <div class="card-interactive glass-effect">
+            <div class="card-meta">
+              <span class="card-tag">SKILLS // MATRIX</span>
+              <span class="card-badge">Core Competencies</span>
             </div>
-          </div>
+            <h4 class="card-title">Technical Skills</h4>
 
-          <div class="skills-mini-group">
-            <div class="skills-mini-label">Backend &amp; Frameworks</div>
-            <div class="skills-chips">
-              <span class="skill-tag fw">Spring Boot</span>
-              <span class="skill-tag fw">Spring MVC</span>
-              <span class="skill-tag fw">Spring Security</span>
-              <span class="skill-tag fw">REST APIs</span>
-              <span class="skill-tag fw">JPA/Hibernate</span>
+            <div class="skills-mini-group">
+              <div class="skills-mini-label">Languages</div>
+              <div class="skills-chips">
+                <span class="skill-tag lang">Java</span>
+                <span class="skill-tag lang">C</span>
+                <span class="skill-tag lang">C++</span>
+                <span class="skill-tag lang">Python</span>
+                <span class="skill-tag lang">HTML</span>
+                <span class="skill-tag lang">CSS</span>
+              </div>
             </div>
-          </div>
 
-          <div class="skills-mini-group">
-            <div class="skills-mini-label">Databases &amp; Tools</div>
-            <div class="skills-chips">
-              <span class="skill-tag db">MongoDB</span>
-              <span class="skill-tag db">MySQL</span>
-              <span class="skill-tag tool">Git / GitHub</span>
-              <span class="skill-tag tool">Maven</span>
-              <span class="skill-tag tool">Postman</span>
+            <div class="skills-mini-group">
+              <div class="skills-mini-label">Backend &amp; Frameworks</div>
+              <div class="skills-chips">
+                <span class="skill-tag fw">Spring Boot</span>
+                <span class="skill-tag fw">Spring MVC</span>
+                <span class="skill-tag fw">Spring Security</span>
+                <span class="skill-tag fw">REST APIs</span>
+                <span class="skill-tag fw">JPA/Hibernate</span>
+              </div>
             </div>
-          </div>
 
-          <div class="skills-mini-group">
-            <div class="skills-mini-label">Core CS &amp; Creative</div>
-            <div class="skills-chips">
-              <span class="skill-tag cs">DSA</span>
-              <span class="skill-tag cs">OOP</span>
-              <span class="skill-tag cs">Concurrency</span>
-              <span class="skill-tag creative">Blender 3D</span>
-              <span class="skill-tag creative">Unreal Engine</span>
+            <div class="skills-mini-group">
+              <div class="skills-mini-label">Databases &amp; Tools</div>
+              <div class="skills-chips">
+                <span class="skill-tag db">MongoDB</span>
+                <span class="skill-tag db">MySQL</span>
+                <span class="skill-tag tool">Git / GitHub</span>
+                <span class="skill-tag tool">Maven</span>
+                <span class="skill-tag tool">Postman</span>
+              </div>
             </div>
-          </div>
 
-          <button class="skills-explore-btn" id="open-skills-from-box">
-            <span>Explore All 35+ Skills in Interactive Modal</span>
-            <span class="arrow">→</span>
-          </button>
+            <div class="skills-mini-group">
+              <div class="skills-mini-label">Core CS &amp; Creative</div>
+              <div class="skills-chips">
+                <span class="skill-tag cs">DSA</span>
+                <span class="skill-tag cs">OOP</span>
+                <span class="skill-tag cs">Concurrency</span>
+                <span class="skill-tag creative">Blender 3D</span>
+                <span class="skill-tag creative">Unreal Engine</span>
+              </div>
+            </div>
+
+            <button class="skills-explore-btn" id="open-skills-from-box">
+              <span>Explore All 35+ Skills in Interactive Modal</span>
+              <span class="arrow">→</span>
+            </button>
+          </div>
         </div>
 
         <!-- CARD 2: Repositories Branch -->
-        <div class="masonry-card glass-effect">
+        <div class="masonry-card">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">04 // REPOSITORIES</span>
-            <span class="card-badge">GitHub Live</span>
-          </div>
-          <h4 class="card-title">Latest Repositories</h4>
-          <p class="card-desc">
-            Active repositories showcasing latest code pushes, architecture, and live projects:
-          </p>
+          <div class="card-interactive glass-effect">
+            <div class="card-meta">
+              <span class="card-tag">04 // REPOSITORIES</span>
+              <span class="card-badge">GitHub Live</span>
+            </div>
+            <h4 class="card-title">Latest Repositories</h4>
+            <p class="card-desc">
+              Active repositories showcasing latest code pushes, architecture, and live projects:
+            </p>
 
-          <div class="repo-branch-list" id="github-latest-repos">
-            <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-branch-item">
-              <div class="repo-branch-head">
-                <span class="repo-branch-name">SkillBridge-student-industry-collaboration</span>
-                <span class="repo-branch-lang">Java</span>
-              </div>
-              <p class="card-desc">Collaborative bridge connecting students and industry with Spring Boot and MongoDB.</p>
-              <div class="repo-meta-row">
-                <span>Latest Activity</span>
-                <span class="repo-link-arrow">View Repo ↗</span>
-              </div>
-            </a>
-            <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-branch-item">
-              <div class="repo-branch-head">
-                <span class="repo-branch-name">AniTracker</span>
-                <span class="repo-branch-lang">Java</span>
-              </div>
-              <p class="card-desc">Full-featured media tracker backend for Anime, Movies, and TV collections.</p>
-              <div class="repo-meta-row">
-                <span>Latest Activity</span>
-                <span class="repo-link-arrow">View Repo ↗</span>
-              </div>
+            <div class="repo-branch-list" id="github-latest-repos">
+              <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-branch-item">
+                <div class="repo-branch-head">
+                  <span class="repo-branch-name">SkillBridge-student-industry-collaboration</span>
+                  <span class="repo-branch-lang">Java</span>
+                </div>
+                <p class="card-desc">Collaborative bridge connecting students and industry with Spring Boot and MongoDB.</p>
+                <div class="repo-meta-row">
+                  <span>Latest Activity</span>
+                  <span class="repo-link-arrow">View Repo ↗</span>
+                </div>
+              </a>
+              <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-branch-item">
+                <div class="repo-branch-head">
+                  <span class="repo-branch-name">AniTracker</span>
+                  <span class="repo-branch-lang">Java</span>
+                </div>
+                <p class="card-desc">Full-featured media tracker backend for Anime, Movies, and TV collections.</p>
+                <div class="repo-meta-row">
+                  <span>Latest Activity</span>
+                  <span class="repo-link-arrow">View Repo ↗</span>
+                </div>
+              </a>
+            </div>
+
+            <a href="https://github.com/Aditya-Vishwakarma722?tab=repositories" target="_blank" class="repo-more-btn">
+              <span>Go to Repositories</span>
+              <span class="arrow">→</span>
             </a>
           </div>
-
-          <a href="https://github.com/Aditya-Vishwakarma722?tab=repositories" target="_blank" class="repo-more-btn">
-            <span>Go to Repositories</span>
-            <span class="arrow">→</span>
-          </a>
         </div>
 
         <!-- CARD 3: Blender 3D Branch -->
-        <div class="masonry-card glass-effect">
+        <div class="masonry-card">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">05 // BLENDER 3D</span>
-            <span class="card-badge">3D Design &amp; CGI</span>
+          <div class="card-interactive glass-effect">
+            <div class="card-meta">
+              <span class="card-tag">05 // BLENDER 3D</span>
+              <span class="card-badge">3D Design &amp; CGI</span>
+            </div>
+            <h4 class="card-title">Blender 3D Creations</h4>
+            <p class="card-desc">
+              Custom 3D models, procedural shaders, lighting environments, and aesthetic renders crafted in Blender.
+            </p>
+            <div class="blender-branch-features">
+              <span class="pill-chip highlight">3D Modeling</span>
+              <span class="pill-chip highlight">Cycles / Eevee</span>
+              <span class="pill-chip">Procedural Textures</span>
+              <span class="pill-chip">Lighting &amp; Renders</span>
+            </div>
+            <a href="Blender 3D/blenderAssets.html" class="repo-more-btn" style="margin-top: 0.9rem;">
+              <span>Explore 3D Assets &amp; Renders</span>
+              <span class="arrow">→</span>
+            </a>
           </div>
-          <h4 class="card-title">Blender 3D Creations</h4>
-          <p class="card-desc">
-            Custom 3D models, procedural shaders, lighting environments, and aesthetic renders crafted in Blender.
-          </p>
-          <div class="blender-branch-features">
-            <span class="pill-chip highlight">3D Modeling</span>
-            <span class="pill-chip highlight">Cycles / Eevee</span>
-            <span class="pill-chip">Procedural Textures</span>
-            <span class="pill-chip">Lighting &amp; Renders</span>
-          </div>
-          <a href="Blender 3D/blenderAssets.html" class="repo-more-btn" style="margin-top: 0.9rem;">
-            <span>Explore 3D Assets &amp; Renders</span>
-            <span class="arrow">→</span>
-          </a>
         </div>
 
       </div>
@@ -2017,17 +2064,69 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {}
   })();
 
-  // Subtle interactive 3D card tilt for branch cards
-  const branchCards = document.querySelectorAll('.masonry-card, .branch-card');
-  branchCards.forEach(card => {
+  // Interactive 3D card tilt with stretching branch arm anchored to the main spine
+  const masonryCards = document.querySelectorAll('.masonry-card');
+  masonryCards.forEach(card => {
+    const cardInner = card.querySelector('.card-interactive');
+    const arm = card.querySelector('.card-branch-arm');
+    const node = card.querySelector('.card-branch-node');
+    if (!cardInner || !arm || !node) return;
+
+    const isLeftCol = card.closest('.left-col') !== null;
+    let rafId = null;
+
     card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-      const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-      card.style.transform = `translateY(-6px) perspective(800px) rotateX(${y * -3}deg) rotateY(${x * 3}deg)`;
+      if (window.innerWidth <= 860) return;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        cardInner.classList.add('tilting');
+        arm.classList.add('stretching');
+
+        const rect = cardInner.getBoundingClientRect();
+        const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+        const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+
+        // Tilt & subtle elevation
+        const tiltX = y * -3;
+        const tiltY = x * 3;
+        const translateY = -6;
+        cardInner.style.transform = `translateY(${translateY}px) perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
+        // Fixed spine node center position
+        const nodeRect = node.getBoundingClientRect();
+        const nodeX = nodeRect.left + nodeRect.width / 2;
+        const nodeY = nodeRect.top + nodeRect.height / 2;
+
+        // Dynamic attachment point on card edge (aligned with 1.8rem from top)
+        const innerRect = cardInner.getBoundingClientRect();
+        const baseFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
+        const attachY = innerRect.top + (1.8 * baseFontSize);
+        const attachX = isLeftCol ? innerRect.right : innerRect.left;
+
+        const dx = attachX - nodeX;
+        const dy = attachY - nodeY;
+        const dist = Math.hypot(dx, dy);
+
+        if (isLeftCol) {
+          const angle = Math.atan2(dy, dx) * (180 / Math.PI) - 180;
+          arm.style.width = `${dist}px`;
+          arm.style.transform = `rotate(${angle}deg)`;
+        } else {
+          const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+          arm.style.width = `${dist}px`;
+          arm.style.transform = `rotate(${angle}deg)`;
+        }
+      });
     });
+
     card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
+      if (rafId) cancelAnimationFrame(rafId);
+      cardInner.classList.remove('tilting');
+      arm.classList.remove('stretching');
+      cardInner.style.transform = '';
+      arm.style.width = '';
+      arm.style.transform = '';
     });
   });
 });
