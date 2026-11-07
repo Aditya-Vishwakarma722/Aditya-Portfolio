@@ -787,15 +787,113 @@
     letter-spacing: 0.02em;
   }
 
-  /* Status & Languages */
-  .status-grid.compact {
+  /* Education Tags & Badges */
+  .card-meta-badges {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .edu-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+  }
+  .edu-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+  }
+  .edu-pill.highlight {
+    color: var(--ac);
+    border-color: rgba(136, 170, 255, 0.3);
+    background: rgba(136, 170, 255, 0.08);
+  }
+
+  /* Education Languages Known */
+  .edu-languages-section {
+    margin-top: 1.05rem;
+    padding-top: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .edu-lang-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+    margin-bottom: 0.65rem;
+  }
+  .lang-meters {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
-    margin-top: 0.5rem;
+    gap: 0.6rem;
   }
-  .status-grid.compact .status-row {
-    padding: 0.35rem 0;
+  .lang-meter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .lang-meter-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .lang-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+  .lang-lvl {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+  }
+  .pct {
+    font-weight: 700;
+  }
+  .pct-en {
+    color: var(--ac);
+    text-shadow: 0 0 8px rgba(136, 170, 255, 0.45);
+  }
+  .pct-hi {
+    color: var(--ac3);
+    text-shadow: 0 0 8px rgba(0, 255, 209, 0.45);
+  }
+  .pct-ja {
+    color: var(--ac2);
+    text-shadow: 0 0 8px rgba(255, 92, 122, 0.45);
+  }
+  .lang-meter-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .lang-meter-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.6s ease;
+  }
+  .fill-en {
+    background: linear-gradient(90deg, #4f7fff, var(--ac));
+    box-shadow: 0 0 8px rgba(136, 170, 255, 0.4);
+  }
+  .fill-hi {
+    background: linear-gradient(90deg, #059669, var(--ac3));
+    box-shadow: 0 0 8px rgba(0, 255, 209, 0.4);
+  }
+  .fill-ja {
+    background: linear-gradient(90deg, #d946ef, var(--ac2));
+    box-shadow: 0 0 8px rgba(255, 92, 122, 0.4);
   }
 
   /* Repositories in Branch */
@@ -1245,18 +1343,47 @@
           <div class="card-branch-node"></div>
           <div class="card-meta">
             <span class="card-tag">02 // EDUCATION</span>
-            <span class="card-badge">B.Tech CSE</span>
+            <div class="card-meta-badges">
+              <span class="card-badge">B.Tech CSE</span>
+              <span class="branch-status-tag"><span class="status-live-dot"></span>Open to Work</span>
+            </div>
           </div>
           <h4 class="card-title">Bachelor of Technology in CSE</h4>
-          <div class="card-institution">Aditya College of Engineering &amp; Technology (ACET), Surampalem</div>
+          <div class="card-institution">Aditya College of Engineering &amp; Technology (ACET)</div>
           <div class="edu-tags-row">
-            <span class="edu-pill">2024 – 2028 (Expected)</span>
-            <span class="edu-pill">3rd Year</span>
-            <span class="edu-pill highlight">CGPA: 7.9</span>
+            <span class="edu-pill highlight">Batch 2024 – 2028 (3rd Year)</span>
+            <span class="edu-pill">CGPA: 7.9</span>
           </div>
           <p class="card-desc">
             Core focus across Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks, and layered backend software design.
           </p>
+
+          <div class="edu-languages-section">
+            <div class="edu-lang-label">Languages Known</div>
+            <div class="lang-meters">
+              <div class="lang-meter-item">
+                <div class="lang-meter-head">
+                  <span class="lang-title">English : 92<span class="pct pct-en">%</span></span>
+                  <span class="lang-lvl">Fluent</span>
+                </div>
+                <div class="lang-meter-bar"><div class="lang-meter-fill fill-en" style="width: 92%;"></div></div>
+              </div>
+              <div class="lang-meter-item">
+                <div class="lang-meter-head">
+                  <span class="lang-title">Hindi : 98<span class="pct pct-hi">%</span></span>
+                  <span class="lang-lvl">Native</span>
+                </div>
+                <div class="lang-meter-bar"><div class="lang-meter-fill fill-hi" style="width: 98%;"></div></div>
+              </div>
+              <div class="lang-meter-item">
+                <div class="lang-meter-head">
+                  <span class="lang-title">Japanese : 20<span class="pct pct-ja">%</span></span>
+                  <span class="lang-lvl">Beginner</span>
+                </div>
+                <div class="lang-meter-bar"><div class="lang-meter-fill fill-ja" style="width: 20%;"></div></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- CARD 3: Key Projects -->
@@ -1277,6 +1404,9 @@
             <p class="card-desc">
               Collaborative industry-student bridge platform featuring Role-Based Access Control (RBAC), BCrypt authentication, and scalable MongoDB schemas.
             </p>
+            <div class="repo-meta-row" style="margin-top:0.4rem;">
+              <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+            </div>
           </div>
 
           <div class="project-mini-item">
@@ -1287,6 +1417,9 @@
             <p class="card-desc">
               RESTful service with HTTP Basic Auth, ownership isolation, multi-document transactions (@Transactional), and authenticated CRUD APIs.
             </p>
+            <div class="repo-meta-row" style="margin-top:0.4rem;">
+              <a href="https://github.com/Aditya-Vishwakarma722/Journal-Prototype" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+            </div>
           </div>
 
           <div class="project-mini-item">
@@ -1433,56 +1566,6 @@
             <span>Explore 3D Assets &amp; Renders</span>
             <span class="arrow">→</span>
           </a>
-        </div>
-
-        <!-- CARD 4: Academic Status & Communication -->
-        <div class="masonry-card glass-effect">
-          <div class="card-branch-arm"></div>
-          <div class="card-branch-node"></div>
-          <div class="card-meta">
-            <span class="card-tag">STATUS &amp; LANGUAGES</span>
-            <span class="branch-status-tag"><span class="status-live-dot"></span>Open to Work</span>
-          </div>
-          <h4 class="card-title">Profile &amp; Communication</h4>
-
-          <div class="status-grid compact">
-            <div class="status-row">
-              <span class="status-label">Availability</span>
-              <span class="status-val accent">Available for Roles / Internships</span>
-            </div>
-            <div class="status-row">
-              <span class="status-label">Location</span>
-              <span class="status-val">Surampalem, Andhra Pradesh</span>
-            </div>
-            <div class="status-row">
-              <span class="status-label">Batch</span>
-              <span class="status-val">2024 – 2028 (3rd Year)</span>
-            </div>
-          </div>
-
-          <div class="lang-meters" style="margin-top: 0.9rem;">
-            <div class="lang-meter-item">
-              <div class="lang-meter-head">
-                <span class="lang-name">English</span>
-                <span class="lang-lvl">Fluent · 92%</span>
-              </div>
-              <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 92%;"></div></div>
-            </div>
-            <div class="lang-meter-item">
-              <div class="lang-meter-head">
-                <span class="lang-name">Hindi</span>
-                <span class="lang-lvl">Native · 98%</span>
-              </div>
-              <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 98%;"></div></div>
-            </div>
-            <div class="lang-meter-item">
-              <div class="lang-meter-head">
-                <span class="lang-name">Japanese</span>
-                <span class="lang-lvl">Beginner · 18%</span>
-              </div>
-              <div class="lang-meter-bar"><div class="lang-meter-fill" style="width: 18%;"></div></div>
-            </div>
-          </div>
         </div>
 
       </div>
