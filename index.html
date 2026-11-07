@@ -14,9 +14,9 @@
     --ac3: #00ffd1;
     --text-primary: #f0f3ff;
     --text-secondary: #b0bcdb;
-    --glass-bg: rgba(10, 12, 24, 0.90);
-    --glass-border: rgba(136, 170, 255, 0.18);
-    --card-hover: rgba(18, 22, 44, 0.96);
+    --glass-bg: rgba(10, 12, 24, 0.76);
+    --glass-border: rgba(136, 170, 255, 0.22);
+    --card-hover: rgba(18, 22, 44, 0.88);
     --radius: 16px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,9 +39,9 @@
   /* HEADER (AUTHENTIC & CLASSY) */
   .header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(8, 8, 15, 0.94);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(8, 8, 15, 0.84);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     padding: 0.95rem 2.5rem;
@@ -303,16 +303,16 @@
     align-items: center;
     gap: 0.95rem;
     padding: 0.95rem 1.6rem;
-    background: rgba(10, 12, 24, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 12, 24, 0.78);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 14px;
     max-width: 700px;
-    margin: 0 auto 2.2rem;
+    margin: 0 auto 2.4rem;
     text-align: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 16px rgba(136, 170, 255, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   .intro-thread-pip {
     width: 8px;
@@ -323,14 +323,14 @@
     flex-shrink: 0;
   }
   .branch-intro-text {
-    color: #e4eaf8;
-    font-size: 0.92rem;
+    color: #f0f4ff;
+    font-size: 0.93rem;
     line-height: 1.65;
     font-weight: 500;
   }
 
   /* SECTIONS */
-  .folders-section { padding: 3rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .folders-section { padding: 3rem 2.5rem; max-width: 1180px; margin: 0 auto; }
   .section-title {
     font-size: 1.4rem; font-weight: 700;
     color: var(--text-primary); margin-bottom: 2rem;
@@ -381,11 +381,11 @@
   .file-list .card {
     flex-direction: row; align-items: center;
     padding: 0.75rem 1.2rem; border-radius: 10px; gap: 1rem;
-    background: rgba(10, 12, 24, 0.90);
-    border: 1px solid rgba(136, 170, 255, 0.2);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    background: rgba(10, 12, 24, 0.78);
+    border: 1px solid rgba(136, 170, 255, 0.22);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
   .file-list .card-icon { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 0; flex-shrink: 0; }
   .file-list .card-icon svg { width: 16px; height: 16px; }
@@ -400,17 +400,17 @@
     display: flex; flex-direction: column;
     text-decoration: none; color: inherit;
     border-radius: var(--radius); padding: 1.5rem;
-    background: rgba(10, 12, 24, 0.90);
-    border: 1px solid rgba(136, 170, 255, 0.2);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    background: rgba(10, 12, 24, 0.78);
+    border: 1px solid rgba(136, 170, 255, 0.22);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     transition: transform 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
     cursor: pointer;
   }
   .card:hover {
     transform: translateY(-4px);
-    background: rgba(18, 22, 44, 0.94);
+    background: rgba(18, 22, 44, 0.88);
     border-color: rgba(136,170,255,0.45);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(136,170,255,0.15);
   }
@@ -432,7 +432,7 @@
   .resume-section {
     padding-top: 2.5rem;
     padding-bottom: 3rem;
-    max-width: 1100px;
+    max-width: 1180px;
     margin: 0 auto;
   }
   .resume-header-wrap {
@@ -502,7 +502,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
+    gap: 6.5rem;
     margin-top: 1.2rem;
     align-items: start;
   }
@@ -544,7 +544,7 @@
   .masonry-col {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 2.6rem;
     position: relative;
     z-index: 2;
   }
@@ -562,13 +562,13 @@
   /* Interactive Card Body that Tilts */
   .card-interactive {
     position: relative;
-    padding: 1.4rem 1.6rem;
+    padding: 1.45rem 1.65rem;
     border-radius: var(--radius);
-    background: rgba(10, 12, 24, 0.90);
-    border: 1px solid rgba(136, 170, 255, 0.2);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: rgba(10, 12, 24, 0.76);
+    border: 1px solid rgba(136, 170, 255, 0.22);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
                 box-shadow 0.25s ease, 
                 border-color 0.25s ease, 
@@ -582,7 +582,7 @@
   }
   .masonry-card:hover .card-interactive {
     border-color: rgba(136, 170, 255, 0.45);
-    background: rgba(16, 20, 42, 0.94);
+    background: rgba(16, 20, 42, 0.88);
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 25px rgba(136, 170, 255, 0.18);
   }
 
@@ -628,25 +628,25 @@
 
   /* Left Column Branches */
   .left-col .card-branch-arm {
-    right: -1.75rem;
-    width: 1.75rem;
+    right: -3.25rem;
+    width: 3.25rem;
     background: linear-gradient(90deg, rgba(136, 170, 255, 0.2), var(--ac));
     transform-origin: 100% 50%;
   }
   .left-col .card-branch-node {
-    right: -1.75rem;
+    right: -3.25rem;
     transform: translate(50%, -50%);
   }
 
   /* Right Column Branches */
   .right-col .card-branch-arm {
-    left: -1.75rem;
-    width: 1.75rem;
+    left: -3.25rem;
+    width: 3.25rem;
     background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2));
     transform-origin: 0% 50%;
   }
   .right-col .card-branch-node {
-    left: -1.75rem;
+    left: -3.25rem;
     transform: translate(-50%, -50%);
   }
 
@@ -730,15 +730,15 @@
   }
   .card-institution {
     font-size: 0.8rem;
-    color: #9bbdff;
+    color: #a5c4ff;
     margin-bottom: 0.65rem;
     font-weight: 600;
   }
   .card-desc {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     line-height: 1.65;
-    color: #b0bcdb;
-    font-weight: 400;
+    color: #c8d5f2;
+    font-weight: 450;
   }
   .card-desc strong {
     color: #ffffff;
@@ -755,9 +755,9 @@
     font-size: 0.68rem;
     padding: 0.25rem 0.65rem;
     border-radius: 6px;
-    background: rgba(18, 20, 36, 0.90);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: #c4d0ec;
+    background: rgba(18, 22, 42, 0.78);
+    border: 1px solid rgba(136, 170, 255, 0.22);
+    color: #dce7ff;
     font-weight: 500;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     transition: all 0.2s ease;
@@ -765,7 +765,7 @@
   .pill-chip.highlight {
     color: #ffffff;
     border-color: rgba(136, 170, 255, 0.45);
-    background: rgba(28, 38, 72, 0.90);
+    background: rgba(28, 38, 72, 0.85);
   }
   .pill-chip:hover {
     border-color: var(--ac3);
@@ -798,12 +798,12 @@
     width: 100%;
     margin-top: 0.9rem;
     padding: 0.55rem 0.9rem;
-    background: rgba(16, 18, 34, 0.90);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(16, 20, 40, 0.78);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 8px;
-    color: var(--ac);
+    color: #b0caff;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     font-weight: 600;
@@ -872,16 +872,16 @@
     font-size: 0.68rem;
     padding: 0.25rem 0.65rem;
     border-radius: 6px;
-    background: rgba(18, 20, 36, 0.90);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: #c4d0ec;
+    background: rgba(18, 22, 42, 0.78);
+    border: 1px solid rgba(136, 170, 255, 0.22);
+    color: #dce7ff;
     font-weight: 500;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   }
   .edu-pill.highlight {
     color: #ffffff;
     border-color: rgba(136, 170, 255, 0.45);
-    background: rgba(28, 38, 72, 0.90);
+    background: rgba(28, 38, 72, 0.85);
   }
 
   /* Education Languages Known */
@@ -975,15 +975,15 @@
     text-decoration: none;
     padding: 0.75rem 0.95rem;
     border-radius: 10px;
-    background: rgba(18, 21, 38, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(136, 170, 255, 0.18);
+    background: rgba(18, 22, 44, 0.78);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(136, 170, 255, 0.22);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     transition: all 0.2s ease;
   }
   .repo-branch-item:hover {
-    background: rgba(25, 30, 56, 0.95);
+    background: rgba(25, 30, 56, 0.90);
     border-color: rgba(136, 170, 255, 0.45);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 0 16px rgba(136, 170, 255, 0.15);
@@ -1019,7 +1019,7 @@
     margin-top: 0.45rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.68rem;
-    color: #b0bcdb;
+    color: #c4d0ec;
   }
   .repo-link-arrow {
     color: #a5c2ff;
@@ -1036,9 +1036,9 @@
     width: 100%;
     margin-top: 0.85rem;
     padding: 0.55rem 0.9rem;
-    background: rgba(16, 18, 34, 0.90);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(16, 20, 38, 0.78);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 8px;
     color: #f0f3ff;
@@ -1095,14 +1095,14 @@
     position: relative; max-width: 820px; width: 94%;
     max-height: min(84vh, 760px);
     display: flex; flex-direction: column;
-    background: rgba(11, 13, 23, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(136, 170, 255, 0.18);
+    background: rgba(11, 14, 26, 0.86);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(136, 170, 255, 0.22);
     border-radius: 18px;
     padding: 0;
     overflow: hidden;
-    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.8), 0 0 35px rgba(136, 170, 255, 0.06);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.8), 0 0 35px rgba(136, 170, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     opacity: 0;
     transform: translateY(20px) scale(0.98);
     transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1180,8 +1180,10 @@
 
   /* Minimal Category Card */
   .skills-cat {
-    background: rgba(16, 19, 36, 0.90);
-    border: 1px solid rgba(136, 170, 255, 0.16);
+    background: rgba(16, 20, 40, 0.76);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(136, 170, 255, 0.2);
     border-radius: 12px; padding: 0.95rem 1.1rem;
     display: flex; flex-direction: column;
     gap: 0.75rem;
@@ -1189,8 +1191,8 @@
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .skills-cat:hover {
-    border-color: rgba(136, 170, 255, 0.35);
-    background: rgba(22, 26, 50, 0.95);
+    border-color: rgba(136, 170, 255, 0.4);
+    background: rgba(22, 26, 50, 0.88);
   }
   .skills-cat h4 {
     font-size: 0.74rem; font-weight: 700;
@@ -1320,17 +1322,13 @@
     .right-col .masonry-card:hover .card-branch-node {
       transform: translate(-50%, -50%) scale(1.2) !important;
     }
+    .masonry-col {
+      gap: 1.8rem;
+    }
     .resume-header-wrap {
       flex-direction: column;
       align-items: flex-start;
       gap: 1.1rem;
-    }
-    .resume-actions {
-      width: 100%;
-    }
-    .resume-btn {
-      flex: 1;
-      justify-content: center;
     }
   }
 
@@ -1425,7 +1423,6 @@
   <section id="resume" class="folders-section resume-section">
     <div class="resume-header-wrap">
       <div>
-        <div class="resume-eyebrow">ACET Surampalem · CSE · 2024–2028</div>
         <h3 class="section-title">Resume &amp; Career Path</h3>
       </div>
     </div>
@@ -2055,11 +2052,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
         const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
 
-        // Tilt & subtle elevation
-        const tiltX = y * -3;
-        const tiltY = x * 3;
-        const translateY = -6;
-        cardInner.style.transform = `translateY(${translateY}px) perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        // Increased cursor reaction sensitivity: more dynamic 3D tilt & responsive elevation
+        const tiltX = y * -7;
+        const tiltY = x * 7;
+        const translateY = -8 - (Math.abs(x) + Math.abs(y)) * 2;
+        cardInner.style.transform = `translateY(${translateY}px) perspective(850px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
 
         // Fixed spine node center position
         const nodeRect = node.getBoundingClientRect();
