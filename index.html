@@ -507,67 +507,49 @@
     align-items: start;
   }
 
-  /* Fluent Animated Floating Wave Spine Thread */
-  .thread-spine {
+  /* Authentic Scroll-Driven Spine Path */
+  .thread-spine-track {
     position: absolute;
     left: 50%;
     top: 0;
     bottom: 0;
     width: 2px;
     transform: translateX(-50%);
-    background: linear-gradient(
-      180deg,
-      rgba(136, 170, 255, 0.2) 0%,
-      rgba(0, 255, 209, 0.95) 20%,
-      rgba(255, 255, 255, 0.98) 35%,
-      rgba(136, 170, 255, 0.7) 50%,
-      rgba(255, 92, 122, 0.85) 65%,
-      rgba(0, 255, 209, 0.95) 80%,
-      rgba(136, 170, 255, 0.2) 100%
-    );
-    background-size: 100% 300%;
-    animation: spineWaveFlow 4.5s linear infinite;
-    box-shadow: 0 0 10px rgba(0, 255, 209, 0.45), 0 0 22px rgba(136, 170, 255, 0.25);
+    background: rgba(136, 170, 255, 0.12);
+    box-shadow: 0 0 6px rgba(136, 170, 255, 0.08);
     z-index: 1;
     pointer-events: none;
   }
-  .thread-spine::after {
-    content: '';
-    position: absolute;
-    inset: 0 -4px;
-    background: inherit;
-    background-size: inherit;
-    animation: inherit;
-    filter: blur(5px);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-  @keyframes spineWaveFlow {
-    0% { background-position: 50% 0%; }
-    100% { background-position: 50% 300%; }
-  }
-
-  /* Flowing Wave Energy Pulse Bead along the Spine */
-  .thread-spine-pulse {
+  .thread-spine-fill {
     position: absolute;
     left: 50%;
     top: 0;
-    width: 4px;
-    height: 48px;
+    width: 2px;
+    height: 0%;
     transform: translateX(-50%);
-    background: linear-gradient(180deg, transparent, #ffffff 50%, var(--ac3) 80%, transparent);
-    border-radius: 999px;
-    box-shadow: 0 0 14px var(--ac3), 0 0 24px #ffffff;
-    filter: blur(0.5px);
+    background: linear-gradient(
+      180deg,
+      rgba(136, 170, 255, 0.3) 0%,
+      var(--ac) 35%,
+      var(--ac3) 75%,
+      #ffffff 100%
+    );
+    box-shadow: 0 0 10px rgba(0, 255, 209, 0.5), 0 0 20px rgba(136, 170, 255, 0.3);
+    z-index: 1;
     pointer-events: none;
-    z-index: 2;
-    animation: spineWavePulse 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: height;
   }
-  @keyframes spineWavePulse {
-    0% { top: 0%; opacity: 0; transform: translateX(-50%) scaleY(0.6); }
-    15% { opacity: 1; transform: translateX(-50%) scaleY(1); }
-    85% { opacity: 1; transform: translateX(-50%) scaleY(1); }
-    100% { top: 96%; opacity: 0; transform: translateX(-50%) scaleY(0.6); }
+  .thread-spine-fill::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 10px #ffffff, 0 0 18px var(--ac3);
   }
 
   .thread-start-node,
@@ -579,7 +561,7 @@
     height: 10px;
     border-radius: 50%;
     background: var(--ac3);
-    box-shadow: 0 0 10px var(--ac3), 0 0 20px rgba(0, 255, 209, 0.5);
+    box-shadow: 0 0 10px var(--ac3), 0 0 20px rgba(0, 255, 209, 0.4);
     z-index: 2;
   }
   .thread-start-node { top: -4px; }
@@ -594,7 +576,7 @@
     z-index: 2;
   }
 
-  /* Masonry Card Wrapper (Floating wave idle animation) */
+  /* Masonry Card Wrapper */
   .masonry-card {
     position: relative;
     padding: 0;
@@ -603,21 +585,8 @@
     box-shadow: none;
     border-radius: var(--radius);
   }
-  @keyframes idleCardWave {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
-  }
-  .left-col .masonry-card:nth-child(1) { animation: idleCardWave 6.2s ease-in-out infinite 0s; }
-  .left-col .masonry-card:nth-child(2) { animation: idleCardWave 6.8s ease-in-out infinite 1.4s; }
-  .left-col .masonry-card:nth-child(3) { animation: idleCardWave 6.0s ease-in-out infinite 2.6s; }
-  .right-col .masonry-card:nth-child(1) { animation: idleCardWave 6.4s ease-in-out infinite 0.8s; }
-  .right-col .masonry-card:nth-child(2) { animation: idleCardWave 5.8s ease-in-out infinite 2.0s; }
-  .right-col .masonry-card:nth-child(3) { animation: idleCardWave 6.6s ease-in-out infinite 3.0s; }
-  .masonry-card:hover {
-    animation-play-state: paused;
-  }
 
-  /* Interactive Card Body that Tilts */
+  /* Interactive Card Body with 3D Depth */
   .card-interactive {
     position: relative;
     padding: 1.45rem 1.65rem;
@@ -627,24 +596,20 @@
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
     box-shadow: 0 16px 42px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.25s ease, 
-                border-color 0.25s ease, 
-                background 0.25s ease;
-    will-change: transform;
+    will-change: transform, opacity;
     transform-style: preserve-3d;
     z-index: 3;
   }
   .card-interactive.tilting {
     transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   }
-  .masonry-card:hover .card-interactive {
+  .masonry-card.card-formed:hover .card-interactive {
     border-color: rgba(136, 170, 255, 0.45);
     background: rgba(16, 20, 42, 0.88);
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 25px rgba(136, 170, 255, 0.18);
   }
 
-  /* Precise Attachment Joint on Card Border */
+  /* Card Attachment Joint */
   .card-branch-joint {
     position: absolute;
     top: calc(1.8rem - 1px);
@@ -654,27 +619,17 @@
     pointer-events: none;
     z-index: 5;
   }
-  .left-col .card-branch-joint {
-    right: 0;
-  }
-  .right-col .card-branch-joint {
-    left: 0;
-  }
+  .left-col .card-branch-joint { right: 0; }
+  .right-col .card-branch-joint { left: 0; }
 
-  /* Branch Connecting Arms to Central Thread with Fluent Floating Waves */
+  /* Branch Connecting Arms to Central Thread */
   .card-branch-arm {
     position: absolute;
     top: calc(1.8rem - 1px);
     height: 2px;
     z-index: 2;
     pointer-events: none;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.25s ease,
-                box-shadow 0.25s ease;
-  }
-  .card-branch-arm.stretching {
-    transition: background 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform, width, opacity;
   }
   .card-branch-node {
     position: absolute;
@@ -690,7 +645,7 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
   .card-branch-node::after {
     content: '';
@@ -700,39 +655,14 @@
     background: var(--ac);
     transition: all 0.25s ease;
   }
-  /* Floating Wave Ripple on the Node */
-  .card-branch-node::before {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: 50%;
-    border: 1.5px solid var(--ac3);
-    opacity: 0;
-    animation: nodeWaveRipple 3s cubic-bezier(0.1, 0.7, 0.2, 1) infinite;
-    pointer-events: none;
-  }
-  @keyframes nodeWaveRipple {
-    0% { transform: scale(0.6); opacity: 0.9; }
-    50% { opacity: 0.35; }
-    100% { transform: scale(2.4); opacity: 0; }
-  }
 
   /* Left Column Branches */
   .left-col .card-branch-arm {
     right: -4.75rem;
     width: 4.75rem;
-    background: linear-gradient(
-      90deg,
-      rgba(136, 170, 255, 0.3) 0%,
-      rgba(0, 255, 209, 0.9) 25%,
-      rgba(255, 255, 255, 0.95) 50%,
-      rgba(0, 255, 209, 0.9) 75%,
-      var(--ac) 100%
-    );
-    background-size: 250% 100%;
-    animation: branchWaveFlowLeft 4s ease-in-out infinite;
+    background: linear-gradient(90deg, rgba(136, 170, 255, 0.2), var(--ac));
     transform-origin: 100% 50%;
-    box-shadow: 0 0 10px rgba(0, 255, 209, 0.4), 0 0 18px rgba(136, 170, 255, 0.25);
+    box-shadow: 0 0 6px rgba(136, 170, 255, 0.3);
   }
   .left-col .card-branch-node {
     right: -4.75rem;
@@ -743,64 +673,107 @@
   .right-col .card-branch-arm {
     left: -4.75rem;
     width: 4.75rem;
-    background: linear-gradient(
-      90deg,
-      var(--ac) 0%,
-      rgba(0, 255, 209, 0.9) 25%,
-      rgba(255, 255, 255, 0.95) 50%,
-      rgba(0, 255, 209, 0.9) 75%,
-      rgba(136, 170, 255, 0.3) 100%
-    );
-    background-size: 250% 100%;
-    animation: branchWaveFlowRight 4s ease-in-out infinite;
+    background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2));
     transform-origin: 0% 50%;
-    box-shadow: 0 0 10px rgba(0, 255, 209, 0.4), 0 0 18px rgba(136, 170, 255, 0.25);
+    box-shadow: 0 0 6px rgba(136, 170, 255, 0.3);
   }
   .right-col .card-branch-node {
     left: -4.75rem;
     transform: translate(-50%, -50%);
   }
 
-  @keyframes branchWaveFlowLeft {
-    0% { background-position: 100% 50%; }
-    50% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
+  /* ── SCROLL-DRIVEN FORMATION ANIMATION (Apple / Linear Grade) ── */
+  /* Initial unformed state */
+  .left-col .masonry-card .card-branch-node {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(0);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   }
-  @keyframes branchWaveFlowRight {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  .right-col .masonry-card .card-branch-node {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   }
 
-  /* Hover States on Branch Connectors */
-  .masonry-card:hover .card-branch-arm {
-    background: linear-gradient(
-      90deg,
-      var(--ac3) 0%,
-      #ffffff 50%,
-      var(--ac3) 100%
-    );
-    background-size: 200% 100%;
-    animation: branchWaveFlowFast 1.2s linear infinite;
-    box-shadow: 0 0 14px var(--ac3), 0 0 28px rgba(0, 255, 209, 0.6);
+  .left-col .masonry-card .card-branch-arm {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, 
+                opacity 0.25s ease 0.1s,
+                width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.25s ease,
+                box-shadow 0.25s ease;
   }
-  @keyframes branchWaveFlowFast {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+  .right-col .masonry-card .card-branch-arm {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: 0% 50%;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, 
+                opacity 0.25s ease 0.1s,
+                width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.25s ease,
+                box-shadow 0.25s ease;
   }
-  .left-col .masonry-card:hover .card-branch-node {
-    border-color: var(--ac3);
-    box-shadow: 0 0 16px var(--ac3), 0 0 25px rgba(0, 255, 209, 0.5);
-    transform: translate(50%, -50%) scale(1.3);
+
+  .left-col .masonry-card .card-interactive {
+    opacity: 0;
+    transform: translateX(-42px) scale(0.97);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s,
+                opacity 0.5s ease 0.18s,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
   }
-  .right-col .masonry-card:hover .card-branch-node {
-    border-color: var(--ac3);
-    box-shadow: 0 0 16px var(--ac3), 0 0 25px rgba(0, 255, 209, 0.5);
-    transform: translate(-50%, -50%) scale(1.3);
+  .right-col .masonry-card .card-interactive {
+    opacity: 0;
+    transform: translateX(42px) scale(0.97);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s,
+                opacity 0.5s ease 0.18s,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
   }
-  .masonry-card:hover .card-branch-node::after {
+
+  /* Formed & Connected State */
+  .left-col .masonry-card.card-formed .card-branch-node {
+    opacity: 1;
+    transform: translate(50%, -50%) scale(1);
+  }
+  .right-col .masonry-card.card-formed .card-branch-node {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .masonry-card.card-formed .card-branch-arm {
+    opacity: 1;
+    transform: none;
+  }
+  .masonry-card.card-formed .card-interactive {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-branch-arm.stretching {
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  /* Hover States on Formed Connectors */
+  .masonry-card.card-formed:hover .card-branch-arm {
     background: var(--ac3);
-    box-shadow: 0 0 8px var(--ac3);
+    box-shadow: 0 0 12px var(--ac3);
+  }
+  .left-col .masonry-card.card-formed:hover .card-branch-node {
+    border-color: var(--ac3);
+    box-shadow: 0 0 16px var(--ac3);
+    transform: translate(50%, -50%) scale(1.25);
+  }
+  .right-col .masonry-card.card-formed:hover .card-branch-node {
+    border-color: var(--ac3);
+    box-shadow: 0 0 16px var(--ac3);
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+  .masonry-card.card-formed:hover .card-branch-node::after {
+    background: var(--ac3);
     box-shadow: 0 0 6px var(--ac3);
   }
 
@@ -1430,18 +1403,19 @@
       gap: 1.25rem;
       padding-left: 2rem;
     }
-    .thread-spine {
-      left: 12px;
-      transform: none;
+    .thread-spine-track,
+    .thread-spine-fill {
+      left: 12px !important;
+      transform: none !important;
     }
-    .thread-spine-pulse {
-      left: 12px;
-      transform: none;
+    .thread-spine-fill::after {
+      left: 0 !important;
+      transform: translate(-50%, -50%) !important;
     }
     .thread-start-node,
     .thread-end-node {
-      left: 12px;
-      transform: none;
+      left: 12px !important;
+      transform: none !important;
     }
     .left-col .card-branch-joint {
       left: 0 !important;
@@ -1452,6 +1426,7 @@
       left: -1.4rem !important;
       right: auto !important;
       width: 1.4rem !important;
+      transform-origin: 0% 50% !important;
       background: linear-gradient(90deg, var(--ac), rgba(136, 170, 255, 0.2)) !important;
     }
     .left-col .card-branch-node,
@@ -1460,9 +1435,21 @@
       right: auto !important;
       transform: translate(-50%, -50%) !important;
     }
-    .left-col .masonry-card:hover .card-branch-node,
-    .right-col .masonry-card:hover .card-branch-node {
+    .left-col .masonry-card.card-formed .card-branch-node,
+    .right-col .masonry-card.card-formed .card-branch-node {
+      transform: translate(-50%, -50%) scale(1) !important;
+    }
+    .left-col .masonry-card.card-formed:hover .card-branch-node,
+    .right-col .masonry-card.card-formed:hover .card-branch-node {
       transform: translate(-50%, -50%) scale(1.2) !important;
+    }
+    .left-col .masonry-card .card-interactive,
+    .right-col .masonry-card .card-interactive {
+      transform: translateY(28px) !important;
+    }
+    .left-col .masonry-card.card-formed .card-interactive,
+    .right-col .masonry-card.card-formed .card-interactive {
+      transform: none !important;
     }
     .masonry-col {
       gap: 1.8rem;
@@ -1579,8 +1566,8 @@
 
     <!-- CENTRAL THREAD WITH MASONRY LAYOUT -->
     <div class="thread-masonry-wrapper">
-      <div class="thread-spine"></div>
-      <div class="thread-spine-pulse"></div>
+      <div class="thread-spine-track"></div>
+      <div class="thread-spine-fill"></div>
       <div class="thread-start-node"></div>
 
       <!-- LEFT COLUMN -->
@@ -2178,6 +2165,50 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {}
   })();
 
+  // Scroll-Driven Central Thread & Panel Formation Animation
+  const threadWrapper = document.querySelector('.thread-masonry-wrapper');
+  const threadSpineFill = document.querySelector('.thread-spine-fill');
+  const allMasonryCards = document.querySelectorAll('.masonry-card');
+
+  if (threadWrapper && threadSpineFill) {
+    let ticking = false;
+
+    const updateScrollFormation = () => {
+      const rect = threadWrapper.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Horizon where the glowing thread head leads ahead of scroll
+      const horizonY = windowHeight * 0.78;
+      const relativeY = horizonY - rect.top;
+      const totalHeight = rect.height;
+      
+      const progress = Math.max(0, Math.min(1, relativeY / totalHeight));
+      threadSpineFill.style.height = `${(progress * 100).toFixed(1)}%`;
+
+      // Check each card: when the thread or horizon reaches it, dock and connect
+      allMasonryCards.forEach(card => {
+        if (card.classList.contains('card-formed')) return;
+        const cardRect = card.getBoundingClientRect();
+        if (cardRect.top <= horizonY + 30) {
+          card.classList.add('card-formed');
+        }
+      });
+
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollFormation);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateScrollFormation();
+  }
+
   // Interactive 3D card tilt with stretching branch arm anchored to the main spine
   const masonryCards = document.querySelectorAll('.masonry-card');
   masonryCards.forEach(card => {
@@ -2190,7 +2221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let rafId = null;
 
     card.addEventListener('mousemove', e => {
-      if (window.innerWidth <= 860) return;
+      if (!card.classList.contains('card-formed') || window.innerWidth <= 860) return;
 
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
