@@ -590,6 +590,17 @@
   .masonry-card.card-formed {
     pointer-events: auto;
   }
+  /* Invisible hit buffer so 3D elevated card never causes edge flicker */
+  .masonry-card::before {
+    content: '';
+    position: absolute;
+    top: -24px;
+    bottom: -24px;
+    left: -24px;
+    right: -24px;
+    pointer-events: auto;
+    z-index: 0;
+  }
 
   /* Interactive Card Body with 3D Depth */
   .card-interactive {
@@ -605,8 +616,12 @@
     transform-style: preserve-3d;
     z-index: 3;
   }
-  .card-interactive.tilting {
-    transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  .card-interactive.tilting,
+  .masonry-card .card-interactive.tilting,
+  .masonry-card.card-formed .card-interactive.tilting,
+  .left-col .masonry-card.card-formed .card-interactive.tilting,
+  .right-col .masonry-card.card-formed .card-interactive.tilting {
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
   }
   .masonry-card.card-formed:hover .card-interactive {
     border-color: rgba(136, 170, 255, 0.45);
@@ -742,26 +757,26 @@
                 background 0.25s ease;
   }
 
-  /* Formed & Connected State (When scrolling DOWN: node blooms -> arm shoots out -> card docks inward) */
+  /* Formed & Connected State (Resting / Hover Return in Synchronized Lockstep) */
   .left-col .masonry-card.card-formed .card-branch-node {
     opacity: 1;
     transform: translate(50%, -50%) scale(1);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s,
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0s,
                 opacity 0.3s ease 0s;
   }
   .right-col .masonry-card.card-formed .card-branch-node {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s,
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0s,
                 opacity 0.3s ease 0s;
   }
   .left-col .masonry-card.card-formed .card-branch-arm,
   .right-col .masonry-card.card-formed .card-branch-arm {
     opacity: 1;
     transform: none;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, 
-                opacity 0.28s ease 0.08s,
-                width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0s, 
+                opacity 0.28s ease 0s,
+                width 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0s,
                 background 0.25s ease,
                 box-shadow 0.25s ease;
   }
@@ -769,6 +784,24 @@
   .right-col .masonry-card.card-formed .card-interactive {
     opacity: 1;
     transform: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0s,
+                opacity 0.5s ease 0s,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+  }
+
+  /* Formation entrance delay - ONLY active while entering on scroll */
+  .left-col .masonry-card.card-forming.card-formed .card-branch-arm,
+  .right-col .masonry-card.card-forming.card-formed .card-branch-arm {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, 
+                opacity 0.28s ease 0.08s,
+                width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+  }
+  .left-col .masonry-card.card-forming.card-formed .card-interactive,
+  .right-col .masonry-card.card-forming.card-formed .card-interactive {
     transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
                 opacity 0.5s ease 0.16s,
                 box-shadow 0.25s ease,
@@ -776,8 +809,13 @@
                 background 0.25s ease;
   }
 
-  .card-branch-arm.stretching {
-    transition: background 0.25s ease, box-shadow 0.25s ease;
+  /* Stretching override - zero lag cursor tracking */
+  .card-branch-arm.stretching,
+  .masonry-card .card-branch-arm.stretching,
+  .masonry-card.card-formed .card-branch-arm.stretching,
+  .left-col .masonry-card.card-formed .card-branch-arm.stretching,
+  .right-col .masonry-card.card-formed .card-branch-arm.stretching {
+    transition: background 0.25s ease, box-shadow 0.25s ease !important;
   }
 
   /* Hover States on Formed Connectors */
@@ -2230,13 +2268,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Forward Formation (scrolling down): spine head reaches the card's branch node
         if (cardRect.top <= horizonY - 10) {
           if (!card.classList.contains('card-formed')) {
-            card.classList.add('card-formed');
+            card.classList.add('card-formed', 'card-forming');
+            setTimeout(() => {
+              card.classList.remove('card-forming');
+            }, 750);
           }
         } 
         // Dual Reverse Retraction (scrolling up): card drops below horizon with hysteresis
         else if (cardRect.top > horizonY + 45) {
           if (card.classList.contains('card-formed')) {
-            card.classList.remove('card-formed');
+            card.classList.remove('card-formed', 'card-forming');
             if (cardInner) {
               cardInner.classList.remove('tilting');
               cardInner.style.transform = '';
@@ -2279,16 +2320,23 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mousemove', e => {
       if (!card.classList.contains('card-formed') || window.innerWidth <= 860) return;
 
+      // Immediately enable instant tracking mode before paint
+      cardInner.classList.add('tilting');
+      arm.classList.add('stretching');
+
+      const clientX = e.clientX;
+      const clientY = e.clientY;
+
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        cardInner.classList.add('tilting');
-        arm.classList.add('stretching');
+        // Stable calculation using static card wrapper rect (eliminates oscillating feedback jitter)
+        const rect = card.getBoundingClientRect();
+        const halfW = rect.width / 2;
+        const halfH = rect.height / 2;
+        const x = Math.max(-1, Math.min(1, (clientX - (rect.left + halfW)) / halfW));
+        const y = Math.max(-1, Math.min(1, (clientY - (rect.top + halfH)) / halfH));
 
-        const rect = cardInner.getBoundingClientRect();
-        const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-        const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-
-        // Increased cursor reaction sensitivity: more dynamic 3D tilt & responsive elevation
+        // Dynamic 3D tilt & responsive elevation
         const tiltX = y * -7;
         const tiltY = x * 7;
         const translateY = -8 - (Math.abs(x) + Math.abs(y)) * 2;
@@ -2332,7 +2380,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    card.addEventListener('mouseleave', () => {
+    card.addEventListener('mouseleave', e => {
+      const rect = card.getBoundingClientRect();
+      if (
+        e &&
+        e.clientX >= rect.left - 4 &&
+        e.clientX <= rect.right + 4 &&
+        e.clientY >= rect.top - 18 &&
+        e.clientY <= rect.bottom + 4
+      ) {
+        return; // Guard against false exit when card is elevated in 3D
+      }
       if (rafId) cancelAnimationFrame(rafId);
       cardInner.classList.remove('tilting');
       arm.classList.remove('stretching');
