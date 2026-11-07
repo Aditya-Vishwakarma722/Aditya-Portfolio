@@ -666,6 +666,10 @@
     justify-content: center;
     pointer-events: none;
     will-change: transform, opacity;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                opacity 0.3s ease;
   }
   .card-branch-node::after {
     content: '';
@@ -2278,14 +2282,18 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (cardRect.top > horizonY + 45) {
           if (card.classList.contains('card-formed')) {
             card.classList.remove('card-formed', 'card-forming');
-            if (cardInner) {
-              cardInner.classList.remove('tilting');
-              cardInner.style.transform = '';
-            }
-            if (arm) {
-              arm.classList.remove('stretching');
-              arm.style.width = '';
-              arm.style.transform = '';
+            if (card._cancelHover) {
+              card._cancelHover();
+            } else {
+              if (cardInner) {
+                cardInner.classList.remove('tilting');
+                cardInner.style.transform = '';
+              }
+              if (arm) {
+                arm.classList.remove('stretching');
+                arm.style.width = '';
+                arm.style.transform = '';
+              }
             }
           }
         }
@@ -2306,7 +2314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollFormation();
   }
 
-  // Interactive 3D card tilt with stretching branch arm anchored to the main spine
+  // Interactive 3D card tilt with fluid inertial physics & stretching branch arm
   const masonryCards = document.querySelectorAll('.masonry-card');
   masonryCards.forEach(card => {
     const cardInner = card.querySelector('.card-interactive');
@@ -2315,69 +2323,129 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!cardInner || !arm || !node) return;
 
     const isLeftCol = card.closest('.left-col') !== null;
+    let isHovered = false;
     let rafId = null;
+
+    let targetTiltX = 0;
+    let targetTiltY = 0;
+    let targetTranslateY = 0;
+
+    let currentTiltX = 0;
+    let currentTiltY = 0;
+    let currentTranslateY = 0;
+
+    const LERP_FACTOR = 0.12; // Luxury Apple/Linear inertial damping
+
+    const updatePhysics = () => {
+      // Smoothly interpolate current transform values towards targets
+      currentTiltX += (targetTiltX - currentTiltX) * LERP_FACTOR;
+      currentTiltY += (targetTiltY - currentTiltY) * LERP_FACTOR;
+      currentTranslateY += (targetTranslateY - currentTranslateY) * LERP_FACTOR;
+
+      // When cursor has left and values have settled near 0, cleanly stop loop & clear inline styles
+      if (!isHovered && 
+          Math.abs(currentTiltX) < 0.04 && 
+          Math.abs(currentTiltY) < 0.04 && 
+          Math.abs(currentTranslateY) < 0.04) {
+        currentTiltX = 0;
+        currentTiltY = 0;
+        currentTranslateY = 0;
+        cardInner.style.transform = '';
+        arm.style.width = '';
+        arm.style.transform = '';
+        cardInner.classList.remove('tilting');
+        arm.classList.remove('stretching');
+        rafId = null;
+        return;
+      }
+
+      // Apply interpolated 3D transform to card
+      cardInner.style.transform = `translateY(${currentTranslateY.toFixed(2)}px) perspective(850px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+
+      // Dynamic attachment point on card edge tracked via joint
+      const joint = cardInner.querySelector('.card-branch-joint');
+      const jRect = joint ? joint.getBoundingClientRect() : null;
+      const nodeRect = node.getBoundingClientRect();
+      const nodeX = nodeRect.left + nodeRect.width / 2;
+      const nodeY = nodeRect.top + nodeRect.height / 2;
+
+      let attachX, attachY;
+      if (jRect) {
+        attachX = isLeftCol ? jRect.right : jRect.left;
+        attachY = jRect.top + jRect.height / 2;
+      } else {
+        const innerRect = cardInner.getBoundingClientRect();
+        const baseFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
+        attachY = innerRect.top + (1.8 * baseFontSize);
+        attachX = isLeftCol ? innerRect.right : innerRect.left;
+      }
+
+      const dx = attachX - nodeX;
+      const dy = attachY - nodeY;
+      const dist = Math.hypot(dx, dy);
+      const reachDist = dist + 6;
+
+      if (isLeftCol) {
+        const angle = Math.atan2(-dy, -dx) * (180 / Math.PI);
+        arm.style.width = `${reachDist.toFixed(2)}px`;
+        arm.style.transform = `rotate(${angle.toFixed(2)}deg)`;
+      } else {
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        arm.style.width = `${reachDist.toFixed(2)}px`;
+        arm.style.transform = `rotate(${angle.toFixed(2)}deg)`;
+      }
+
+      rafId = requestAnimationFrame(updatePhysics);
+    };
+
+    const startPhysics = () => {
+      cardInner.classList.add('tilting');
+      arm.classList.add('stretching');
+      if (!rafId) {
+        rafId = requestAnimationFrame(updatePhysics);
+      }
+    };
+
+    card._cancelHover = () => {
+      isHovered = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      currentTiltX = 0;
+      currentTiltY = 0;
+      currentTranslateY = 0;
+      targetTiltX = 0;
+      targetTiltY = 0;
+      targetTranslateY = 0;
+      cardInner.classList.remove('tilting');
+      arm.classList.remove('stretching');
+      cardInner.style.transform = '';
+      arm.style.width = '';
+      arm.style.transform = '';
+    };
+
+    card.addEventListener('mouseenter', () => {
+      if (!card.classList.contains('card-formed') || window.innerWidth <= 860) return;
+      isHovered = true;
+      startPhysics();
+    });
 
     card.addEventListener('mousemove', e => {
       if (!card.classList.contains('card-formed') || window.innerWidth <= 860) return;
+      isHovered = true;
 
-      // Immediately enable instant tracking mode before paint
-      cardInner.classList.add('tilting');
-      arm.classList.add('stretching');
+      const rect = card.getBoundingClientRect();
+      const halfW = rect.width / 2;
+      const halfH = rect.height / 2;
+      const x = Math.max(-1, Math.min(1, (e.clientX - (rect.left + halfW)) / halfW));
+      const y = Math.max(-1, Math.min(1, (e.clientY - (rect.top + halfH)) / halfH));
 
-      const clientX = e.clientX;
-      const clientY = e.clientY;
+      targetTiltX = y * -7;
+      targetTiltY = x * 7;
+      targetTranslateY = -8 - (Math.abs(x) + Math.abs(y)) * 2;
 
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        // Stable calculation using static card wrapper rect (eliminates oscillating feedback jitter)
-        const rect = card.getBoundingClientRect();
-        const halfW = rect.width / 2;
-        const halfH = rect.height / 2;
-        const x = Math.max(-1, Math.min(1, (clientX - (rect.left + halfW)) / halfW));
-        const y = Math.max(-1, Math.min(1, (clientY - (rect.top + halfH)) / halfH));
-
-        // Dynamic 3D tilt & responsive elevation
-        const tiltX = y * -7;
-        const tiltY = x * 7;
-        const translateY = -8 - (Math.abs(x) + Math.abs(y)) * 2;
-        cardInner.style.transform = `translateY(${translateY}px) perspective(850px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-        // Fixed spine node center position
-        const nodeRect = node.getBoundingClientRect();
-        const nodeX = nodeRect.left + nodeRect.width / 2;
-        const nodeY = nodeRect.top + nodeRect.height / 2;
-
-        // Dynamic attachment point on card edge tracked via joint
-        const joint = cardInner.querySelector('.card-branch-joint');
-        const jRect = joint ? joint.getBoundingClientRect() : null;
-
-        let attachX, attachY;
-        if (jRect) {
-          attachX = isLeftCol ? jRect.right : jRect.left;
-          attachY = jRect.top + jRect.height / 2;
-        } else {
-          const innerRect = cardInner.getBoundingClientRect();
-          const baseFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
-          attachY = innerRect.top + (1.8 * baseFontSize);
-          attachX = isLeftCol ? innerRect.right : innerRect.left;
-        }
-
-        const dx = attachX - nodeX;
-        const dy = attachY - nodeY;
-        const dist = Math.hypot(dx, dy);
-        // Overlap by 6px so the thread passes seamlessly underneath the card's outer border without any gap
-        const reachDist = dist + 6;
-
-        if (isLeftCol) {
-          const angle = Math.atan2(-dy, -dx) * (180 / Math.PI);
-          arm.style.width = `${reachDist}px`;
-          arm.style.transform = `rotate(${angle}deg)`;
-        } else {
-          const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-          arm.style.width = `${reachDist}px`;
-          arm.style.transform = `rotate(${angle}deg)`;
-        }
-      });
+      startPhysics();
     });
 
     card.addEventListener('mouseleave', e => {
@@ -2391,12 +2459,11 @@ document.addEventListener('DOMContentLoaded', () => {
       ) {
         return; // Guard against false exit when card is elevated in 3D
       }
-      if (rafId) cancelAnimationFrame(rafId);
-      cardInner.classList.remove('tilting');
-      arm.classList.remove('stretching');
-      cardInner.style.transform = '';
-      arm.style.width = '';
-      arm.style.transform = '';
+      isHovered = false;
+      targetTiltX = 0;
+      targetTiltY = 0;
+      targetTranslateY = 0;
+      // Do not cancel RAF - allow physics loop to smoothly glide back to rest
     });
   });
 });
