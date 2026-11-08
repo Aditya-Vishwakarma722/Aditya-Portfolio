@@ -1074,69 +1074,36 @@
     color: var(--text-secondary);
     margin-bottom: 0.65rem;
   }
-  .lang-meters {
+  .lang-list {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.42rem;
   }
-  .lang-meter-item {
+  .lang-item {
     display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-  .lang-meter-head {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 0.45rem;
     font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
-  .lang-title {
-    font-size: 0.78rem;
+  .lang-name {
     font-weight: 600;
     color: #ffffff;
     letter-spacing: 0.02em;
   }
-  .lang-lvl {
-    font-size: 0.68rem;
-    color: #a4b3d8;
-    letter-spacing: 0.04em;
+  .lang-val {
     font-weight: 500;
+    letter-spacing: 0.03em;
   }
-  .pct {
-    font-weight: 700;
-  }
-  .pct-en {
+  .val-en {
     color: var(--ac);
   }
-  .pct-hi {
+  .val-hi {
     color: var(--ac3);
   }
-  .pct-ja {
-    color: var(--ac2);
-  }
-  .lang-meter-bar {
-    width: 100%;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    overflow: hidden;
-  }
-  .lang-meter-fill {
-    height: 100%;
-    border-radius: 999px;
-    transition: width 0.6s ease;
-  }
-  .fill-en {
-    background: linear-gradient(90deg, #4f7fff, var(--ac));
-    box-shadow: 0 0 8px rgba(136, 170, 255, 0.4);
-  }
-  .fill-hi {
-    background: linear-gradient(90deg, #059669, var(--ac3));
-    box-shadow: 0 0 8px rgba(0, 255, 209, 0.4);
-  }
-  .fill-ja {
-    background: linear-gradient(90deg, #d946ef, var(--ac2));
-    box-shadow: 0 0 8px rgba(255, 92, 122, 0.4);
+  .val-ja {
+    color: #ffa5b9;
   }
 
   /* Repositories in Branch */
@@ -1854,27 +1821,18 @@
 
             <div class="edu-languages-section">
               <div class="edu-lang-label">Languages Known</div>
-              <div class="lang-meters">
-                <div class="lang-meter-item">
-                  <div class="lang-meter-head">
-                    <span class="lang-title">English : 92<span class="pct pct-en">%</span></span>
-                    <span class="lang-lvl">Fluent</span>
-                  </div>
-                  <div class="lang-meter-bar"><div class="lang-meter-fill fill-en" style="width: 92%;"></div></div>
+              <div class="lang-list">
+                <div class="lang-item">
+                  <span class="lang-name">English :</span>
+                  <span class="lang-val val-en">Fluent</span>
                 </div>
-                <div class="lang-meter-item">
-                  <div class="lang-meter-head">
-                    <span class="lang-title">Hindi : 98<span class="pct pct-hi">%</span></span>
-                    <span class="lang-lvl">Native</span>
-                  </div>
-                  <div class="lang-meter-bar"><div class="lang-meter-fill fill-hi" style="width: 98%;"></div></div>
+                <div class="lang-item">
+                  <span class="lang-name">Hindi :</span>
+                  <span class="lang-val val-hi">Native</span>
                 </div>
-                <div class="lang-meter-item">
-                  <div class="lang-meter-head">
-                    <span class="lang-title">Japanese : 20<span class="pct pct-ja">%</span></span>
-                    <span class="lang-lvl">Beginner</span>
-                  </div>
-                  <div class="lang-meter-bar"><div class="lang-meter-fill fill-ja" style="width: 20%;"></div></div>
+                <div class="lang-item" title="Prepared for JLPT N5 · Appearing for certification soon">
+                  <span class="lang-name">Japanese :</span>
+                  <span class="lang-val val-ja">JLPT N5 Candidate</span>
                 </div>
               </div>
             </div>

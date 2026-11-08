@@ -87,12 +87,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 .sidebar-stat:last-child{border-bottom:none}
 .sidebar-stat-label{color:var(--muted);font-family:var(--mono);font-size:0.7rem}
 .sidebar-stat-val{color:var(--text);font-weight:600;font-size:0.8rem}
-.lang-bar{margin-bottom:0.9rem}
-.lang-bar-top{display:flex;justify-content:space-between;font-size:0.72rem;margin-bottom:0.4rem}
-.lang-bar-top span:first-child{color:var(--text)}
-.lang-bar-top span:last-child{color:var(--muted);font-family:var(--mono)}
-.lang-track{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
-.lang-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan2),var(--cyan))}
+.lang-row{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;margin-bottom:0.6rem;font-family:var(--mono)}
+.lang-row:last-child{margin-bottom:0}
+.lang-name{color:var(--text);font-weight:600}
+.lang-val{color:var(--cyan);font-weight:500}
 .skill-pill{display:inline-block;padding:0.25rem 0.6rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;font-size:0.65rem;color:var(--muted);font-family:var(--mono);margin:0.2rem;transition:all 0.2s;cursor:default}
 .skill-pill:hover{border-color:var(--cyan);color:var(--cyan)}
 .skill-pill.highlight{border-color:rgba(6,182,212,0.25);color:var(--cyan);background:rgba(6,182,212,0.06)}
@@ -223,17 +221,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 
     <div class="sidebar-card">
       <div class="sidebar-label">languages known</div>
-      <div class="lang-bar">
-        <div class="lang-bar-top"><span>English</span><span>Fluent</span></div>
-        <div class="lang-track"><div class="lang-fill" style="width:92%"></div></div>
-      </div>
-      <div class="lang-bar">
-        <div class="lang-bar-top"><span>Hindi</span><span>Native</span></div>
-        <div class="lang-track"><div class="lang-fill" style="width:98%"></div></div>
-      </div>
-      <div class="lang-bar">
-        <div class="lang-bar-top"><span>Japanese</span><span>Beginner</span></div>
-        <div class="lang-track"><div class="lang-fill" style="width:18%"></div></div>
+      <div class="lang-list">
+        <div class="lang-row"><span class="lang-name">English :</span> <span class="lang-val">Fluent</span></div>
+        <div class="lang-row"><span class="lang-name">Hindi :</span> <span class="lang-val">Native</span></div>
+        <div class="lang-row" title="Prepared for JLPT N5 · Appearing for certification soon"><span class="lang-name">Japanese :</span> <span class="lang-val">JLPT N5 Candidate</span></div>
       </div>
     </div>
 
