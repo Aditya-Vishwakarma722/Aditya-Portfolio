@@ -1219,7 +1219,37 @@
   /* FOOTER */
   footer { text-align: center; padding: 2.5rem; color: var(--text-secondary); font-size: 0.82rem; border-top: 1px solid var(--glass-border); margin-top: 2rem; }
 
-  /* ── SKILLS SUB-THREAD SYSTEM (In-Timeline Dynamic Branching) ── */
+  /* ── 0. OPENING DISSOLVE TRANSITION (Smooth exit of non-skills cards) ── */
+  .thread-masonry-wrapper.skills-opening .left-col .masonry-card,
+  .thread-masonry-wrapper.skills-opening .right-col .masonry-card:not(#skills-element-box) {
+    opacity: 0 !important;
+    transform: scale(0.95) translateY(-14px) !important;
+    filter: blur(4px) !important;
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), filter 0.22s ease !important;
+    pointer-events: none !important;
+  }
+  .thread-masonry-wrapper.skills-opening .thread-spine-track,
+  .thread-masonry-wrapper.skills-opening .thread-spine-fill,
+  .thread-masonry-wrapper.skills-opening .thread-start-node,
+  .thread-masonry-wrapper.skills-opening .thread-end-node {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease !important;
+  }
+  .thread-masonry-wrapper.skills-opening #skills-element-box .card-interactive {
+    border-color: var(--ac);
+    box-shadow: 0 0 32px rgba(136, 170, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  .skills-explore-btn.btn-pulse {
+    animation: btnPulseGlow 0.4s ease;
+  }
+  @keyframes btnPulseGlow {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); box-shadow: 0 0 16px var(--ac3); }
+    100% { transform: scale(1); }
+  }
+
+  /* ── 1. ACTIVE SUB-THREAD MODE ── */
   .thread-masonry-wrapper.skills-mode-active {
     display: flex;
     flex-direction: row;
@@ -1228,7 +1258,7 @@
     position: relative;
   }
 
-  /* 1. Main Spine shifts left */
+  /* Main Spine shifts left */
   .thread-masonry-wrapper.skills-mode-active .thread-spine-track,
   .thread-masonry-wrapper.skills-mode-active .thread-spine-fill,
   .thread-masonry-wrapper.skills-mode-active .thread-start-node,
@@ -1238,7 +1268,7 @@
     transition: none !important;
   }
 
-  /* 2. Hide all other elements */
+  /* Hide other elements in active mode */
   .thread-masonry-wrapper.skills-mode-active .left-col {
     display: none !important;
   }
@@ -1246,7 +1276,7 @@
     display: none !important;
   }
 
-  /* 3. The Root Anchor Element (#skills-element-box) */
+  /* The Root Anchor Element (#skills-element-box) */
   .thread-masonry-wrapper.skills-mode-active .right-col {
     width: 360px;
     flex-shrink: 0;
@@ -1258,6 +1288,17 @@
     position: sticky;
     top: 5.5rem;
     z-index: 10;
+    animation: skillsBoxDock 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes skillsBoxDock {
+    0% {
+      opacity: 0.8;
+      transform: translateX(-16px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
   .thread-masonry-wrapper.skills-mode-active #skills-element-box .card-interactive {
     border-color: var(--ac);
@@ -1303,10 +1344,10 @@
   }
   .thread-masonry-wrapper.skills-mode-active .tab-bridge-node {
     transform: translate(50%, -50%) scale(1);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) 0.04s;
   }
 
-  /* 4. Glowing Bridge Thread physically constructing outward from the tab */
+  /* Glowing Bridge Thread physically constructing outward from the tab */
   .skills-bridge-thread {
     position: absolute;
     top: 3.2rem;
@@ -1323,7 +1364,7 @@
   }
   .thread-masonry-wrapper.skills-mode-active .skills-bridge-thread {
     transform: scaleX(1);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.04s;
   }
   .bridge-traveling-bead {
     position: absolute;
@@ -1338,7 +1379,7 @@
     opacity: 0;
   }
   .thread-masonry-wrapper.skills-mode-active .bridge-traveling-bead {
-    animation: bridgeTravel 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+    animation: bridgeTravel 0.34s cubic-bezier(0.16, 1, 0.3, 1) 0.04s forwards;
   }
   @keyframes bridgeTravel {
     0% { left: 0%; opacity: 1; transform: translate(-50%, -50%) scale(0.6); }
@@ -1346,7 +1387,7 @@
     100% { left: 100%; opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
   }
 
-  /* 5. The Sub-Thread Container & Canvas */
+  /* The Sub-Thread Container & Canvas */
   .skills-subthread-system {
     display: none;
     flex: 1;
@@ -1370,13 +1411,13 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 1.5rem;
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(-8px);
     transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-header {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.35s ease 0.15s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    transition: opacity 0.32s ease 0.16s, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
   }
   .skills-tree-badge {
     display: inline-flex;
@@ -1486,7 +1527,7 @@
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-fill {
     height: 100%;
-    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+    transition: height 0.48s cubic-bezier(0.2, 0.9, 0.3, 1) 0.26s;
   }
   /* Traveling Head Dot on New Spine */
   .skills-tree-spine-fill::after {
@@ -1505,7 +1546,7 @@
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-fill::after {
     opacity: 1;
-    transition: opacity 0.2s ease 0.28s;
+    transition: opacity 0.2s ease 0.26s;
   }
   .skills-tree-spine-top,
   .skills-tree-spine-bottom {
@@ -1524,7 +1565,7 @@
   .skills-tree-spine-bottom { bottom: -4px; }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-top {
     transform: translateX(-50%) scale(1);
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-bottom {
     transform: translateX(-50%) scale(1);
@@ -1542,9 +1583,17 @@
   .skills-category-card {
     position: relative;
     opacity: 0;
-    transform: translateY(16px) scale(0.96);
     transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
   }
+  /* Left column categories (1, 3, 5): slide in from left */
+  .skills-categories-grid .skills-category-card:nth-child(odd) {
+    transform: translateX(-24px) scale(0.96);
+  }
+  /* Right column categories (2, 4, 6): slide in from right */
+  .skills-categories-grid .skills-category-card:nth-child(even) {
+    transform: translateX(24px) scale(0.96);
+  }
+
   .category-card-inner {
     border-radius: var(--radius);
     padding: 1.35rem 1.45rem;
@@ -1646,32 +1695,32 @@
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(1),
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(2) {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    transition: opacity 0.35s ease 0.42s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.42s;
+    transform: translateX(0) scale(1);
+    transition: opacity 0.36s ease 0.38s, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.38s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(1) .category-branch-arm,
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(2) .category-branch-arm {
     transform: scaleX(1);
     opacity: 1;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.36s, opacity 0.2s ease 0.36s;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.34s, opacity 0.2s ease 0.34s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(1) .category-branch-node {
     transform: translate(50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.40s, opacity 0.2s ease 0.40s;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s, opacity 0.2s ease 0.38s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(2) .category-branch-node {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.40s, opacity 0.2s ease 0.40s;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s, opacity 0.2s ease 0.38s;
   }
 
   /* Tier 2: Cards 3 & 4 (Databases, Core CS) */
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(3),
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(4) {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    transition: opacity 0.35s ease 0.54s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.54s;
+    transform: translateX(0) scale(1);
+    transition: opacity 0.36s ease 0.52s, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.52s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(3) .category-branch-arm,
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(4) .category-branch-arm {
@@ -1694,27 +1743,27 @@
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(5),
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(6) {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    transition: opacity 0.35s ease 0.66s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.66s;
+    transform: translateX(0) scale(1);
+    transition: opacity 0.36s ease 0.66s, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.66s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(5) .category-branch-arm,
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(6) .category-branch-arm {
     transform: scaleX(1);
     opacity: 1;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.60s, opacity 0.2s ease 0.60s;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.62s, opacity 0.2s ease 0.62s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(5) .category-branch-node {
     transform: translate(50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.64s, opacity 0.2s ease 0.64s;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.66s, opacity 0.2s ease 0.66s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(6) .category-branch-node {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.64s, opacity 0.2s ease 0.64s;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.66s, opacity 0.2s ease 0.66s;
   }
 
-  /* ── RETRACTING STATE (Instant, fluent reverse on return) ── */
+  /* ── 2. RETRACTING STATE (Instant, fluent reverse on return) ── */
   .thread-masonry-wrapper.skills-retracting .skills-category-card,
   .thread-masonry-wrapper.skills-retracting .category-branch-arm,
   .thread-masonry-wrapper.skills-retracting .category-branch-node,
@@ -1726,9 +1775,13 @@
   .thread-masonry-wrapper.skills-retracting .skills-tree-header {
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) 0s !important;
   }
-  .thread-masonry-wrapper.skills-retracting .skills-category-card {
+  .thread-masonry-wrapper.skills-retracting .skills-category-card:nth-child(odd) {
     opacity: 0 !important;
-    transform: translateY(12px) scale(0.96) !important;
+    transform: translateX(-20px) scale(0.96) !important;
+  }
+  .thread-masonry-wrapper.skills-retracting .skills-category-card:nth-child(even) {
+    opacity: 0 !important;
+    transform: translateX(20px) scale(0.96) !important;
   }
   .thread-masonry-wrapper.skills-retracting .category-branch-arm {
     transform: scaleX(0) !important;
@@ -1753,7 +1806,32 @@
   }
   .thread-masonry-wrapper.skills-retracting .skills-tree-header {
     opacity: 0 !important;
-    transform: translateY(8px) !important;
+    transform: translateY(-8px) !important;
+  }
+
+  /* ── 3. RESTORING STATE (Smooth fade and glide back for main timeline cards) ── */
+  .thread-masonry-wrapper.skills-restoring .left-col .masonry-card,
+  .thread-masonry-wrapper.skills-restoring .right-col .masonry-card:not(#skills-element-box) {
+    animation: timelineCardsRestore 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes timelineCardsRestore {
+    0% {
+      opacity: 0;
+      transform: scale(0.96) translateY(14px);
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+  }
+  .thread-masonry-wrapper.skills-restoring .thread-spine-track,
+  .thread-masonry-wrapper.skills-restoring .thread-spine-fill,
+  .thread-masonry-wrapper.skills-restoring .thread-start-node,
+  .thread-masonry-wrapper.skills-restoring .thread-end-node {
+    opacity: 1 !important;
+    transition: opacity 0.32s ease !important;
   }
 
   .skills-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
@@ -2817,8 +2895,14 @@ document.addEventListener('DOMContentLoaded', () => {
     isSubthreadBusy = true;
 
     if (isActivating) {
-      threadMasonryWrapper.classList.add('skills-mode-active');
-      if (skillsSubthreadSystem) skillsSubthreadSystem.setAttribute('aria-hidden', 'false');
+      // Phase 1: Fluent dissolve of other timeline elements
+      threadMasonryWrapper.classList.add('skills-opening');
+
+      const btn = openSkillsFromBox;
+      if (btn) {
+        btn.classList.add('btn-pulse');
+        setTimeout(() => btn.classList.remove('btn-pulse'), 400);
+      }
 
       const btnSpan = openSkillsFromBox ? openSkillsFromBox.querySelector('.explore-btn-text') : null;
       const btnArrow = openSkillsFromBox ? openSkillsFromBox.querySelector('.arrow') : null;
@@ -2835,9 +2919,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Phase 2: After dissolve completes (220ms), mount active subthread mode and construct
       setTimeout(() => {
-        isSubthreadBusy = false;
-      }, 750);
+        threadMasonryWrapper.classList.remove('skills-opening');
+        threadMasonryWrapper.classList.add('skills-mode-active');
+        if (skillsSubthreadSystem) skillsSubthreadSystem.setAttribute('aria-hidden', 'false');
+
+        setTimeout(() => {
+          isSubthreadBusy = false;
+        }, 850);
+      }, 220);
     } else {
       // Rapid, fluent retract animation
       threadMasonryWrapper.classList.add('skills-retracting');
@@ -2851,10 +2942,16 @@ document.addEventListener('DOMContentLoaded', () => {
         threadMasonryWrapper.classList.remove('skills-mode-active', 'skills-retracting');
         if (skillsSubthreadSystem) skillsSubthreadSystem.setAttribute('aria-hidden', 'true');
 
+        // Phase 3: Smooth restoration of main timeline cards
+        threadMasonryWrapper.classList.add('skills-restoring');
         const allCards = document.querySelectorAll('.masonry-card');
         allCards.forEach(card => card.classList.add('card-formed'));
-        isSubthreadBusy = false;
-      }, 220);
+
+        setTimeout(() => {
+          threadMasonryWrapper.classList.remove('skills-restoring');
+          isSubthreadBusy = false;
+        }, 320);
+      }, 200);
     }
   };
 
@@ -2920,7 +3017,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ticking = false;
 
     const updateScrollFormation = () => {
-      if (threadWrapper.classList.contains('skills-mode-active')) {
+      if (threadWrapper.classList.contains('skills-mode-active') || threadWrapper.classList.contains('skills-opening')) {
         return;
       }
       const rect = threadWrapper.getBoundingClientRect();
