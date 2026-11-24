@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Aditya Vishwakarma</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Raleway:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <style>
   :root {
     --bg: #090a12;
@@ -20,7 +20,10 @@
     --radius: 16px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { 
+    scroll-behavior: smooth; 
+    -webkit-text-size-adjust: 100%;
+  }
   section[id] { scroll-margin-top: 4.5rem; }
   body {
     font-family: 'Outfit', sans-serif;
@@ -28,6 +31,8 @@
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #colorbends-container {
@@ -35,14 +40,16 @@
     width: 100vw; height: 100vh;
     z-index: -1; pointer-events: none;
     mix-blend-mode: screen; opacity: 0.55;
+    contain: strict;
+    transform: translateZ(0);
   }
 
   /* HEADER (AUTHENTIC & CLASSY) */
   .header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(8, 8, 15, 0.84);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(8, 8, 15, 0.86);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     padding: 0.95rem 2.5rem;
@@ -307,9 +314,9 @@
     align-items: center;
     gap: 0.95rem;
     padding: 0.95rem 1.6rem;
-    background: rgba(10, 12, 24, 0.78);
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    background: rgba(10, 12, 24, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 14px;
     max-width: 700px;
@@ -385,10 +392,10 @@
   .file-list .card {
     flex-direction: row; align-items: center;
     padding: 0.75rem 1.2rem; border-radius: 10px; gap: 1rem;
-    background: rgba(10, 12, 24, 0.78);
+    background: rgba(10, 12, 24, 0.82);
     border: 1px solid rgba(136, 170, 255, 0.22);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
   .file-list .card-icon { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 0; flex-shrink: 0; }
@@ -404,10 +411,10 @@
     display: flex; flex-direction: column;
     text-decoration: none; color: inherit;
     border-radius: var(--radius); padding: 1.5rem;
-    background: rgba(10, 12, 24, 0.78);
+    background: rgba(10, 12, 24, 0.82);
     border: 1px solid rgba(136, 170, 255, 0.22);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     transition: transform 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
     cursor: pointer;
@@ -611,14 +618,17 @@
     position: relative;
     padding: 1.45rem 1.65rem;
     border-radius: var(--radius);
-    background: rgba(10, 12, 24, 0.76);
+    background: rgba(10, 12, 24, 0.80);
     border: 1px solid rgba(136, 170, 255, 0.22);
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    will-change: transform, opacity;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     transform-style: preserve-3d;
     z-index: 3;
+  }
+  .card-interactive.tilting,
+  .masonry-card.card-forming .card-interactive {
+    will-change: transform;
   }
   .card-interactive.tilting,
   .masonry-card .card-interactive.tilting,
@@ -974,9 +984,7 @@
     width: 100%;
     margin-top: 0.9rem;
     padding: 0.55rem 0.9rem;
-    background: rgba(16, 20, 40, 0.78);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    background: rgba(18, 24, 48, 0.92);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 8px;
     color: #b0caff;
@@ -1118,9 +1126,7 @@
     text-decoration: none;
     padding: 0.75rem 0.95rem;
     border-radius: 10px;
-    background: rgba(18, 22, 44, 0.78);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    background: rgba(18, 22, 44, 0.88);
     border: 1px solid rgba(136, 170, 255, 0.22);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     transition: all 0.2s ease;
@@ -1179,9 +1185,7 @@
     width: 100%;
     margin-top: 0.85rem;
     padding: 0.55rem 0.9rem;
-    background: rgba(16, 20, 38, 0.78);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    background: rgba(18, 22, 42, 0.92);
     border: 1px solid rgba(136, 170, 255, 0.28);
     border-radius: 8px;
     color: #f0f3ff;
@@ -1598,9 +1602,9 @@
     border-radius: var(--radius);
     padding: 1.35rem 1.45rem;
     border: 1px solid rgba(136, 170, 255, 0.22);
-    background: rgba(10, 12, 24, 0.78);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(10, 12, 24, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   }
@@ -1967,11 +1971,27 @@
     .right-col .masonry-card .card-interactive {
       transform: translateY(28px) scale(0.97) !important;
       opacity: 0 !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+      transform-style: flat !important;
     }
     .left-col .masonry-card.card-formed .card-interactive,
     .right-col .masonry-card.card-formed .card-interactive {
       transform: none !important;
       opacity: 1 !important;
+    }
+    .category-card-inner {
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+    }
+    .resume-branch-intro,
+    .glass-effect,
+    .file-list .card,
+    .card {
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
     }
     .masonry-col {
       gap: 1.8rem;
@@ -2055,6 +2075,8 @@
     /* Compact, sleek single-line header on phone */
     .header { 
       padding: 0.65rem 1rem; 
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .header-inner { 
       flex-direction: row; 
@@ -2806,9 +2828,9 @@ document.addEventListener('DOMContentLoaded', () => {
   (function initColorBends() {
     const cbContainer = document.getElementById('colorbends-container');
     if (!cbContainer || !window.THREE) return;
-    const MAX_COLORS = 8;
+    const MAX_COLORS = 3;
     const frag = `
-      #define MAX_COLORS ${MAX_COLORS}
+      #define MAX_COLORS 3
       uniform vec2 uCanvas; uniform float uTime; uniform float uSpeed;
       uniform vec2 uRot; uniform int uColorCount; uniform vec3 uColors[MAX_COLORS];
       uniform int uTransparent; uniform float uScale; uniform float uFrequency;
@@ -2827,8 +2849,7 @@ document.addEventListener('DOMContentLoaded', () => {
         q += toward * uMouseInfluence * 0.2;
         vec3 col = vec3(0.0); float a = 1.0;
         vec2 s = q; vec3 sumCol = vec3(0.0); float cover = 0.0;
-        for (int i = 0; i < MAX_COLORS; ++i) {
-          if (i >= uColorCount) break;
+        for (int i = 0; i < 3; ++i) {
           s -= 0.01;
           vec2 r = sin(1.5*(s.yx*uFrequency)+2.0*cos(s*uFrequency));
           float m0 = length(r+sin(5.0*r.y*uFrequency-3.0*t+float(i))/4.0);
@@ -2862,18 +2883,70 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i=0;i<MAX_COLORS;i++) { if(i<parsedColors.length) uColorsArray[i].copy(parsedColors[i]); }
     const material = new THREE.ShaderMaterial({ vertexShader:vert, fragmentShader:frag, uniforms:{ uCanvas:{value:new THREE.Vector2(1,1)},uTime:{value:0},uSpeed:{value:params.speed},uRot:{value:new THREE.Vector2(1,0)},uColorCount:{value:parsedColors.length},uColors:{value:uColorsArray},uTransparent:{value:1},uScale:{value:params.scale},uFrequency:{value:params.frequency},uWarpStrength:{value:params.warpStrength},uPointer:{value:new THREE.Vector2(0,0)},uMouseInfluence:{value:params.mouseInfluence},uParallax:{value:params.parallax},uNoise:{value:params.noise} }, premultipliedAlpha:true, transparent:true });
     const mesh = new THREE.Mesh(geometry,material); scene.add(mesh);
-    const isMobile = window.innerWidth < 768;
-    const renderer = new THREE.WebGLRenderer({antialias:false,powerPreference:'high-performance',alpha:true});
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, isMobile ? 1.0 : 1.25));
-    renderer.setClearColor(0x000000,0);
-    renderer.domElement.style.cssText='width:100%;height:100%;display:block;';
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: false,
+      powerPreference: 'high-performance',
+      alpha: true,
+      depth: false,
+      stencil: false
+    });
+
+    const getTargetDPR = () => (window.innerWidth <= 860 ? 0.6 : Math.min(window.devicePixelRatio || 1, 0.85));
+    renderer.setPixelRatio(getTargetDPR());
+    renderer.setClearColor(0x000000, 0);
+    renderer.domElement.style.cssText = 'width:100%;height:100%;display:block;transform:translateZ(0);';
     cbContainer.appendChild(renderer.domElement);
+
     const clock = new THREE.Clock();
-    let pointerTarget=new THREE.Vector2(0,0), pointerCurrent=new THREE.Vector2(0,0);
-    const handleResize = () => { const w=cbContainer.clientWidth||1,h=cbContainer.clientHeight||1; renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, w<768?1.0:1.25)); renderer.setSize(w,h,false); material.uniforms.uCanvas.value.set(w,h); };
-    handleResize(); window.addEventListener('resize',handleResize,{passive:true});
-    document.addEventListener('mousemove',(e)=>{ const rect=cbContainer.getBoundingClientRect(); pointerTarget.set(((e.clientX-rect.left)/(rect.width||1))*2-1,-(((e.clientY-rect.top)/(rect.height||1))*2-1)); },{passive:true});
-    const loop = () => { if(!document.hidden){ const dt=clock.getDelta(),elapsed=clock.elapsedTime; material.uniforms.uTime.value=elapsed; const deg=(params.rotation%360)+params.autoRotate*elapsed*60,rad=(deg*Math.PI)/180; material.uniforms.uRot.value.set(Math.cos(rad),Math.sin(rad)); pointerCurrent.lerp(pointerTarget,Math.min(1,dt*8)); material.uniforms.uPointer.value.copy(pointerCurrent); renderer.render(scene,camera); } requestAnimationFrame(loop); };
+    let pointerTarget = new THREE.Vector2(0,0), pointerCurrent = new THREE.Vector2(0,0);
+
+    const handleResize = () => {
+      const w = cbContainer.clientWidth || window.innerWidth || 1;
+      const h = cbContainer.clientHeight || window.innerHeight || 1;
+      renderer.setPixelRatio(getTargetDPR());
+      renderer.setSize(w, h, false);
+      material.uniforms.uCanvas.value.set(w, h);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize, { passive: true });
+
+    document.addEventListener('mousemove', (e) => {
+      const w = window.innerWidth || 1;
+      const h = window.innerHeight || 1;
+      pointerTarget.set((e.clientX / w) * 2 - 1, -((e.clientY / h) * 2 - 1));
+    }, { passive: true });
+
+    let isUserScrolling = false;
+    let scrollIdleTimer = null;
+    window.addEventListener('scroll', () => {
+      isUserScrolling = true;
+      clearTimeout(scrollIdleTimer);
+      scrollIdleTimer = setTimeout(() => {
+        isUserScrolling = false;
+      }, 120);
+    }, { passive: true });
+
+    let lastRenderTime = 0;
+    const loop = (currentTime) => {
+      requestAnimationFrame(loop);
+      if (document.hidden) return;
+
+      const isMob = window.innerWidth <= 860;
+      const minInterval = (isUserScrolling || isMob) ? 33 : 24;
+      if (currentTime - lastRenderTime < minInterval) return;
+      lastRenderTime = currentTime;
+
+      const dt = clock.getDelta();
+      const elapsed = clock.elapsedTime;
+      material.uniforms.uTime.value = elapsed;
+      const deg = (params.rotation % 360) + params.autoRotate * elapsed * 60;
+      const rad = (deg * Math.PI) / 180;
+      material.uniforms.uRot.value.set(Math.cos(rad), Math.sin(rad));
+      pointerCurrent.lerp(pointerTarget, Math.min(1, dt * 8));
+      material.uniforms.uPointer.value.copy(pointerCurrent);
+      renderer.render(scene, camera);
+    };
     requestAnimationFrame(loop);
   })();
 
@@ -2885,6 +2958,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const returnFromSkillsBtn = document.getElementById('return-from-skills-btn');
 
   let isSubthreadBusy = false;
+  let measurePositions = null;
+  let updateScrollFormation = null;
 
   const toggleSkillsSubthread = (enable) => {
     if (!threadMasonryWrapper || isSubthreadBusy) return;
@@ -2926,6 +3001,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (skillsSubthreadSystem) skillsSubthreadSystem.setAttribute('aria-hidden', 'false');
 
         setTimeout(() => {
+          if (measurePositions) measurePositions();
           isSubthreadBusy = false;
         }, 850);
       }, 220);
@@ -2949,6 +3025,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
           threadMasonryWrapper.classList.remove('skills-restoring');
+          if (measurePositions) measurePositions();
+          if (updateScrollFormation) updateScrollFormation();
           isSubthreadBusy = false;
         }, 320);
       }, 200);
@@ -3005,6 +3083,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </a>
       `).join('');
+      if (measurePositions) measurePositions();
     } catch (err) {}
   })();
 
@@ -3015,71 +3094,134 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (threadWrapper && threadSpineFill) {
     let ticking = false;
+    let threadTopDoc = 0;
+    let threadHeightDoc = 1;
+    let lastSpineHeight = '';
+    let lastSpineOpacity = '';
 
-    const updateScrollFormation = () => {
+    const cachedCardItems = [];
+
+    // Pre-measure all document-space vertical positions (ZERO forced layout during scroll)
+    measurePositions = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const tRect = threadWrapper.getBoundingClientRect();
+      threadTopDoc = tRect.top + scrollY;
+      threadHeightDoc = tRect.height || 1;
+
+      cachedCardItems.length = 0;
+      allMasonryCards.forEach(card => {
+        const cRect = card.getBoundingClientRect();
+        cachedCardItems.push({
+          card,
+          inner: card.querySelector('.card-interactive'),
+          arm: card.querySelector('.card-branch-arm'),
+          topDoc: cRect.top + scrollY,
+          formed: card.classList.contains('card-formed')
+        });
+      });
+    };
+
+    measurePositions();
+
+    updateScrollFormation = () => {
       if (threadWrapper.classList.contains('skills-mode-active') || threadWrapper.classList.contains('skills-opening')) {
+        ticking = false;
         return;
       }
-      const rect = threadWrapper.getBoundingClientRect();
+
+      const scrollY = window.scrollY || window.pageYOffset || 0;
       const windowHeight = window.innerHeight;
       
       // Horizon where the glowing thread head leads ahead of scroll
       const horizonY = windowHeight * 0.78;
-      const relativeY = horizonY - rect.top;
-      const totalHeight = rect.height;
+      const relativeY = horizonY - (threadTopDoc - scrollY);
       
-      const progress = Math.max(0, Math.min(1, relativeY / totalHeight));
-      threadSpineFill.style.height = `${(progress * 100).toFixed(1)}%`;
-      threadSpineFill.style.opacity = progress <= 0.005 ? '0' : '1';
+      const progress = Math.max(0, Math.min(1, relativeY / threadHeightDoc));
+      const hStr = `${(progress * 100).toFixed(1)}%`;
+      const opStr = progress <= 0.005 ? '0' : '1';
 
-      // Dual scroll-driven formation & retraction
-      allMasonryCards.forEach(card => {
-        const cardRect = card.getBoundingClientRect();
-        const cardInner = card.querySelector('.card-interactive');
-        const arm = card.querySelector('.card-branch-arm');
+      if (hStr !== lastSpineHeight) {
+        lastSpineHeight = hStr;
+        threadSpineFill.style.height = hStr;
+      }
+      if (opStr !== lastSpineOpacity) {
+        lastSpineOpacity = opStr;
+        threadSpineFill.style.opacity = opStr;
+      }
+
+      // Dual scroll-driven formation & retraction using pure algebraic offsets (ZERO layout reads)
+      const formThreshold = horizonY - 10;
+      const retractThreshold = horizonY + 45;
+
+      for (let i = 0; i < cachedCardItems.length; i++) {
+        const item = cachedCardItems[i];
+        const cardCurrentTop = item.topDoc - scrollY;
 
         // Forward Formation (scrolling down): spine head reaches the card's branch node
-        if (cardRect.top <= horizonY - 10) {
-          if (!card.classList.contains('card-formed')) {
-            card.classList.add('card-formed', 'card-forming');
+        if (cardCurrentTop <= formThreshold) {
+          if (!item.formed) {
+            item.formed = true;
+            item.card.classList.add('card-formed', 'card-forming');
             setTimeout(() => {
-              card.classList.remove('card-forming');
+              item.card.classList.remove('card-forming');
             }, 500);
           }
         } 
         // Dual Reverse Retraction (scrolling up): card drops below horizon with hysteresis
-        else if (cardRect.top > horizonY + 45) {
-          if (card.classList.contains('card-formed')) {
-            card.classList.remove('card-formed', 'card-forming');
-            if (card._cancelHover) {
-              card._cancelHover();
+        else if (cardCurrentTop > retractThreshold) {
+          if (item.formed) {
+            item.formed = false;
+            item.card.classList.remove('card-formed', 'card-forming');
+            if (item.card._cancelHover) {
+              item.card._cancelHover();
             } else {
-              if (cardInner) {
-                cardInner.classList.remove('tilting');
-                cardInner.style.transform = '';
+              if (item.inner) {
+                item.inner.classList.remove('tilting');
+                item.inner.style.transform = '';
               }
-              if (arm) {
-                arm.classList.remove('stretching');
-                arm.style.width = '';
-                arm.style.transform = '';
+              if (item.arm) {
+                item.arm.classList.remove('stretching');
+                item.arm.style.width = '';
+                item.arm.style.transform = '';
               }
             }
           }
         }
-      });
+      }
 
       ticking = false;
     };
 
     const onScroll = () => {
       if (!ticking) {
-        requestAnimationFrame(updateScrollFormation);
         ticking = true;
+        requestAnimationFrame(updateScrollFormation);
       }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        measurePositions();
+        updateScrollFormation();
+      }, 100);
+    }, { passive: true });
+
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        measurePositions();
+        updateScrollFormation();
+      }, 150);
+    }, { passive: true });
+
+    window.addEventListener('load', () => {
+      measurePositions();
+      updateScrollFormation();
+    });
+
     updateScrollFormation();
   }
 
@@ -3100,6 +3242,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTiltX = 0;
     let currentTiltY = 0;
     let currentTranslateY = 0;
+
+    let cachedCardRect = null;
+    let cachedNodeX = 0;
+    let cachedNodeY = 0;
 
     const LERP_FACTOR = 0.12; // Luxury Apple/Linear inertial damping
 
@@ -3122,6 +3268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arm.classList.remove('stretching');
         card.classList.remove('card-hovered');
         rafId = null;
+        cachedCardRect = null;
         return;
       }
 
@@ -3129,9 +3276,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const joint = cardInner.querySelector('.card-branch-joint');
       const jRect = joint ? joint.getBoundingClientRect() : null;
-      const nodeRect = node.getBoundingClientRect();
-      const nodeX = nodeRect.left + nodeRect.width / 2;
-      const nodeY = nodeRect.top + nodeRect.height / 2;
+      const nodeX = cachedNodeX;
+      const nodeY = cachedNodeY;
 
       let attachX, attachY;
       if (jRect) {
@@ -3166,6 +3312,11 @@ document.addEventListener('DOMContentLoaded', () => {
       cardInner.classList.add('tilting');
       arm.classList.add('stretching');
       card.classList.add('card-hovered');
+
+      const nodeRect = node.getBoundingClientRect();
+      cachedNodeX = nodeRect.left + nodeRect.width / 2;
+      cachedNodeY = nodeRect.top + nodeRect.height / 2;
+
       if (!rafId) {
         rafId = requestAnimationFrame(updatePhysics);
       }
@@ -3183,6 +3334,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetTiltX = 0;
       targetTiltY = 0;
       targetTranslateY = 0;
+      cachedCardRect = null;
       cardInner.classList.remove('tilting');
       arm.classList.remove('stretching');
       card.classList.remove('card-hovered');
@@ -3207,14 +3359,15 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseenter', () => {
       if (!canInteract()) return;
       isHovered = true;
+      cachedCardRect = card.getBoundingClientRect();
       startPhysics();
-    });
+    }, { passive: true });
 
     card.addEventListener('mousemove', e => {
       if (!canInteract()) return;
       isHovered = true;
 
-      const rect = card.getBoundingClientRect();
+      const rect = cachedCardRect || card.getBoundingClientRect();
       const halfW = rect.width / 2;
       const halfH = rect.height / 2;
       const x = Math.max(-1, Math.min(1, (e.clientX - (rect.left + halfW)) / halfW));
@@ -3225,10 +3378,11 @@ document.addEventListener('DOMContentLoaded', () => {
       targetTranslateY = -8 - (Math.abs(x) + Math.abs(y)) * 2;
 
       startPhysics();
-    });
+    }, { passive: true });
 
     card.addEventListener('mouseleave', e => {
-      const rect = card.getBoundingClientRect();
+      const rect = cachedCardRect || card.getBoundingClientRect();
+      cachedCardRect = null;
       if (
         e &&
         e.clientX >= rect.left - 4 &&
@@ -3242,7 +3396,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetTiltX = 0;
       targetTiltY = 0;
       targetTranslateY = 0;
-    });
+    }, { passive: true });
   }
 
   // Bind Main Timeline cards
