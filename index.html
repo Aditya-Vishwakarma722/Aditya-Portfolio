@@ -2825,6 +2825,27 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
+  let isUserScrolling = false;
+  let scrollIdleTimer = null;
+
+  const cancelAllCardHovers = () => {
+    const allCards = document.querySelectorAll('.masonry-card, .skills-category-card');
+    allCards.forEach(c => {
+      if (typeof c._cancelHover === 'function') {
+        c._cancelHover();
+      }
+    });
+  };
+
+  window.addEventListener('scroll', () => {
+    isUserScrolling = true;
+    cancelAllCardHovers();
+    clearTimeout(scrollIdleTimer);
+    scrollIdleTimer = setTimeout(() => {
+      isUserScrolling = false;
+    }, 120);
+  }, { passive: true });
+
   (function initColorBends() {
     const cbContainer = document.getElementById('colorbends-container');
     if (!cbContainer || !window.THREE) return;
@@ -2917,16 +2938,6 @@ document.addEventListener('DOMContentLoaded', () => {
       pointerTarget.set((e.clientX / w) * 2 - 1, -((e.clientY / h) * 2 - 1));
     }, { passive: true });
 
-    let isUserScrolling = false;
-    let scrollIdleTimer = null;
-    window.addEventListener('scroll', () => {
-      isUserScrolling = true;
-      clearTimeout(scrollIdleTimer);
-      scrollIdleTimer = setTimeout(() => {
-        isUserScrolling = false;
-      }, 120);
-    }, { passive: true });
-
     let lastRenderTime = 0;
     const loop = (currentTime) => {
       requestAnimationFrame(loop);
@@ -2970,6 +2981,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isSubthreadBusy = true;
 
     if (isActivating) {
+      cancelAllCardHovers();
       // Phase 1: Fluent dissolve of other timeline elements
       threadMasonryWrapper.classList.add('skills-opening');
 
@@ -3006,6 +3018,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 850);
       }, 220);
     } else {
+      cancelAllCardHovers();
       // Rapid, fluent retract animation
       threadMasonryWrapper.classList.add('skills-retracting');
 
@@ -3243,9 +3256,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTiltY = 0;
     let currentTranslateY = 0;
 
-    let cachedCardRect = null;
-    let cachedNodeX = 0;
-    let cachedNodeY = 0;
+    let baseArmWidth = 0;
+    const getBaseArmWidth = () => {
+      if (!baseArmWidth) {
+        const w = parseFloat(window.getComputedStyle(arm).width);
+        baseArmWidth = (w && w > 10) ? w : (card.classList.contains('skills-category-card') ? 36.8 : 76);
+      }
+      return baseArmWidth;
+    };
 
     const LERP_FACTOR = 0.12; // Luxury Apple/Linear inertial damping
 
@@ -3268,42 +3286,29 @@ document.addEventListener('DOMContentLoaded', () => {
         arm.classList.remove('stretching');
         card.classList.remove('card-hovered');
         rafId = null;
-        cachedCardRect = null;
         return;
       }
 
       cardInner.style.transform = `translateY(${currentTranslateY.toFixed(2)}px) perspective(850px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
 
-      const joint = cardInner.querySelector('.card-branch-joint');
-      const jRect = joint ? joint.getBoundingClientRect() : null;
-      const nodeX = cachedNodeX;
-      const nodeY = cachedNodeY;
+      // Pure local geometric tilt tracking: zero getBoundingClientRect, zero scroll desynchronization
+      const bw = getBaseArmWidth();
+      const dy = Math.max(-12, Math.min(12, currentTranslateY));
+      const dist = Math.hypot(bw, dy);
+      const reachDist = Math.max(bw - 1, Math.min(bw + 6, dist));
 
-      let attachX, attachY;
-      if (jRect) {
-        attachX = isLeftCol ? jRect.right : jRect.left;
-        attachY = jRect.top + jRect.height / 2;
-      } else {
-        const innerRect = cardInner.getBoundingClientRect();
-        const baseFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
-        attachY = innerRect.top + (1.8 * baseFontSize);
-        attachX = isLeftCol ? innerRect.right : innerRect.left;
-      }
-
-      const dx = attachX - nodeX;
-      const dy = attachY - nodeY;
-      const dist = Math.hypot(dx, dy);
-      const reachDist = dist + 6;
-
+      let angle;
       if (isLeftCol) {
-        const angle = Math.atan2(-dy, -dx) * (180 / Math.PI);
-        arm.style.width = `${reachDist.toFixed(2)}px`;
-        arm.style.transform = `rotate(${angle.toFixed(2)}deg)`;
+        // Pivot at node on right edge; left end tilts up with lifted card
+        angle = Math.atan2(-dy, bw) * (180 / Math.PI);
       } else {
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-        arm.style.width = `${reachDist.toFixed(2)}px`;
-        arm.style.transform = `rotate(${angle.toFixed(2)}deg)`;
+        // Pivot at node on left edge; right end tilts up with lifted card
+        angle = Math.atan2(dy, bw) * (180 / Math.PI);
       }
+      const safeAngle = Math.max(-10, Math.min(10, angle));
+
+      arm.style.width = `${reachDist.toFixed(2)}px`;
+      arm.style.transform = `rotate(${safeAngle.toFixed(2)}deg)`;
 
       rafId = requestAnimationFrame(updatePhysics);
     };
@@ -3312,10 +3317,6 @@ document.addEventListener('DOMContentLoaded', () => {
       cardInner.classList.add('tilting');
       arm.classList.add('stretching');
       card.classList.add('card-hovered');
-
-      const nodeRect = node.getBoundingClientRect();
-      cachedNodeX = nodeRect.left + nodeRect.width / 2;
-      cachedNodeY = nodeRect.top + nodeRect.height / 2;
 
       if (!rafId) {
         rafId = requestAnimationFrame(updatePhysics);
@@ -3334,7 +3335,6 @@ document.addEventListener('DOMContentLoaded', () => {
       targetTiltX = 0;
       targetTiltY = 0;
       targetTranslateY = 0;
-      cachedCardRect = null;
       cardInner.classList.remove('tilting');
       arm.classList.remove('stretching');
       card.classList.remove('card-hovered');
@@ -3345,6 +3345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const canInteract = () => {
       if (window.innerWidth <= 860) return false;
+      if (isUserScrolling) return false;
       if (card.classList.contains('masonry-card')) {
         return card.classList.contains('card-formed');
       }
@@ -3359,15 +3360,17 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseenter', () => {
       if (!canInteract()) return;
       isHovered = true;
-      cachedCardRect = card.getBoundingClientRect();
       startPhysics();
     }, { passive: true });
 
     card.addEventListener('mousemove', e => {
-      if (!canInteract()) return;
+      if (!canInteract()) {
+        if (isHovered) card._cancelHover();
+        return;
+      }
       isHovered = true;
 
-      const rect = cachedCardRect || card.getBoundingClientRect();
+      const rect = card.getBoundingClientRect();
       const halfW = rect.width / 2;
       const halfH = rect.height / 2;
       const x = Math.max(-1, Math.min(1, (e.clientX - (rect.left + halfW)) / halfW));
@@ -3380,22 +3383,16 @@ document.addEventListener('DOMContentLoaded', () => {
       startPhysics();
     }, { passive: true });
 
-    card.addEventListener('mouseleave', e => {
-      const rect = cachedCardRect || card.getBoundingClientRect();
-      cachedCardRect = null;
-      if (
-        e &&
-        e.clientX >= rect.left - 4 &&
-        e.clientX <= rect.right + 4 &&
-        e.clientY >= rect.top - 18 &&
-        e.clientY <= rect.bottom + 4
-      ) {
-        return;
-      }
+    card.addEventListener('mouseleave', () => {
       isHovered = false;
       targetTiltX = 0;
       targetTiltY = 0;
       targetTranslateY = 0;
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      baseArmWidth = 0;
+      card._cancelHover();
     }, { passive: true });
   }
 
