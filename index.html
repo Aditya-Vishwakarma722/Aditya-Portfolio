@@ -1223,13 +1223,19 @@
   /* FOOTER */
   footer { text-align: center; padding: 2.5rem; color: var(--text-secondary); font-size: 0.82rem; border-top: 1px solid var(--glass-border); margin-top: 2rem; }
 
-  /* ── 0. OPENING DISSOLVE TRANSITION (Smooth exit of non-skills cards) ── */
-  .thread-masonry-wrapper.skills-opening .left-col .masonry-card,
+  /* ── 0. OPENING DISSOLVE TRANSITION (Smooth parting & exit of non-skills cards) ── */
+  .thread-masonry-wrapper.skills-opening .left-col .masonry-card {
+    opacity: 0 !important;
+    transform: scale(0.93) translateX(-36px) translateY(-8px) !important;
+    filter: blur(8px) !important;
+    transition: opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1), transform 0.34s cubic-bezier(0.16, 1, 0.3, 1), filter 0.32s ease !important;
+    pointer-events: none !important;
+  }
   .thread-masonry-wrapper.skills-opening .right-col .masonry-card:not(#skills-element-box) {
     opacity: 0 !important;
-    transform: scale(0.95) translateY(-14px) !important;
-    filter: blur(4px) !important;
-    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), filter 0.22s ease !important;
+    transform: scale(0.93) translateX(36px) translateY(-8px) !important;
+    filter: blur(8px) !important;
+    transition: opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1), transform 0.34s cubic-bezier(0.16, 1, 0.3, 1), filter 0.32s ease !important;
     pointer-events: none !important;
   }
   .thread-masonry-wrapper.skills-opening .thread-spine-track,
@@ -1237,19 +1243,19 @@
   .thread-masonry-wrapper.skills-opening .thread-start-node,
   .thread-masonry-wrapper.skills-opening .thread-end-node {
     opacity: 0 !important;
-    transition: opacity 0.2s ease !important;
+    transition: opacity 0.28s ease !important;
   }
   .thread-masonry-wrapper.skills-opening #skills-element-box .card-interactive {
-    border-color: var(--ac);
-    box-shadow: 0 0 32px rgba(136, 170, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.7);
-    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    border-color: var(--ac3) !important;
+    box-shadow: 0 0 36px rgba(0, 255, 209, 0.45), 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
   }
   .skills-explore-btn.btn-pulse {
-    animation: btnPulseGlow 0.4s ease;
+    animation: btnPulseGlow 0.45s ease;
   }
   @keyframes btnPulseGlow {
     0% { transform: scale(1); }
-    50% { transform: scale(1.03); box-shadow: 0 0 16px var(--ac3); }
+    50% { transform: scale(1.04); box-shadow: 0 0 20px var(--ac3); }
     100% { transform: scale(1); }
   }
 
@@ -1368,7 +1374,7 @@
   }
   .thread-masonry-wrapper.skills-mode-active .skills-bridge-thread {
     transform: scaleX(1);
-    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.04s;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.02s;
   }
   .bridge-traveling-bead {
     position: absolute;
@@ -1383,7 +1389,7 @@
     opacity: 0;
   }
   .thread-masonry-wrapper.skills-mode-active .bridge-traveling-bead {
-    animation: bridgeTravel 0.34s cubic-bezier(0.16, 1, 0.3, 1) 0.04s forwards;
+    animation: bridgeTravel 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.02s forwards;
   }
   @keyframes bridgeTravel {
     0% { left: 0%; opacity: 1; transform: translate(-50%, -50%) scale(0.6); }
@@ -1415,13 +1421,13 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 1.5rem;
     opacity: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+    transform: translateY(-16px);
+    transition: opacity 0.25s ease 0s, transform 0.25s ease 0s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-header {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.32s ease 0.16s, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+    transition: opacity 0.4s ease 0.06s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.06s;
   }
   .skills-tree-badge {
     display: inline-flex;
@@ -1531,7 +1537,7 @@
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-fill {
     height: 100%;
-    transition: height 0.48s cubic-bezier(0.2, 0.9, 0.3, 1) 0.26s;
+    transition: height 0.58s cubic-bezier(0.2, 0.9, 0.3, 1) 0.08s;
   }
   /* Traveling Head Dot on New Spine */
   .skills-tree-spine-fill::after {
@@ -1550,7 +1556,7 @@
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-fill::after {
     opacity: 1;
-    transition: opacity 0.2s ease 0.26s;
+    transition: opacity 0.2s ease 0.08s;
   }
   .skills-tree-spine-top,
   .skills-tree-spine-bottom {
@@ -1569,11 +1575,16 @@
   .skills-tree-spine-bottom { bottom: -4px; }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-top {
     transform: translateX(-50%) scale(1);
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
+    animation: spineTopSurge 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.06s forwards;
+  }
+  @keyframes spineTopSurge {
+    0% { transform: translateX(-50%) scale(0); box-shadow: 0 0 0 0 rgba(0, 255, 209, 0.9); }
+    50% { transform: translateX(-50%) scale(1.5); box-shadow: 0 0 24px 6px rgba(0, 255, 209, 0.7); }
+    100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 10px 2px var(--ac3); }
   }
   .thread-masonry-wrapper.skills-mode-active .skills-tree-spine-bottom {
     transform: translateX(-50%) scale(1);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.74s;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.65s;
   }
 
   /* Categories 2-Column Grid with Branching Threads */
@@ -1587,15 +1598,10 @@
   .skills-category-card {
     position: relative;
     opacity: 0;
-    transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
-  }
-  /* Left column categories (1, 3, 5): slide in from left */
-  .skills-categories-grid .skills-category-card:nth-child(odd) {
-    transform: translateX(-24px) scale(0.96);
-  }
-  /* Right column categories (2, 4, 6): slide in from right */
-  .skills-categories-grid .skills-category-card:nth-child(even) {
-    transform: translateX(24px) scale(0.96);
+    transform: translateY(48px) scale(0.84);
+    filter: blur(10px);
+    will-change: transform, opacity, filter;
+    transition: opacity 0.25s ease 0s, transform 0.25s ease 0s, filter 0.25s ease 0s;
   }
 
   .category-card-inner {
@@ -1694,80 +1700,89 @@
     transform: translate(-50%, -50%) scale(0);
   }
 
-  /* ── STAGGERED FORMATION TIMING (CONSTRUCTION SEQUENCE) ── */
+  /* ── STAGGERED POP-UP FORMATION SEQUENCE (LIVELY SPRING BLOOM) ── */
   /* Tier 1: Cards 1 & 2 (Languages, Backend) */
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(1),
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(2) {
     opacity: 1;
-    transform: translateX(0) scale(1);
-    transition: opacity 0.36s ease 0.38s, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.38s;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition: transform 0.58s cubic-bezier(0.2, 1.25, 0.35, 1) 0.16s,
+                opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+                filter 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(1) .category-branch-arm,
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(2) .category-branch-arm {
     transform: scaleX(1);
     opacity: 1;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.34s, opacity 0.2s ease 0.34s;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.14s, opacity 0.22s ease 0.14s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(1) .category-branch-node {
     transform: translate(50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s, opacity 0.2s ease 0.38s;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s, opacity 0.2s ease 0.12s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(2) .category-branch-node {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s, opacity 0.2s ease 0.38s;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s, opacity 0.2s ease 0.12s;
   }
 
   /* Tier 2: Cards 3 & 4 (Databases, Core CS) */
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(3),
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(4) {
     opacity: 1;
-    transform: translateX(0) scale(1);
-    transition: opacity 0.36s ease 0.52s, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.52s;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition: transform 0.58s cubic-bezier(0.2, 1.25, 0.35, 1) 0.32s,
+                opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.32s,
+                filter 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(3) .category-branch-arm,
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(4) .category-branch-arm {
     transform: scaleX(1);
     opacity: 1;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.48s, opacity 0.2s ease 0.48s;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.30s, opacity 0.22s ease 0.30s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(3) .category-branch-node {
     transform: translate(50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.52s, opacity 0.2s ease 0.52s;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.28s, opacity 0.2s ease 0.28s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(4) .category-branch-node {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.52s, opacity 0.2s ease 0.52s;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.28s, opacity 0.2s ease 0.28s;
   }
 
   /* Tier 3: Cards 5 & 6 (Tools, Creative 3D) */
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(5),
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(6) {
     opacity: 1;
-    transform: translateX(0) scale(1);
-    transition: opacity 0.36s ease 0.66s, transform 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.66s;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition: transform 0.58s cubic-bezier(0.2, 1.25, 0.35, 1) 0.48s,
+                opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.48s,
+                filter 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.48s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(5) .category-branch-arm,
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(6) .category-branch-arm {
     transform: scaleX(1);
     opacity: 1;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.62s, opacity 0.2s ease 0.62s;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.46s, opacity 0.22s ease 0.46s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(5) .category-branch-node {
     transform: translate(50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.66s, opacity 0.2s ease 0.66s;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.44s, opacity 0.2s ease 0.44s;
   }
   .thread-masonry-wrapper.skills-mode-active .skills-category-card:nth-child(6) .category-branch-node {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.66s, opacity 0.2s ease 0.66s;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.44s, opacity 0.2s ease 0.44s;
   }
 
-  /* ── 2. RETRACTING STATE (Instant, fluent reverse on return) ── */
+  /* ── 2. RETRACTING STATE (Smooth reverse on return) ── */
   .thread-masonry-wrapper.skills-retracting .skills-category-card,
   .thread-masonry-wrapper.skills-retracting .category-branch-arm,
   .thread-masonry-wrapper.skills-retracting .category-branch-node,
@@ -1777,15 +1792,12 @@
   .thread-masonry-wrapper.skills-retracting .skills-bridge-thread,
   .thread-masonry-wrapper.skills-retracting .tab-bridge-node,
   .thread-masonry-wrapper.skills-retracting .skills-tree-header {
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) 0s !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) 0s !important;
   }
-  .thread-masonry-wrapper.skills-retracting .skills-category-card:nth-child(odd) {
+  .thread-masonry-wrapper.skills-retracting .skills-category-card {
     opacity: 0 !important;
-    transform: translateX(-20px) scale(0.96) !important;
-  }
-  .thread-masonry-wrapper.skills-retracting .skills-category-card:nth-child(even) {
-    opacity: 0 !important;
-    transform: translateX(20px) scale(0.96) !important;
+    transform: translateY(28px) scale(0.9) !important;
+    filter: blur(6px) !important;
   }
   .thread-masonry-wrapper.skills-retracting .category-branch-arm {
     transform: scaleX(0) !important;
@@ -1810,7 +1822,7 @@
   }
   .thread-masonry-wrapper.skills-retracting .skills-tree-header {
     opacity: 0 !important;
-    transform: translateY(-8px) !important;
+    transform: translateY(-12px) !important;
   }
 
   /* ── 3. RESTORING STATE (Smooth fade and glide back for main timeline cards) ── */
@@ -2052,8 +2064,6 @@
       right: auto !important;
       width: 1.35rem !important;
       transform-origin: 0% 50% !important;
-      transform: scaleX(1) !important;
-      opacity: 1 !important;
       background: linear-gradient(90deg, var(--ac3), rgba(136, 170, 255, 0.2)) !important;
     }
     .skills-category-card .category-branch-node,
@@ -2061,8 +2071,9 @@
     .skills-categories-grid .skills-category-card:nth-child(even) .category-branch-node {
       left: -1.35rem !important;
       right: auto !important;
+    }
+    .thread-masonry-wrapper.skills-mode-active .skills-category-card .category-branch-node {
       transform: translate(-50%, -50%) scale(1) !important;
-      opacity: 1 !important;
     }
     .skills-categories-grid .skills-category-card .card-branch-joint {
       left: 0 !important;
@@ -2982,13 +2993,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isActivating) {
       cancelAllCardHovers();
-      // Phase 1: Fluent dissolve of other timeline elements
+      // Phase 1: Smooth, intentional parting dissolve of other timeline elements
       threadMasonryWrapper.classList.add('skills-opening');
 
       const btn = openSkillsFromBox;
       if (btn) {
         btn.classList.add('btn-pulse');
-        setTimeout(() => btn.classList.remove('btn-pulse'), 400);
+        setTimeout(() => btn.classList.remove('btn-pulse'), 450);
       }
 
       const btnSpan = openSkillsFromBox ? openSkillsFromBox.querySelector('.explore-btn-text') : null;
@@ -2996,17 +3007,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btnSpan) btnSpan.textContent = '← Return to Main Timeline';
       if (btnArrow) btnArrow.style.display = 'none';
 
-      // Gentle non-jarring viewport align only if box is far outside visible area
+      // Smooth viewport alignment to frame the sub-timeline blooming directly in front of the user
       const skillsBox = document.getElementById('skills-element-box');
       if (skillsBox) {
         const rect = skillsBox.getBoundingClientRect();
-        if (rect.top < 60 || rect.top > window.innerHeight - 180) {
+        if (rect.top < 60 || rect.top > 160) {
           const targetY = window.scrollY + rect.top - 80;
           window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
         }
       }
 
-      // Phase 2: After dissolve completes (220ms), mount active subthread mode and construct
+      // Phase 2: After 320ms parting dissolve, mount active subthread mode and trigger spring pop-up sequence
       setTimeout(() => {
         threadMasonryWrapper.classList.remove('skills-opening');
         threadMasonryWrapper.classList.add('skills-mode-active');
@@ -3016,10 +3027,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (measurePositions) measurePositions();
           isSubthreadBusy = false;
         }, 850);
-      }, 220);
+      }, 320);
     } else {
       cancelAllCardHovers();
-      // Rapid, fluent retract animation
+      // Smooth retract animation
       threadMasonryWrapper.classList.add('skills-retracting');
 
       const btnSpan = openSkillsFromBox ? openSkillsFromBox.querySelector('.explore-btn-text') : null;
@@ -3042,7 +3053,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (updateScrollFormation) updateScrollFormation();
           isSubthreadBusy = false;
         }, 320);
-      }, 200);
+      }, 220);
     }
   };
 
