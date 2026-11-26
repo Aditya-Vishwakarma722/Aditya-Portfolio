@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - Aditya Vishwakarma</title>
+<title>Aditya Vishwakarma | Java Backend Developer</title>
+<meta name="description" content="Portfolio of Aditya Vishwakarma — Java Backend Developer specializing in scalable enterprise backends with Spring Boot, Spring Security, MongoDB transactions, and layered microservice architecture.">
+<meta name="keywords" content="Aditya Vishwakarma, Java Backend Developer, Spring Boot, Spring Security, MongoDB, RESTful APIs, Microservices, Java Developer, Blender 3D, ACET">
+<meta name="author" content="Aditya Vishwakarma">
+<!-- Open Graph -->
+<meta property="og:title" content="Aditya Vishwakarma | Java Backend Developer &amp; Creative Technologist">
+<meta property="og:description" content="Java Backend Developer specializing in Spring Boot, Spring Security, MongoDB, and scalable transactional microservices.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aditya-portfolio.vercel.app">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aditya Vishwakarma | Java Backend Developer">
+<meta name="twitter:description" content="Java Backend Developer specializing in Spring Boot, Spring Security, MongoDB, and scalable transactional microservices.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Raleway:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <style>
@@ -1036,6 +1048,159 @@
     color: #9bbdff;
     letter-spacing: 0.02em;
     font-weight: 500;
+  }
+
+  /* Authentic Minimal Cybernetic Project Additions */
+  .proj-head-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  .proj-telemetry-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--ac3);
+    background: rgba(0, 255, 209, 0.06);
+    border: 1px solid rgba(0, 255, 209, 0.25);
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .proj-features-list {
+    list-style: none;
+    margin: 0.55rem 0 0.65rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+  }
+  .proj-features-list li {
+    font-size: 0.77rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    position: relative;
+    padding-left: 0.95rem;
+  }
+  .proj-features-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--ac3);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+  .proj-features-list strong {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+  .proj-features-list code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    background: rgba(136, 170, 255, 0.1);
+    color: var(--ac);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+  .arch-flow-box {
+    margin: 0.6rem 0;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(8, 12, 28, 0.6);
+    border: 1px solid rgba(0, 255, 209, 0.18);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .arch-flow-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.62rem;
+    color: var(--ac3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .arch-flow-pip {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ac3);
+    box-shadow: 0 0 6px var(--ac3);
+  }
+  .arch-flow-pipeline {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.4rem;
+    font-size: 0.68rem;
+    color: #e2e8f0;
+  }
+  .arch-node {
+    padding: 0.18rem 0.45rem;
+    background: rgba(136, 170, 255, 0.08);
+    border: 1px solid rgba(136, 170, 255, 0.2);
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .arch-arrow {
+    color: var(--ac3);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  .proj-endpoints-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+  }
+  .endpoint-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.64rem;
+    padding: 0.16rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: #cbd5e1;
+  }
+  .endpoint-badge .ep-method {
+    color: var(--ac3);
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+
+  /* Achievements & Certifications styling */
+  .achievement-item {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .achievement-item:first-of-type {
+    margin-top: 0.4rem;
+    padding-top: 0;
+    border-top: none;
+  }
+  .achieve-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+  .achieve-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .achieve-org {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ac3);
+    letter-spacing: 0.03em;
   }
 
   /* Education Tags & Badges */
@@ -2299,7 +2464,7 @@
   <section class="hero" id="about">
     <div class="hero-content">
       <div class="hero-eyebrow">
-        <span>Developer &amp; Creative</span>
+        <span>Java Backend Developer &amp; Creative Technologist</span>
         <span class="hero-tag-pill"><span class="status-live-dot"></span>Open to work</span>
       </div>
       <h2 class="hero-name">
@@ -2308,7 +2473,7 @@
       </h2>
       <div class="hero-divider"></div>
       <p class="hero-about-text">
-        I'm Aditya Vishwakarma, a developer and creative enthusiast who enjoys building things for the digital world. I like solving problems through code, designing clean interfaces, and exploring creative tools like video editing and 3D design. I'm always learning, experimenting, and working to turn ideas into meaningful projects.
+        I am a Computer Science undergraduate and Java Backend Developer focused on building robust, scalable services with <strong>Spring Boot, Spring Security, and MongoDB</strong>. I specialize in designing transactional database layers, authenticated RESTful microservices, and layered backend architectures—anchored with a passion for <strong>Blender 3D</strong> and visual creativity.
       </p>
     </div>
   </section>
@@ -2403,7 +2568,7 @@
           </div>
         </div>
 
-        <!-- CARD 3: Key Projects -->
+        <!-- CARD 3: Featured Projects -->
         <div class="masonry-card">
           <div class="card-branch-arm"></div>
           <div class="card-branch-node"></div>
@@ -2415,42 +2580,127 @@
             </div>
             <h4 class="card-title">Featured Projects</h4>
 
+            <!-- PROJECT 1: SkillBridge -->
             <div class="project-mini-item">
               <div class="proj-head">
-                <span class="proj-name">SkillBridge</span>
+                <div class="proj-head-top">
+                  <span class="proj-name">SkillBridge</span>
+                  <span class="proj-telemetry-tag">Enterprise Backend</span>
+                </div>
                 <span class="proj-stack">Java 21 · Spring Boot · MongoDB · Spring Security</span>
               </div>
               <p class="card-desc">
-                Collaborative industry-student bridge platform featuring Role-Based Access Control (RBAC), BCrypt authentication, and scalable MongoDB schemas.
+                Collaborative industry-student bridge platform built with layered architecture, securing role-differentiated workflows between students and recruiters.
               </p>
-              <div class="repo-meta-row" style="margin-top:0.4rem;">
-                <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+              <ul class="proj-features-list">
+                <li><strong>Role-Based Access Control (RBAC)</strong>: Secured endpoints with Spring Security filter chain and BCrypt encrypted credentials.</li>
+                <li><strong>Relational NoSQL Modeling</strong>: Normalized document structures utilizing MongoDB <code>DBRef</code> for relational integrity.</li>
+                <li><strong>Collaborative Workflows</strong>: Application lifecycle management, project posting pipelines, and real-time status updates.</li>
+                <li><strong>Clean Architecture</strong>: Decoupled Controller ➔ Service ➔ Repository layers with DTO validation.</li>
+              </ul>
+              <div class="arch-flow-box">
+                <div class="arch-flow-header">
+                  <span class="arch-flow-pip"></span>
+                  <span>Architecture Pipeline</span>
+                </div>
+                <div class="arch-flow-pipeline">
+                  <span class="arch-node">Client</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">Spring Security (RBAC)</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">REST Controllers</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">Service Layer</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">Spring Data MongoDB</span>
+                </div>
+              </div>
+              <div class="repo-meta-row" style="margin-top:0.5rem;">
+                <a href="https://github.com/Aditya-Vishwakarma722/SkillBridge-student-industry-collaboration" target="_blank" rel="noopener noreferrer" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
               </div>
             </div>
 
+            <!-- PROJECT 2: Journal Prototype API -->
             <div class="project-mini-item">
               <div class="proj-head">
-                <span class="proj-name">Journal Prototype API</span>
+                <div class="proj-head-top">
+                  <span class="proj-name">Journal Prototype API</span>
+                  <span class="proj-telemetry-tag">Transactional API</span>
+                </div>
                 <span class="proj-stack">Java 21 · Spring Boot 4.0.7 · MongoDB Transactions · Maven</span>
               </div>
               <p class="card-desc">
-                RESTful service with HTTP Basic Auth, ownership isolation, multi-document transactions (@Transactional), and authenticated CRUD APIs.
+                Production-styled RESTful journaling service implementing multi-document ACID transactions and strict data ownership isolation.
               </p>
-              <div class="repo-meta-row" style="margin-top:0.4rem;">
-                <a href="https://github.com/Aditya-Vishwakarma722/Journal-Prototype" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+              <ul class="proj-features-list">
+                <li><strong>ACID Multi-Document Transactions</strong>: Atomic multi-collection persistence via <code>@Transactional</code> and MongoTransactionManager.</li>
+                <li><strong>Ownership Data Isolation</strong>: Strict query scoping ensuring users only access, mutate, or delete their own journal entries.</li>
+                <li><strong>Authentication &amp; RBAC</strong>: HTTP Basic Auth with BCrypt password encoding, separating USER and ADMIN privilege scopes.</li>
+                <li><strong>RESTful CRUD Suite</strong>: Centralized error handling, standardized HTTP response statuses, and automated validation.</li>
+              </ul>
+              <div class="arch-flow-box">
+                <div class="arch-flow-header">
+                  <span class="arch-flow-pip"></span>
+                  <span>Architecture Pipeline</span>
+                </div>
+                <div class="arch-flow-pipeline">
+                  <span class="arch-node">REST Client</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">BasicAuthFilter</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">Journal Controllers</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">@Transactional Svc</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">MongoRepository</span>
+                </div>
+              </div>
+              <div class="proj-endpoints-row">
+                <span class="endpoint-badge"><span class="ep-method">POST</span>/public/user</span>
+                <span class="endpoint-badge"><span class="ep-method">GET</span>/journal</span>
+                <span class="endpoint-badge"><span class="ep-method">POST</span>/journal</span>
+                <span class="endpoint-badge"><span class="ep-method">DELETE</span>/journal/id/{id}</span>
+              </div>
+              <div class="repo-meta-row" style="margin-top:0.5rem;">
+                <a href="https://github.com/Aditya-Vishwakarma722/Journal-Prototype" target="_blank" rel="noopener noreferrer" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
               </div>
             </div>
 
+            <!-- PROJECT 3: AniTracker -->
             <div class="project-mini-item">
               <div class="proj-head">
-                <span class="proj-name">AniTracker</span>
+                <div class="proj-head-top">
+                  <span class="proj-name">AniTracker</span>
+                  <span class="proj-telemetry-tag">Media Catalog</span>
+                </div>
                 <span class="proj-stack">Java · Spring Boot · MongoDB · REST API</span>
               </div>
               <p class="card-desc">
-                Full-stack media tracking backend for Anime, Movies, and TV series with structured data models, custom lists, and RESTful CRUD endpoints.
+                High-performance backend service engineered for tracking and categorizing anime, movie, and TV series collections with custom status workflows.
               </p>
-              <div class="repo-meta-row" style="margin-top:0.4rem;">
-                <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
+              <ul class="proj-features-list">
+                <li><strong>Multi-Category Catalog</strong>: Unified schema design managing anime, movies, and series with genre and studio metadata.</li>
+                <li><strong>State Machine Watchlist</strong>: Granular status progression (Watching, Completed, Plan to Watch, Dropped).</li>
+                <li><strong>Scoring &amp; Progress Metrics</strong>: User rating engine, episode counters, and aggregated personal collection metrics.</li>
+                <li><strong>Optimized REST Endpoints</strong>: Clean query filtering, pagination, and fast MongoDB index-backed lookups.</li>
+              </ul>
+              <div class="arch-flow-box">
+                <div class="arch-flow-header">
+                  <span class="arch-flow-pip"></span>
+                  <span>Architecture Pipeline</span>
+                </div>
+                <div class="arch-flow-pipeline">
+                  <span class="arch-node">Client</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">Media Controllers</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">Catalog Service</span>
+                  <span class="arch-arrow">➔</span>
+                  <span class="arch-node">MongoDB Query Engine</span>
+                </div>
+              </div>
+              <div class="repo-meta-row" style="margin-top:0.5rem;">
+                <a href="https://github.com/Aditya-Vishwakarma722/AniTracker" target="_blank" rel="noopener noreferrer" class="repo-link-arrow" style="text-decoration:none;">View on GitHub ↗</a>
               </div>
             </div>
           </div>
@@ -2583,23 +2833,74 @@
           <div class="card-interactive glass-effect">
             <span class="card-branch-joint"></span>
             <div class="card-meta">
-              <span class="card-tag">05 // BLENDER 3D</span>
-              <span class="card-badge">3D Design &amp; CGI</span>
+              <span class="card-tag">05 // CREATIVE SUITE</span>
+              <span class="card-badge">3D CGI &amp; Visual Media</span>
             </div>
-            <h4 class="card-title">Blender 3D Creations</h4>
+            <h4 class="card-title">Blender 3D &amp; Creative Portfolio</h4>
             <p class="card-desc">
-              Custom 3D models, procedural shaders, lighting environments, and aesthetic renders crafted in Blender.
+              Custom hard-surface 3D models, procedural node shaders, cinematic lighting setups, and high-framerate video edits.
             </p>
             <div class="blender-branch-features">
               <span class="pill-chip highlight">3D Modeling</span>
               <span class="pill-chip highlight">Cycles / Eevee</span>
               <span class="pill-chip">Procedural Textures</span>
               <span class="pill-chip">Lighting &amp; Renders</span>
+              <span class="pill-chip">After Effects VFX</span>
             </div>
-            <a href="Blender 3D/blenderAssets.html" class="repo-more-btn" style="margin-top: 0.9rem;">
-              <span>Explore 3D Assets &amp; Renders</span>
-              <span class="arrow">→</span>
-            </a>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.9rem;">
+              <a href="Blender 3D/blenderAssets.html" class="repo-more-btn" style="flex:1; min-width:140px;">
+                <span>Explore 3D Assets</span>
+                <span class="arrow">→</span>
+              </a>
+              <a href="Video Edits/video_edits.html" class="repo-more-btn" style="flex:1; min-width:140px;">
+                <span>View Video Edits</span>
+                <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Achievements & Experience Branch -->
+        <div class="masonry-card">
+          <div class="card-branch-arm"></div>
+          <div class="card-branch-node"></div>
+          <div class="card-interactive glass-effect">
+            <span class="card-branch-joint"></span>
+            <div class="card-meta">
+              <span class="card-tag">06 // ACHIEVEMENTS</span>
+              <span class="card-badge">Experience &amp; Milestones</span>
+            </div>
+            <h4 class="card-title">Experience &amp; Certifications</h4>
+
+            <div class="achievement-item">
+              <div class="achieve-head">
+                <span class="achieve-title">Web Development Intern</span>
+                <span class="achieve-org">Future Interns</span>
+              </div>
+              <p class="card-desc">
+                Developed responsive web modules and collaborated on client-oriented interface implementations. Pitched project solutions in technical reviews and received the <strong>Internship Certificate &amp; Letter of Recommendation (LOR)</strong>.
+              </p>
+            </div>
+
+            <div class="achievement-item">
+              <div class="achieve-head">
+                <span class="achieve-title">Competitive Programming &amp; Core DSA</span>
+                <span class="achieve-org">LeetCode · CodeChef · HackerRank</span>
+              </div>
+              <p class="card-desc">
+                Hands-on algorithmic problem solving in Java focusing on Data Structures &amp; Algorithms (Arrays, Strings, LinkedLists, Trees, Recursion, and Object-Oriented design principles).
+              </p>
+            </div>
+
+            <div class="achievement-item">
+              <div class="achieve-head">
+                <span class="achieve-title">Japanese Language Proficiency</span>
+                <span class="achieve-org">JLPT N5 Candidate</span>
+              </div>
+              <p class="card-desc">
+                Active language study across Hiragana, Katakana, foundational Kanji, and conversational grammar; appearing for official JLPT N5 certification.
+              </p>
+            </div>
           </div>
         </div>
 
